@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Microsoft.OpenApi.Models;
 namespace ApiCreateDocsVIntegracion
 {
     public class Startup
@@ -25,7 +26,20 @@ namespace ApiCreateDocsVIntegracion
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("AppAdministration", new OpenApiInfo()
+                {
+                    Title = "Api Creacion Docs",
+                    Version = "V1"
+                });
+
+
+            });
+
+
             services.AddControllers();
+         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +49,20 @@ namespace ApiCreateDocsVIntegracion
             {
                 app.UseDeveloperExceptionPage();
             }
+
+
+            //SWAGGER
+            app.UseStaticFiles();
+            app.UseSwagger();
+
+
+            app.UseSwaggerUI(c =>
+            {
+                // c.SwaggerEndpoint("AppAdministration/swagger.json", "Api Creacion Docs");
+                c.SwaggerEndpoint("AppAdministration/swagger.json", "Api Creacion  Docs");
+            });
+
+            //SWAGGER
 
             app.UseHttpsRedirection();
 

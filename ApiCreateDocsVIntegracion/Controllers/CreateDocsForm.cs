@@ -259,7 +259,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
             //    {
             //        DocsInfoSaveExpedientes.DocumentoProyeccionObra = EnviarExpedientes(content).URL;
             //    }
-            //    else
+            ////    else
             //    {
             //        DocsInfoSaveExpedientes.DocumentoProyeccionObra = EnviarExpedientes(content).Documento_data;
             //    }
@@ -291,8 +291,8 @@ namespace ApiCreateDocsVIntegracion.Controllers
 
 
             //}
-            //if (data.dataSolicitud != null)
-            //{
+            if (data.dataSolicitud != null)
+            {
                 //vamos obtener la solicitud
 
 
@@ -310,21 +310,21 @@ namespace ApiCreateDocsVIntegracion.Controllers
                 content.Add(new StringContent("Fomepade"), "CredencialesCliente");
                 content.Add(new StringContent("2345"), "Tipo_Documento");
 
-            var doc = EnviarExpedientes(content).URL;
-            DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
+                //var doc = EnviarExpedientes(content).URL;
+                //DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
 
-            //if (data.dataSolicitud.formato == "pdf")
-            //{
-            //    var doc = EnviarExpedientes(content).URL;
-            //    DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
-            //}
-            //else
-            //{
-            //    var doc = EnviarExpedientes(content).Documento_data;
-            //    DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
-            //}
+                if (data.dataSolicitud.formato == "pdf")
+                {
+                    var doc = EnviarExpedientes(content).URL;
+                    DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
+                }
+                else
+                {
+                    var doc = EnviarExpedientes(content).Documento_data;
+                    DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
+                }
 
-            //}
+            }
             return DocsInfoSaveExpedientes;
 
         }
@@ -346,7 +346,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         var jsonString = response.Content.ReadAsStringAsync();
-                        //expedienteEnvioResponse = JsonConverter.DeserializeObject<DocumentosExpedienteCliente>(jsonString.Result);
+                       // expedienteEnvioResponse = JsonConverter.DeserializeObject<DocumentosExpedienteCliente>(jsonString.Result);
                         //expedienteEnvioResponse = JsonConverter.DeserializeObject<DocumentosExpedienteCliente>(jsonString.Result);
 
                     }
