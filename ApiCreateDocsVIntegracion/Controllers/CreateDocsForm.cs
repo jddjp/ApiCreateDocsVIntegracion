@@ -306,7 +306,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
                 content.Add(bytes, "Documento", "Solicitud.pdf");
                 content.Add(new StringContent("2201"), "TipocSubExpediente");
                 content.Add(new StringContent("220102"), "TipocSubSubExpediente");
-                content.Add(new StringContent("DocGenerate"), "IdExpediente");
+                content.Add(new StringContent("DocGenerate1"), "IdExpediente");
                 content.Add(new StringContent("Fomepade"), "CredencialesCliente");
                 content.Add(new StringContent("2345"), "Tipo_Documento");
 
