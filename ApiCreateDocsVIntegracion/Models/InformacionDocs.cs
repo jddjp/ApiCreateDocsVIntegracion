@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,12 +11,18 @@ namespace ApiCreacionDocs.Models
     {
         public class InputPagare
         {
-            public string TipoExpediente { get; set; }
-            public string TipoSubExpediente { get; set; }
-            public string formato { get; set; }
+            [NotMapped]
+            public string? TipoExpediente { get; set; }
+            [NotMapped]
+            public string? TipoSubExpediente { get; set; }
+            [NotMapped]
+            public string? formato { get; set; }
+            [NotMapped]
 
-            public string Version { get; set; }
-            public String NumeroContrato { get; set; }
+            public string? Version { get; set; }
+
+            [Key]
+            public Int32 NumeroContrato { get; set; }
             public String NumeroPagare { get; set; }
             public String Cantidadpagare { get; set; }
             public String CantidadpagareNumLetras { get; set; }
@@ -23,24 +31,23 @@ namespace ApiCreacionDocs.Models
             public String PersonaColonia { get; set; }
             public String PersonaCiudad { get; set; }
             public String PersonaTelefono { get; set; }
-            public String NumAmortizaciones { get; set; }
-            public String DiaUltimoPago { get; set; }
+            public Int32 NumAmortizaciones { get; set; }
+            public Int32 DiaUltimoPago { get; set; }
             public String MesUltimoPago { get; set; }
-            public String AnioUltimoPago { get; set; }
-            public String AnioPrimerpago { get; set; }
-            public String DiaPrimerPago { get; set; }
+            public Int32 AnioUltimoPago { get; set; }
+            public Int32 AnioPrimerpago { get; set; }
+            public Int32 DiaPrimerPago { get; set; }
             public String MesPrimerPago { get; set; }
             public String PagosPeridicidad { get; set; }
             public String CiudadEmite { get; set; }
             public String PaisEmite { get; set; }
-            public String TasaOrdinaria { get; set; }
-            public String TasaMoratoria { get; set; }
+            public double TasaOrdinaria { get; set; }
+            public double TasaMoratoria { get; set; }
             public String ColoniaEmite { get; set; }
             public String DireccionEmite { get; set; }
             public String CantidadPagosnumeroyletras { get; set; }
-            public DateTime FechaCreacionPagare { get; set; }
+            public string FechaCreacionPagare { get; set; }
         }
-
         public class InputEstipulacion
         {
             public string TipoExpediente { get; set; }
