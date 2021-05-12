@@ -1,6 +1,7 @@
 ﻿using ApiCreacionDocs.Models;
 using ApiCreacionDocs.Models.ModelsOuput;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using OriginaWebApp.Models.Formatos;
 using SelectPdf;
 using System;
@@ -9,8 +10,9 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+
+
 
 namespace ApiCreateDocsVIntegracion.Controllers
 {
@@ -294,24 +296,18 @@ namespace ApiCreateDocsVIntegracion.Controllers
             if (data.dataSolicitud != null)
             {
                 //vamos obtener la solicitud
-
-
-                //System.IO.File.WriteAllBytes("Solicitud.pdf", GenerateSolicitud(data));
-
                 var content = new MultipartFormDataContent();
                 ByteArrayContent bytes = new ByteArrayContent(GenerateSolicitud(data));
                 content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
                 content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
-                content.Add(new StringContent("22"), "TipoExpediente");
+                content.Add(new StringContent(data.dataSolicitud.TipoExpediente.ToString()), "TipoExpediente");
                 content.Add(bytes, "Documento", "Solicitud.pdf");
-                content.Add(new StringContent("2201"), "TipocSubExpediente");
+                content.Add(new StringContent(data.dataSolicitud.TipoSubExpediente.ToString()), "TipocSubExpediente");
                 content.Add(new StringContent("220102"), "TipocSubSubExpediente");
-                content.Add(new StringContent("DocGenerate"), "IdExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente"); 
                 content.Add(new StringContent("Fomepade"), "CredencialesCliente");
                 content.Add(new StringContent("2345"), "Tipo_Documento");
 
-                //var doc = EnviarExpedientes(content).URL;
-                //DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
 
                 if (data.dataSolicitud.formato == "pdf")
                 {
@@ -346,9 +342,10 @@ namespace ApiCreateDocsVIntegracion.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         var jsonString = response.Content.ReadAsStringAsync();
-                       // expedienteEnvioResponse = JsonConverter.DeserializeObject<DocumentosExpedienteCliente>(jsonString.Result);
-                        //expedienteEnvioResponse = JsonConverter.DeserializeObject<DocumentosExpedienteCliente>(jsonString.Result);
 
+                       expedienteEnvioResponse = JsonConvert.DeserializeObject<DocumentosExpedienteCliente>(jsonString.Result);
+
+                     
                     }
 
 
