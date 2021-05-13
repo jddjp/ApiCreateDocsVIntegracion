@@ -137,19 +137,24 @@ namespace ApiCreacionDocs.Models
 
         public class InputCaratula
         {
-            public string TipoExpediente { get; set; }
-            public string TipoSubExpediente { get; set; }
-            public string formato { get; set; }
+            [NotMapped]
+            public string? TipoExpediente { get; set; }
+            [NotMapped]
+            public string? TipoSubExpediente { get; set; }
+            [NotMapped]
+            public string? formato { get; set; }
+            [NotMapped]
+            public string? Version { get; set; }
 
-            public string Version { get; set; }
-            public String CAT { get; set; }
-            public String TasaInsolutra { get; set; }
-            public String TasaMoraa { get; set; }
-            public String MontoLineaCredito { get; set; }
+            [Key]
+            public decimal CAT { get; set; }
+            public double TasaInsolutra { get; set; }
+            public double TasaMoraa { get; set; }
+            public decimal MontoLineaCredito { get; set; }
             public String MontoTotalPagar { get; set; }
             public String CreditoPeriodicidad { get; set; }
-            public String CreditoPlazo { get; set; }
-            public String ClienteNombreClompleto { get; set; }
+            public Int32 CreditoPlazo { get; set; }
+            public String ClienteNombreCompleto { get; set; }
 
         }
         public class InputEstudioSocioeconomico
