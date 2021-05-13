@@ -15,7 +15,7 @@ namespace OriginaWebApp.Models.Formatos
         {
 
 
-            strDocumento = @"@model ApiCreacionDocs.Models.InformacionDocs.InputTablaAmortizacion;														";
+            strDocumento = @"													";
             strDocumento += @"<!doctype html>                                                                                                           ";
             strDocumento += @"<html>                                                                                                                    ";
             strDocumento += @"<head>                                                                                                                    ";
