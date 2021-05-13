@@ -14,215 +14,216 @@ namespace OriginaWebApp.Models.Formatos
         public string FormatoHTML(InputData data, string imgLogo)
         {
 
-            strDocumento = @"
+            strDocumento = "                                                                                                                                                                                                                                     ";
+            strDocumento += "                                                                                                                                                                                                                                    ";
+            strDocumento += "                            <html>                                                                                                                                                                                                 ";
+            strDocumento += "                            <head>                                                                                                                                                                                                 ";
+            strDocumento += "                                <style>                                                                                                                                                                                             ";
+            strDocumento += "                                    p{                                                                                                                                                                                              ";
+            strDocumento += "                                        font-family: calibri;                                                                                                                                                                       ";
+            strDocumento += "                                        font-size: 9pt;                                                                                                                                                                              ";
+            strDocumento += "                                    }                                                                                                                                                                                                ";
+            strDocumento += "                                                                                                                                                                                                                                     ";
+            strDocumento += "                                   p.negrita {                                                                                                                                                                                        ";
+            strDocumento += "                                        font-family: Arial;                                                                                                                                                                            ";
+            strDocumento += "                                        font-weight: bold;                                                                                                                                                                             ";
+            strDocumento += "                                     }                                                                                                                                                                                                 ";
+            strDocumento += "                                                                                                                                                                                                                                       ";
+            strDocumento += "                                    font.l {                                                                                                                                                                                           ";
+            strDocumento += "                                     font-weight: bold;                                                                                                                                                                                ";
+            strDocumento += "                                    }                                                                                                                                                                                                  ";
+            strDocumento += "                                                                                                                                                                                                                                        ";
+            strDocumento += "                                   font.z {                                                                                                                                                                                            ";
+            strDocumento += "                                        text-align: right;                                                                                                                                                                             ";
+            strDocumento += "                                    }                                                                                                                                                                                                  ";
+            strDocumento += "                                                                                                                                                                                                                                   ";
+            strDocumento += "                                     p.solid {                                                                                                                                                                                     ";
+            strDocumento += "                                        border-style: groove;                                                                                                                                                                       ";
+            strDocumento += "                                  }                                                                                                                                                                                                 ";
+            strDocumento += "                                                                                                                                                                                                                                    ";
+            strDocumento += "                                    table.data, td.data, th {                                                                                                                                                                       ";
+            strDocumento += "                                        border: 1px solid black;                                                                                                                                                                    ";
+            strDocumento += "                                  }                                                                                                                                                                                                 ";
+            strDocumento += "                                                                                                                                                                                                                                    ";
+            strDocumento += "                                    table.data {                                                                                                                                                                                   ";
+            strDocumento += "                                        width: 100%;                                                                                                                                                                               ";
+            strDocumento += "                                         border-collapse: collapse;                                                                                                                                                                ";
+            strDocumento += "                                    }                                                                                                                                                                                              ";
+            strDocumento += "                                                                                                                                                                                                                                    ";
+            strDocumento += "                                    table.x, td.x, th.x {                                                                                                                                                                          ";
+            strDocumento += "                                        border: 0px solid black;                                                                                                                                                                   ";
+            strDocumento += "                                    }                                                                                                                                                                                               ";
+            strDocumento += "                                </style>                                                                                                                                                                                           ";
+            strDocumento += "                                <meta name='" + data.dataCaratula.TipoExpediente + "' content='text/html;' http-equiv='content-type' charset='utf-8'>                                                                                              ";
+            strDocumento += "                            </head>                                                                                                                                                                                                ";
+            strDocumento += "                                                                                                                                                                                                                                    ";
+            strDocumento += "                             <body style='text-align: justify;'>                                                                                                                                                                  ";
+            strDocumento += "                            <div align='center' >                                                                                                                                                                                 ";
+            strDocumento += "                            <img src='" + imgLogo + "' width='133' height='65' />                                                                                                                                                ";
+            strDocumento += "                            </div>                                                                                                                                                                                                  ";
+            strDocumento += "                             <p style='text-align:CENTER;'>                                                                                                                                                                       ";
+            strDocumento += "                             <b>CARÁTULA DE CRÉDITO</b>                                                                                                                                                                             ";
+            strDocumento += "                             </p>                                                                                                                                                                                                   ";
+            strDocumento += "                                <table class='data' border='1'  WIDTH='100%'>                                                                                                                                                 ";
+            strDocumento += "                                                                                                                                                                                                                                    ";
+            strDocumento += "                              <tbody>                                                                                                                                                                                               ";
+            strDocumento += "                                <tr>                                                                                                                                                                                                ";
+            strDocumento += "                                   <td colspan='4'>                                                                                                                                                                               ";
+            strDocumento += "                                  <p><b>Nombre comercial del Producto:</b> Aprecia tu Nómina</p>                                                                                                                                    ";
+            strDocumento += "                                   <p><b>Tipo de Crédito:</b> Crédito de Nómina</p>                                                                                                                                                 ";
+            strDocumento += "                                  </td>                                                                                                                                                                                             ";
+            strDocumento += "                                </tr>                                                                                                                                                                                               ";
+            strDocumento += "                                <tr>                                                                                                                                                                                                ";
+            strDocumento += "                                 <td>                                                                                                                                                                                               ";
+            strDocumento += "                                  <p><b>CAT (Costo Anual Total)</b></p>                                                                                                                                                             ";
+            strDocumento += "                                   </td>                                                                                                                                                                                            ";
+            strDocumento += "                                   <td>                                                                                                                                                                                             ";
+            strDocumento += "                                  <p><b>TASA DE INTERÉS ANUAL ORDINARIA Y MORATORIA</b></p>                                                                                                                                         ";
+            strDocumento += "                                  </td>                                                                                                                                                                                             ";
+            strDocumento += "                                    <td>                                                                                                                                                                                            ";
+            strDocumento += "                                  <p><b>MONTO O LÍNEA DE CRÉDITO</b></p>                                                                                                                                                            ";
+            strDocumento += "                                  </td>                                                                                                                                                                                             ";
+            strDocumento += "                                 <td>                                                                                                                                                                                               ";
+            strDocumento += "                                   <p><b>MONTO TOTAL A PAGAR O MÍNIMO A PAGAR</b></p>                                                                                                                                               ";
+            strDocumento += "                                   </td>                                                                                                                                                                                            ";
+            strDocumento += "                                </tr>                                                                                                                                                                                               ";
+            strDocumento += "                              <tr>                                                                                                                                                                                                   ";
+            strDocumento += "                                  <td>                                                                                                                                                                                              ";
+            strDocumento += "                                  <p> " + data.dataCaratula.CAT + "% Sin IVA                                                                                                                                                          ";
+            strDocumento += "                            Para fines informativos y de Comparación                                                                                                                                                                  ";
+            strDocumento += "                            </p>                                                                                                                                                                                                      ";
+            strDocumento += "                                  </td>                                                                                                                                                                                               ";
+            strDocumento += "                                   <td>                                                                                                                                                                                               ";
+            strDocumento += "                                  <p>                                                                                                                                                                                                 ";
+            strDocumento += "                            " + data.dataCaratula.TasaInsolutra + " Tasa Ordinaria Fija Sin IVA                                                                                                                                       ";
+            strDocumento += "                            </p>                                                                                                                                                                                                      ";
+            strDocumento += "                             <p> " + data.dataCaratula.TasaMoraa + "Tasa Moratoria Fija Sin IVA                                                                                                                                       ";
+            strDocumento += "                            </p>                                                                                                                                                                                                      ";
+            strDocumento += "                                  </td>                                                                                                                                                                                               ";
+            strDocumento += "                                    <td>                                                                                                                                                                                              ";
+            strDocumento += "                                   <p>$  " + data.dataCaratula.MontoLineaCredito + "Pesos</p>                                                                                                                                           ";
+            strDocumento += "                                   </td>                                                                                                                                                                                              ";
+            strDocumento += "                                    <td>                                                                                                                                                                                               ";
+            strDocumento += "                                  <p>$ " + data.dataCaratula.MontoTotalPagar + "Pesos</p>                                                                                                                                              ";
+            strDocumento += "                                </td>                                                                                                                                                                                                  ";
+            strDocumento += "                                </tr>                                                                                                                                                                                                  ";
+            strDocumento += "                               <tr >                                                                                                                                                                                                   ";
+            strDocumento += "                                                                                                                                                                                                                                       ";
+            strDocumento += "                                    <td colspan='2'>                                                                                                                                                                                 ";
+            strDocumento += "                                   <p><b>PLAZO DEL CRÉDITO: " + data.dataCaratula.CreditoPlazo + "</b> </p>                                                                                                                             ";
+            strDocumento += "                                  </td>                                                                                                                                                                                                 ";
+            strDocumento += "                                    <td colspan='2'>                                                                                                                                                                                 ";
+            strDocumento += "                                  <p><b>Fecha límite de pago:</b> los días  " + data.dataCaratula.CreditoPeriodicidad + " de cada mes.</p>                                                                                               ";
+            strDocumento += "                                   <p><b>Fecha de Corte:</b> los días  " + data.dataCaratula.CreditoPeriodicidad + " de cada mes.</p>                                                                                                    ";
+            strDocumento += "                                  </td>                                                                                                                                                                                                 ";
+            strDocumento += "                              </tr>                                                                                                                                                                                                     ";
+            strDocumento += "                                <tr >                                                                                                                                                                                                   ";
+            strDocumento += "                                                                                                                                                                                                                                        ";
+            strDocumento += "                                    <td colspan='4'>                                                                                                                                                                                  ";
+            strDocumento += "                                <p style='text-align:center;'>COMISIONES RELEVANTES </p>                                                                                                                                              ";
+            strDocumento += "                                  </td>                                                                                                                                                                                                 ";
+            strDocumento += "                                                                                                                                                                                                                                        ";
+            strDocumento += "                               </tr>                                                                                                                                                                                                    ";
+            strDocumento += "                                  <tr >                                                                                                                                                                                                 ";
+            strDocumento += "                                                                                                                                                                                                                                        ";
+            strDocumento += "                                    <td colspan='2'>                                                                                                                                                                                  ";
+            strDocumento += "                                   <p style='text-align:left;'><b>•	Apertura:</b> (0%) No aplica </p>                                                                                                                                ";
+            strDocumento += "                                   <p style='text-align:left;'><b>•	Anualidad:</b> (0%) No aplica </p>                                                                                                                               ";
+            strDocumento += "                                   <p style='text-align:left;'><b>•	Prepago:</b> (0%) Sin pena alguna por pago anticipado </p>                                                                                                       ";
+            strDocumento += "                                   <p style='text-align:left;'><b>•	Pago tardío (mora): </b>(0%) No aplica</p>                                                                                                                       ";
+            strDocumento += "                                       <p style='text-align:left;'><b>•	Comisión por administración:</b> «PorcentajeComision»% sobre los pagos durante la vida del crédito, respecto al monto total del crédito</p>                  ";
+            strDocumento += "                                  </td>                                                                                                                                                                                                 ";
+            strDocumento += "                                  <td colspan='2'>                                                                                                                                                                                    ";
+            strDocumento += "                                    <p style='text-align:left;'><b>•	Reposición de tarjeta:</b> No aplica. </p>                                                                                                                       ";
+            strDocumento += "                                     <p style='text-align:left;'><b>•	Reclamación improcedente:</b> No aplica </p>                                                                                                                 ";
+            strDocumento += "                                       <p style='text-align:left;'><b>•	Cobranza:</b> No aplica </p>                                                                                                                                 ";
+            strDocumento += "                                  </td>                                                                                                                                                                                                   ";
+            strDocumento += "                               </tr>                                                                                                                                                                                                      ";
+            strDocumento += "                               <tr >                                                                                                                                                                                                      ";
+            strDocumento += "                                                                                                                                                                                                                                          ";
+            strDocumento += "                                   <td colspan='4'>                                                                                                                                                                                     ";
+            strDocumento += "                                  <p style='text-align:left;'><b>ADVERTENCIAS</b> </p>                                                                                                                                                  ";
+            strDocumento += "                                   <p style='text-align:left;'>a)	“Incumplir tus obligaciones te puede generar comisiones e intereses moratorios.” </p>                                                                              ";
+            strDocumento += "                                   <p style='text-align:left;'>b)	“Contratar créditos por arriba de tu capacidad de pago puede afectar tu historial crediticio.” </p>                                                                ";
+            strDocumento += "                                 </td>                                                                                                                                                                                                    ";
+            strDocumento += "                                                                                                                                                                                                                                          ";
+            strDocumento += "                               </tr>                                                                                                                                                                                                      ";
+            strDocumento += "                                 <tr >                                                                                                                                                                                                    ";
+            strDocumento += "¿                                                                                                                                                                                                                                         ";
+            strDocumento += "                                    <td colspan='4'>                                                                                                                                                                                    ";
+            strDocumento += "                                   <p style='text-align:center;'><b>SEGUROS</b> </p>                                                                                                                                                    ";
+            strDocumento += "                                   </td>                                                                                                                                                                                                  ";
+            strDocumento += "                                                                                                                                                                                                                                          ";
+            strDocumento += "                             </tr>                                                                                                                                                                                                        ";
+            strDocumento += "                                   <tr >                                                                                                                                                                                                  ";
+            strDocumento += "                                                                                                                                                                                                                                          ";
+            strDocumento += "                                    <td colspan='1'>                                                                                                                                                                                    ";
+            strDocumento += "                                   <p style='text-align:center;'><b>Seguro:</b> Vida                                                                                                                                                     ";
+            strDocumento += "                            Obligatorio                                                                                                                                                                                                    ";
+            strDocumento += "                             </p>                                                                                                                                                                                                          ";
+            strDocumento += "                                  </td>                                                                                                                                                                                                    ";
+            strDocumento += "                                    <td colspan='1'>                                                                                                                                                                                     ";
+            strDocumento += "                                   <p style='text-align:center;'><b>Aseguradora:</b> «NombreAseguradora» </p>                                                                                                                            ";
+            strDocumento += "                                   </td>                                                                                                                                                                                                   ";
+            strDocumento += "                                    <td colspan='2'>                                                                                                                                                                                   ";
+            strDocumento += "                                   <p style='text-align:center;'><b>Cláusula: DECIMA SEXTA</b> </p>                                                                                                                                      ";
+            strDocumento += "                                    <p style='text-align:center;'>FOMEPADE S.A.P.I. de C.V. SOFOM E.N.R., podrá contratar a su nombre el seguro, previa autorización de “EL CLIENTE” </p>                                                ";
+            strDocumento += "                                  </td>                                                                                                                                                                                                    ";
+            strDocumento += "                                                                                                                                                                                                                                           ";
+            strDocumento += "                               </tr>                                                                                                                                                                                                       ";
+            strDocumento += "                                <tr >                                                                                                                                                                                                      ";
+            strDocumento += "                                                                                                                                                                                                                                           ";
+            strDocumento += "                                    <td colspan='4'>                                                                                                                                                                                     ";
+            strDocumento += "                                  <p style='text-align:left;'><b>ESTADO DE CUENTA</b> </p>                                                                                                                                               ";
+            strDocumento += "                                    <p style='text-align:left;'><b>Enviar a: </b> Domicilio [  ]        <b>Consulta:</b>  Vía Internet [   ]          <b>Envío por:</b> Envío por correo electrónico  [  ]  </p>                         ";
+            strDocumento += "                                  </td>                                                                                                                                                                                                    ";
+            strDocumento += "                                                                                                                                                                                                                                           ";
+            strDocumento += "                              </tr>                                                                                                                                                                                                        ";
+            strDocumento += "                                   <tr >                                                                                                                                                                                                   ";
+            strDocumento += "                                                                                                                                                                                                                                           ";
+            strDocumento += "                                    <td colspan='4'>                                                                                                                                                                                     ";
+            strDocumento += "                                                                                                                                                                                                                                           ";
+            strDocumento += "                                     <p style='text-align:left;'><b>Aclaraciones y reclamaciones:</b>                                                                                                                                    ";
+            strDocumento += "                            Unidad Especializada de Atención a Usuarios:                                                                                                                                                                   ";
+            strDocumento += "                            Domicilio: Boulevard Atlixco número 3115 Interior 1, Colonia Nueva Antequera, C.P. 72180, Puebla, Puebla.                                                                                                      ";
+            strDocumento += "                            Teléfono: <b>(222) 1698090  y (800) 9909192</b>  Correo Electrónico: <b>une@aprecia.com.mx</b>                                                                                                                 ";
+            strDocumento += "                            Página de internet: <b style='color:blue'>www.aprecia.com.mx</b>                                                                                                                                             ";
+            strDocumento += "                            </p>                                                                                                                                                                                                           ";
+            strDocumento += "                                  </td>                                                                                                                                                                                                    ";
+            strDocumento += "                                                                                                                                                                                                                                           ";
+            strDocumento += "                              </tr>                                                                                                                                                                                                        ";
+            strDocumento += "                                     <tr >                                                                                                                                                                                                 ";
+            strDocumento += "                                                                                                                                                                                                                                           ";
+            strDocumento += "                                  <td colspan='4'>                                                                                                                                                                                       ";
+            strDocumento += "                                                                                                                                                                                                                                           ";
+            strDocumento += "                                     <p style='text-align:left;'>                                                                                                                                                                        ";
+            strDocumento += "                                     <b>Registro de Contratos de Adhesión Número: 2028-440-004742/17-00217-0121</b>                                                                                                                        ";
+            strDocumento += "                          Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros (CONDUSEF):                                                                                                              ";
+            strDocumento += "                            Teléfono: <b>(800) 999 8080 y (55) 5340 0999.</b>  Página de Internet. <b style='color:blue'>www.condusef.gob.mx</b>                                                                                         ";
+            strDocumento += "                                                                                                                                                                                                                                           ";
+            strDocumento += "                            </p>                                                                                                                                                                                                           ";
+            strDocumento += "                                  </td>                                                                                                                                                                                                    ";
+            strDocumento += "                                                                                                                                                                                                                                           ";
+            strDocumento += "                               </tr>                                                                                                                                                                                                       ";
+            strDocumento += "                             </tbody>                                                                                                                                                                                                      ";
+            strDocumento += "                            </table>                                                                                                                                                                                                       ";
+            strDocumento += "                            <p style='text-align:left;'>                                                                                                                                                                                ";
+            strDocumento += "                            De conformidad con la presente carátula y toda vez que el presente documento forma parte integrante del contrato de adhesión, firma el cliente a su entera satisfacción.                                       ";
+            strDocumento += "                             </p>                                                                                                                                                                                                          ";
+            strDocumento += "                              <p style='text-align:CENTER;'>                                                                                                                                                                             ";
+            strDocumento += "                                                                                                                                                                                                                                           ";
+            strDocumento += "                             </p>                                                                                                                                                                                                          ";
+            strDocumento += "                             <p style='text-align:CENTER;'>                                                                                                                                                                              ";
+            strDocumento += "                            <b>'EL CLIENTE'</b>                                                                                                                                                                                          ";
+            strDocumento += "                             </p>                                                                                                                                                                                                          ";
+            strDocumento += "                            <p style='text-align:CENTER;'>                                                                                                                                                                               ";
+            strDocumento += "                            ____________________<br>                                                                                                                                                                                       ";
+            strDocumento += "                            <b>" + data.dataCaratula.ClienteNombreCompleto + "</b>                                                                                                                                                         ";
+            strDocumento += "                            <b>Nombre y firma</b>                                                                                                                                                                                          ";
+            strDocumento += "                             </p>                                                                                                                                                                                                          ";
+            strDocumento += "                           </body>                                                                                                                                                                                                         ";
+            strDocumento += "                           </html>		 												                                                                                                                                                    ";
 
-                                        <html>
-                                        <head>
-                                            <style>
-                                                p{
-                                                    font-family: calibri;
-                                                    font-size: 9pt;
-                                                }
-
-                                                p.negrita {
-                                                    font-family: Arial;
-                                                    font-weight: bold;
-                                                }
-
-                                                font.l {
-                                                    font-weight: bold;
-                                                }
-
-                                                font.z {
-                                                    text-align: right;
-                                                }
-
-                                                p.solid {
-                                                    border-style: groove;
-                                                }
-
-                                                table.data, td.data, th {
-                                                    border: 1px solid black;
-                                                }
-
-                                                table.data {
-                                                    width: 100%;
-                                                    border-collapse: collapse;
-                                                }
-
-                                                table.x, td.x, th.x {
-                                                    border: 0px solid black;
-                                                }
-                                            </style>
-                                            <meta name=""+tipo_contenido+"" content=""text/html;"" http-equiv=""content-type"" charset=""utf-8"">
-                                        </head>
-
-                                        <body style=""text-align: justify;"">
-                                        <div align=""center"" >
-                                        <img src='"" + imgLogo + ""' width='133' height='65' />
-                                        </div>
-                                         <p style=""text-align:CENTER;"">
-                                        <b>CARÁTULA DE CRÉDITO</b>
-                                         </p>
-                                            <table class=""data"" border=""1""  WIDTH=""100%"">
-  
-                                          <tbody>
-                                            <tr>
-                                              <td colspan=""4"">
-                                              <p><b>Nombre comercial del Producto:</b> Aprecia tu Nómina</p>
-                                               <p><b>Tipo de Crédito:</b> Crédito de Nómina</p>
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td>
-                                              <p><b>CAT (Costo Anual Total)</b></p>
-                                              </td>
-                                               <td>
-                                              <p><b>TASA DE INTERÉS ANUAL ORDINARIA Y MORATORIA</b></p>
-                                              </td>
-                                                <td>
-                                              <p><b>MONTO O LÍNEA DE CRÉDITO</b></p>
-                                              </td>
-                                                <td>
-                                              <p><b>MONTO TOTAL A PAGAR O MÍNIMO A PAGAR</b></p>
-                                              </td>
-                                            </tr>
-                                              <tr>
-                                              <td>
-                                              <p>% Sin IVA 
-                                        Para fines informativos y de Comparación
-                                        </p>
-                                              </td>
-                                               <td>
-                                              <p>
-                                        Tasa Ordinaria Fija Sin IVA
-                                        </p>
-                                         <p>Tasa Moratoria Fija Sin IVA
-                                        </p>
-                                              </td>
-                                                <td>
-                                               <p>$ Pesos</p>
-                                              </td>
-                                                <td>
-                                              <p>$ Pesos</p>
-                                              </td>
-                                            </tr>
-                                           <tr >
-    
-                                                <td colspan=""2"">
-                                               <p><b>PLAZO DEL CRÉDITO:</b> </p>
-                                              </td>
-                                                <td colspan=""2"">
-                                              <p><b>Fecha límite de pago:</b> los días «DIASPAGO» de cada mes.</p>
-                                               <p><b>Fecha de Corte:</b> los días «DIACORTE» de cada mes.</p>
-                                              </td>
-                                           </tr> 
-                                            <tr >
-    
-                                                <td colspan=""4"">
-                                               <p style=""text-align:center;"">COMISIONES RELEVANTES </p>
-                                              </td>
-     
-                                           </tr> 
-                                             <tr >
-    
-                                                <td colspan=""2"">
-                                               <p style=""text-align:left;""><b>•	Apertura:</b> (0%) No aplica </p>
-                                               <p style=""text-align:left;""><b>•	Anualidad:</b> (0%) No aplica </p>
-                                               <p style=""text-align:left;""><b>•	Prepago:</b> (0%) Sin pena alguna por pago anticipado </p>
-                                               <p style=""text-align:left;""><b>•	Pago tardío (mora): </b>(0%) No aplica</p>
-                                                   <p style=""text-align:left;""><b>•	Comisión por administración:</b> «PorcentajeComision»% sobre los pagos durante la vida del crédito, respecto al monto total del crédito</p>
-                                              </td>
-                                              <td colspan=""2"">
-                                               <p style=""text-align:left;""><b>•	Reposición de tarjeta:</b> No aplica. </p>
-                                                 <p style=""text-align:left;""><b>•	Reclamación improcedente:</b> No aplica </p>
-                                                   <p style=""text-align:left;""><b>•	Cobranza:</b> No aplica </p>
-                                              </td>
-                                           </tr> 
-                                            <tr >
-    
-                                                <td colspan=""4"">
-                                               <p style=""text-align:left;""><b>ADVERTENCIAS</b> </p>
-                                                <p style=""text-align:left;"">a)	“Incumplir tus obligaciones te puede generar comisiones e intereses moratorios.” </p>
-                                                 <p style=""text-align:left;"">b)	“Contratar créditos por arriba de tu capacidad de pago puede afectar tu historial crediticio.” </p>
-                                              </td>
-     
-                                           </tr> 
-                                             <tr >
-    
-                                                <td colspan=""4"">
-                                               <p style=""text-align:center;""><b>SEGUROS</b> </p>
-                                              </td>
-     
-                                           </tr> 
-                                               <tr >
-    
-                                                <td colspan=""1"">
-                                               <p style=""text-align:center;""><b>Seguro:</b> Vida 
-                                        Obligatorio
-                                         </p>
-                                              </td>
-                                                <td colspan=""1"">
-                                               <p style=""text-align:center;""><b>Aseguradora:</b> «NombreAseguradora» </p>
-                                              </td>
-                                                <td colspan=""2"">
-                                               <p style=""text-align:center;""><b>Cláusula: DECIMA SEXTA</b> </p>
-                                                 <p style=""text-align:center;"">FOMEPADE S.A.P.I. de C.V. SOFOM E.N.R., podrá contratar a su nombre el seguro, previa autorización de “EL CLIENTE” </p>
-                                              </td>
-     
-                                           </tr>
-                                             <tr >
-    
-                                                <td colspan=""4"">
-                                               <p style=""text-align:left;""><b>ESTADO DE CUENTA</b> </p>
-                                                 <p style=""text-align:left;""><b>Enviar a: </b> Domicilio [  ]        <b>Consulta:</b>  Vía Internet [   ]          <b>Envío por:</b> Envío por correo electrónico  [  ]  </p>
-                                              </td>
-     
-                                           </tr> 
-                                               <tr >
-    
-                                                <td colspan=""4"">
-      
-                                                 <p style=""text-align:left;""><b>Aclaraciones y reclamaciones:</b>
-                                        Unidad Especializada de Atención a Usuarios:
-                                        Domicilio: Boulevard Atlixco número 3115 Interior 1, Colonia Nueva Antequera, C.P. 72180, Puebla, Puebla.
-                                        Teléfono: <b>(222) 1698090  y (800) 9909192</b>  Correo Electrónico: <b>une@aprecia.com.mx</b>
-                                        Página de internet: <b style=""color:blue"">www.aprecia.com.mx</b>
-                                         </p>
-                                              </td>
-     
-                                           </tr>
-                                                  <tr >
-    
-                                                <td colspan=""4"">
-      
-                                                 <p style=""text-align:left;"">
-                                                 <b>Registro de Contratos de Adhesión Número: 2028-440-004742/17-00217-0121</b>
-                                        Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros (CONDUSEF):
-                                        Teléfono: <b>(800) 999 8080 y (55) 5340 0999.</b>  Página de Internet. <b style=""color:blue"">www.condusef.gob.mx</b>
-
-                                         </p>
-                                              </td>
-     
-                                           </tr>
-                                          </tbody>
-                                        </table>
-                                         <p style=""text-align:left;"">
-                                        De conformidad con la presente carátula y toda vez que el presente documento forma parte integrante del contrato de adhesión, firma el cliente a su entera satisfacción.
-                                         </p>
-                                          <p style=""text-align:CENTER;"">
-
-                                         </p>
-                                         <p style=""text-align:CENTER;"">
-                                        <b>""EL CLIENTE""</b>
-                                         </p>
-                                         <p style=""text-align:CENTER;"">
-                                         ____________________<br>
-                                        <b>Nombre y firma</b>
-                                         </p>
-                                        </body>
-                                        </html>																																";
-           
             return strDocumento;
         }
     }

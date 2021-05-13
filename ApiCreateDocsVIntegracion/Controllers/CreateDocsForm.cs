@@ -22,7 +22,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
     public class CreateDocsForm : Controller
     {
         //Url de la imagen
-        private readonly IWebHostEnvironment _env;
+        //private readonly IWebHostEnvironment _env;
 
         [HttpPost]
         public async Task<IActionResult> CreateDocs(InputData data)
@@ -672,7 +672,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
         [ApiExplorerSettings(IgnoreApi = true)]
         public byte[] GenerateReferenciaPago(InputData data)
         {
-            fmtfmtTablaAmortizacion formato = new fmtfmtTablaAmortizacion();
+            fmtfmtReferenciaDePag formato = new fmtfmtReferenciaDePag();
 
             string htmlString = formato.FormatoHTML(data);
             string baseUrl = "";
@@ -842,7 +842,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
         {
             fmtfmtCaratula formato = new fmtfmtCaratula();
 
-            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            string htmlString = formato.FormatoHTML(data,"\\img\\aprecia-blanco.jpeg");
             string baseUrl = "";
 
             string pdf_page_size = "Letter";

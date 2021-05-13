@@ -68,7 +68,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"    <br>                                                                                                                                     ";
             strDocumento += @"    <br>                                                                                                                                     ";
             strDocumento += @"    <p align=""left"" class=""b"">                                                                                                           ";
-            strDocumento += @"        Reunidos  en el  domicilio particular  en Calle_____"+data.dataCartaEntrega.domicilioCalleNumero+" ___________________________                                           ";
+            strDocumento += @"        Reunidos  en el  domicilio particular  en Calle_____<u>"+data.dataCartaEntrega.domicilioCalleNumero+"</u> ___________________________                                           ";
             strDocumento += @"    </p>                                                                                                                                     ";
             strDocumento += @"    <p align=""left"" class=""b"">                                                                                                           ";
             strDocumento += @"        Col._"+data.dataCartaEntrega.domicilioColonia+"_Municipio____"+data.dataCartaEntrega.domicilioMunicipio+ "______- Estado____" + data.dataCartaEntrega.domicilioEstado + "_ C.P. __" + data.dataCartaEntrega.domicilioCodigoPostal + "_-                                                ";
