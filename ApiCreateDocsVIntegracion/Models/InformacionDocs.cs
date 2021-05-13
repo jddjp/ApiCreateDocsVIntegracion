@@ -48,6 +48,7 @@ namespace ApiCreacionDocs.Models
             public String CantidadPagosnumeroyletras { get; set; }
             public string FechaCreacionPagare { get; set; }
         }
+
         public class InputEstipulacion
         {
             [NotMapped]
@@ -236,11 +237,16 @@ namespace ApiCreacionDocs.Models
         }
         public class InputSolicitud
         {
-            public string TipoExpediente { get; set; }
-            public string TipoSubExpediente { get; set; }
-            public string formato { get; set; }
-            public string Version { get; set; }
-            //Objeto de La Solicitud
+            [NotMapped]
+            public string? TipoExpediente { get; set; }
+            [NotMapped]
+            public string? TipoSubExpediente { get; set; }
+            [NotMapped]
+            public string? formato { get; set; }
+            [NotMapped]
+            public string? Version { get; set; }
+            //Datos complementarios
+            [Key]
             public string NoPagare { get; set; }
             public string TipoCredito { get; set; }
             public string DestinoCredito { get; set; }
@@ -402,32 +408,68 @@ namespace ApiCreacionDocs.Models
         }
         public class InputPresupuestoObra
         {
-            public string TipoExpediente { get; set; }
-            public string TipoSubExpediente { get; set; }
-            public string formato { get; set; }
-
-            public string Version { get; set; }
+            [NotMapped]
+            public string? TipoExpediente { get; set; }
+            [NotMapped]
+            public string? TipoSubExpediente { get; set; }
+            [NotMapped]
+            public string? formato { get; set; }
+            [NotMapped]
+            public string? Version { get; set; }
+            //Datos complementarios
+            [Key]
+            public string municipioEstado { get; set; }
+            public string diaFecha { get; set; }
+            public string mesFecha { get; set; }
+            public string anioFecha { get; set; }
+            public string presupuestoSolucion { get; set; }
+            public string nombreCliente { get; set; }
 
         }
         public class InputProyeccionObra
         {
-            public string TipoExpediente { get; set; }
-            public string TipoSubExpediente { get; set; }
-            public string formato { get; set; }
-
-            public string Version { get; set; }
+            [NotMapped]
+            public string? TipoExpediente { get; set; }
+            [NotMapped]
+            public string? TipoSubExpediente { get; set; }
+            [NotMapped]
+            public string? formato { get; set; }
+            [NotMapped]
+            public string? Version { get; set; }
+            //Datos complementarios
+            [Key]
+            public string municipioEstado { get; set; }
+            public string diaFecha { get; set; }
+            public string mesFecha { get; set; }
+            public string anioFecha { get; set; }
+            public string nombreCliente { get; set; }
+            public string domicilioCalleNumero { get; set; }
+            public string colonia { get; set; }
+            public string municipio { get; set; }
+            public string estado { get; set; }
+            public string codigoPostal { get; set; }
 
         }
         public class InputCartaEntrega
         {
-            public string TipoExpediente { get; set; }
-            public string TipoSubExpediente { get; set; }
-            public string formato { get; set; }
-
-            public string Version { get; set; }
+            [NotMapped]
+            public string? TipoExpediente { get; set; }
+            [NotMapped]
+            public string? TipoSubExpediente { get; set; }
+            [NotMapped]
+            public string? formato { get; set; }
+            [NotMapped]
+            public string? Version { get; set; }
+            //Datos complementarios
+            [Key]
+            public string domicilioCalleNumero { get; set; }
+            public string domicilioColonia { get; set; }
+            public string domicilioMunicipio { get; set; }
+            public string domicilioEstado { get; set; }
+            public string domicilioCodigoPostal { get; set; }
+            public string nombreCliente { get; set; }
 
         }
-
 
 
     }
