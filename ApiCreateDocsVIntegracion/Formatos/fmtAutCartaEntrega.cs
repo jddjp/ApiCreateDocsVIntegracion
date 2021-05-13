@@ -68,13 +68,13 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"    <br>                                                                                                                                     ";
             strDocumento += @"    <br>                                                                                                                                     ";
             strDocumento += @"    <p align=""left"" class=""b"">                                                                                                           ";
-            strDocumento += @"        Reunidos  en el  domicilio particular  en Calle___________________________________________                                           ";
+            strDocumento += @"        Reunidos  en el  domicilio particular  en Calle_____"+data.dataCartaEntrega.domicilioCalleNumero+" ___________________________                                           ";
             strDocumento += @"    </p>                                                                                                                                     ";
             strDocumento += @"    <p align=""left"" class=""b"">                                                                                                           ";
-            strDocumento += @"        Col.____________________Municipio___________________- Estado______________ C.P. ____-                                                ";
+            strDocumento += @"        Col._"+data.dataCartaEntrega.domicilioColonia+"_Municipio____"+data.dataCartaEntrega.domicilioMunicipio+ "______- Estado____" + data.dataCartaEntrega.domicilioEstado + "_ C.P. __" + data.dataCartaEntrega.domicilioCodigoPostal + "_-                                                ";
             strDocumento += @"    </p>                                                                                                                                     ";
             strDocumento += @"    <p align=""left"" class=""b"">                                                                                                           ";
-            strDocumento += @"        El Sr. (a) ________________________________________quien entrega la obra realizada al Sr                                             ";
+            strDocumento += @"        El Sr. (a) _____" + data.dataCartaEntrega.nombreCliente + "_______quien entrega la obra realizada al Sr                                             ";
             strDocumento += @"    </p>                                                                                                                                     ";
             strDocumento += @"    <p align=""left"" class=""b"">                                                                                                           ";
             strDocumento += @"        (a)_____________________________________________, mismo que verifica su estructura y/o                                               ";

@@ -72,13 +72,13 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"            </td>                                                                                                                                         ";
             strDocumento += @"            <td>                                                                                                                                          ";
             strDocumento += @"                <p align=""center"" class=""b"">                                                                                                          ";
-            strDocumento += @"                    TESORERIA                                                                                                                             ";
+            strDocumento += @"                   "+ data.dataEstipulacion.retenedorP+"                                                                                                                             ";
             strDocumento += @"                </p>                                                                                                                                      ";
             strDocumento += @"                __________________________________________________________                                                                                ";
             strDocumento += @"            </td>                                                                                                                                         ";
             strDocumento += @"            <td><p class=""b"">ADSCRITO A:<p></td>                                                                                                        ";
             strDocumento += @"            <td>                                                                                                                                          ";
-            strDocumento += @"                <p class=""solid"" align=""center"" style=""width:250px;"" class=""b"">SECRETARIA DE GOBIERNO</p>                                         ";
+            strDocumento += @"                <p class=""solid"" align=""center"" style=""width:250px;"" class=""b"">" + data.dataEstipulacion.TrabajoArea + "</p>                                         ";
             strDocumento += @"            </td>                                                                                                                                         ";
             strDocumento += @"        </tr>                                                                                                                                             ";
             strDocumento += @"        <tr>                                                                                                                                              ";
@@ -88,7 +88,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"            </td>                                                                                                                                         ";
             strDocumento += @"            <td>                                                                                                                                          ";
             strDocumento += @"                <p align=""center"" class=""b"">                                                                                                          ";
-            strDocumento += @"                    JESUS RAMOS LOPEZ                                                                                                                     ";
+            strDocumento += @"                   "+data.dataEstipulacion.NombreCliente+"                                                                                                                 ";
             strDocumento += @"                </p>                                                                                                                                      ";
             strDocumento += @"                ____________________________________________________________                                                                              ";
             strDocumento += @"            </td>                                                                                                                                         ";
@@ -96,7 +96,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                <p class=""b"">CLAVE DEL EMPLEADO:</p>                                                                                                    ";
             strDocumento += @"            </td>                                                                                                                                         ";
             strDocumento += @"            <td>                                                                                                                                          ";
-            strDocumento += @"                <p class=""solid"" align=""center"" style=""width:150px;"" class=""b"">669</p>                                                            ";
+            strDocumento += @"                <p class=""solid"" align=""center"" style=""width:150px;"" class=""b"">" + data.dataEstipulacion.ClaveEmpleado + "</p>                                                            ";
             strDocumento += @"            </td>                                                                                                                                         ";
             strDocumento += @"        </tr>                                                                                                                                             ";
             strDocumento += @"        <tr>                                                                                                                                              ";
@@ -107,7 +107,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"            </td>                                                                                                                                         ";
             strDocumento += @"            <td>                                                                                                                                          ";
             strDocumento += @"                <p align=""center"" class=""b"">                                                                                                          ";
-            strDocumento += @"                    AMAPOLAS # 176 INT. COLONIA: CHUPADEROS VILLA DE COS ZACATECAS                                                                        ";
+            strDocumento += @"                "+data.dataEstipulacion.DireccionCliente+"                                                                     ";
             strDocumento += @"                </p>                                                                                                                                      ";
             strDocumento += @"                ____________________________________________________________________                                                                      ";
             strDocumento += @"            </td>                                                                                                                                         ";
@@ -125,7 +125,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"            </td>                                                                                                                                         ";
             strDocumento += @"            <td>                                                                                                                                          ";
             strDocumento += @"                <p align=""center"" class=""b"">                                                                                                          ";
-            strDocumento += @"                    4921048265&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;2481779528                                                                             ";
+            strDocumento += @"                    "+data.dataEstipulacion.TelefonoClientePart+ "&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;" + data.dataEstipulacion.TelefonoClienteOficina + "                                                                             ";
             strDocumento += @"                </p>                                                                                                                                      ";
             strDocumento += @"                ____________________________________________________________                                                                              ";
             strDocumento += @"                <P align=""center"" class=""b"">PARTICULAR &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;OFICINA</P>                                               ";
@@ -140,8 +140,8 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                        <td><p class=""b"">Quincenas</p></td>                                                                                             ";
             strDocumento += @"                    </tr>                                                                                                                                 ";
             strDocumento += @"                    <tr>                                                                                                                                  ";
-            strDocumento += @"                        <td><p class=""solid"" align=""center"" style=""width:50px;"" class=""b"">18</p></td>                                             ";
-            strDocumento += @"                        <td><p class=""solid"" align=""center"" style=""width:50px;"" class=""b"">36</p></td>                                             ";
+            strDocumento += @"                        <td><p class=""solid"" align=""center"" style=""width:50px;"" class=""b"">" + data.dataEstipulacion.PlazoCreditoMeses + "</p></td>                                             ";
+            strDocumento += @"                        <td><p class=""solid"" align=""center"" style=""width:50px;"" class=""b"">" + data.dataEstipulacion.PlazoCreditoQNAS+ "</p></td>                                             ";
             strDocumento += @"                    </tr>                                                                                                                                 ";
             strDocumento += @"                </table>                                                                                                                                  ";
             strDocumento += @"            </td>                                                                                                                                         ";
@@ -168,8 +168,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"            </td>                                                                                                                                         ";
             strDocumento += @"            <td>                                                                                                                                          ";
             strDocumento += @"                <p class=""b"">                                                                                                                           ";
-            strDocumento += @"                    SESENTA Y UNO MIL TRESCIENTOS                                                                                                         ";
-            strDocumento += @"                    CUARENTA Y CUATRO PESOS CON 04/100 M.N.                                                                                               ";
+            strDocumento += @"                  " + data.dataEstipulacion.MontoPrestamoSinInterSeguroLetra + "                                                                                            ";
             strDocumento += @"                <p>                                                                                                                                       ";
             strDocumento += @"                    __________________________________                                                                                                    ";
             strDocumento += @"                <p class=""b"" align=""center"">CON LETRA</p>                                                                                             ";

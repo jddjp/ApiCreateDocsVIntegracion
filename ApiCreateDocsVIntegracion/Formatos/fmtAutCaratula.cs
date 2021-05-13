@@ -11,1073 +11,218 @@ namespace OriginaWebApp.Models.Formatos
     {
         public string strDocumento;
 
-        public string FormatoHTML(InputData data)
+        public string FormatoHTML(InputData data, string imgLogo)
         {
 
-            strDocumento = @"<html>																																	";
-            strDocumento += @"<head>                                                                                                                                ";
-            strDocumento += @"    <style>                                                                                                                           ";
-            strDocumento += @"        p.b {                                                                                                                         ";
-            strDocumento += @"            font-family: Arial;                                                                                                       ";
-            strDocumento += @"            font-size: 10px;                                                                                                          ";
-            strDocumento += @"        }                                                                                                                             ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        p.negrita {                                                                                                                   ";
-            strDocumento += @"            font-family: Arial;                                                                                                       ";
-            strDocumento += @"            font-weight: bold;                                                                                                        ";
-            strDocumento += @"        }                                                                                                                             ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        font.l {                                                                                                                      ";
-            strDocumento += @"            font-weight: bold;                                                                                                        ";
-            strDocumento += @"        }                                                                                                                             ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        font.z {                                                                                                                      ";
-            strDocumento += @"            text-align: right;                                                                                                        ";
-            strDocumento += @"        }                                                                                                                             ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        p.solid {                                                                                                                     ";
-            strDocumento += @"            border-style: groove;                                                                                                     ";
-            strDocumento += @"        }                                                                                                                             ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        table.data, td.data, th {                                                                                                     ";
-            strDocumento += @"            border: 1px solid black;                                                                                                  ";
-            strDocumento += @"        }                                                                                                                             ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        table.data {                                                                                                                  ";
-            strDocumento += @"            width: 100%;                                                                                                              ";
-            strDocumento += @"            border-collapse: collapse;                                                                                                ";
-            strDocumento += @"        }                                                                                                                             ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        table.x, td.x, th.x {                                                                                                         ";
-            strDocumento += @"            border: 0px solid black;                                                                                                  ";
-            strDocumento += @"        }                                                                                                                             ";
-            strDocumento += @"    </style>                                                                                                                          ";
-            strDocumento += @"    <meta name=""tipo_contenido"" content=""text/html;"" http-equiv=""content-type"" charset=""utf-8"">                               ";
-            strDocumento += @"</head>                                                                                                                               ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"<body style=""text-align: justify;"">                                                                                                 ";
-            strDocumento += @"    <table>                                                                                                                           ";
-            strDocumento += @"        <tr>                                                                                                                          ";
-            strDocumento += @"            <td style=""width:650px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    <b>                                                                                                               ";
-            strDocumento += @"                        SOLICITUD DEL CRÉDITO<br>                                                                                     ";
-            strDocumento += @"                        NÚMERO DE REGISTRO DE CONTRATOS DE ADHESIÓN: 2028-440-004742/15-04446-1019                                    ";
-            strDocumento += @"                    </b>                                                                                                              ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td>                                                                                                                      ";
-            strDocumento += @"                <p class=""b"">No. PAGARE:</p>                                                                                        ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td>                                                                                                                      ";
-            strDocumento += @"                <p class=""b""><b><u>2220028840</u></b></p>                                                                           ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"        </tr>                                                                                                                         ";
-            strDocumento += @"    </table>                                                                                                                          ";
-            strDocumento += @"    <p class=""b"" align=""center"" style=""width:950px;background-color:#E6E6E6;"">DATOS DEL CRÉDITO</p>                             ";
-            strDocumento += @"    <table>                                                                                                                           ";
-            strDocumento += @"        <tr>                                                                                                                          ";
-            strDocumento += @"            <td style=""width:100px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    TIPO DE CRÉDITO:                                                                                                  ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:200px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"" align=""center""><b><u>EN CUENTA CORRIENTE</u></b></p>                                                 ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td>&nbsp;</td>                                                                                                           ";
-            strDocumento += @"            <td style=""width:200px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">DESTINO DEL CRÉDITO: </p>                                                                              ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:200px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"" align=""center""><b><u>CONSUMO</u></b></p>                                                             ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:100px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">FECHA: </p>                                                                                            ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:100px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"" align=""center""><b><u>10/FEBRERO/2020</u></b></p>                                                     ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"        </tr>                                                                                                                         ";
-            strDocumento += @"    </table>                                                                                                                          ";
-            strDocumento += @"    <p class=""b"" align=""center"" style=""width:950px;background-color:#E6E6E6;"">                                                  ";
-            strDocumento += @"        DATOS DEL SOLICITANTE                                                                                                         ";
-            strDocumento += @"    </p>                                                                                                                              ";
-            strDocumento += @"    <table>                                                                                                                           ";
-            strDocumento += @"        <tr style=""height:5px;"">                                                                                                    ";
-            strDocumento += @"            <td style=""width:100px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">JESUS</p>                                                                                              ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td>                                                                                                                      ";
-            strDocumento += @"                <p class=""b"">RAMOS</p>                                                                                              ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:100px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">lOPEZ</p>                                                                                              ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:250px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">lOPEZ</p>                                                                                              ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">SEXO</p>                                                                                               ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:10px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">M</p>                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:5px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">X</p></td>                 ";
-            strDocumento += @"            <td style=""width:10px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">F</p>                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:50px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p></td>           ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">EDAD</p>                                                                                               ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:100px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b""><b><u>52 AÑOS</u></b></p>                                                                              ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"        </tr>                                                                                                                         ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"    </table>                                                                                                                          ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"    <table>                                                                                                                           ";
-            strDocumento += @"        <tr>                                                                                                                          ";
-            strDocumento += @"            <td style=""width:140px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    RALJ681004UN3<br>                                                                                                 ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    R.F.C.                                                                                                            ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:250px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    04/10/1968<br>                                                                                                    ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    FECHA DE NACIMIENTO                                                                                               ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""height:30px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    ZACATECAS<br>                                                                                                     ";
-            strDocumento += @"                    _________________________<br>                                                                                     ";
-            strDocumento += @"                    ENTIDAD FEDERATIVA DE NACIMIENTO                                                                                  ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:200px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    MÉXICO<br>                                                                                                        ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    PAIS DE NACIMIENTO                                                                                                ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:200px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    MEXICANA<br>                                                                                                      ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    NACIONALIDAD                                                                                                      ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"        </tr>                                                                                                                         ";
-            strDocumento += @"    </table>                                                                                                                          ";
-            strDocumento += @"    <table>                                                                                                                           ";
-            strDocumento += @"        <tr>                                                                                                                          ";
-            strDocumento += @"            <td style=""width:80px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    RALJ681004HZSMPS06<br>                                                                                            ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    CURP                                                                                                              ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:80px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    1637046406874<br>                                                                                                 ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    FOLIO I.N.E                                                                                                       ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""height:30px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                    _________________________<br>                                                                                     ";
-            strDocumento += @"                    CLAVE ELECTOR I.N.E.                                                                                              ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:100px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    MÉXICO<br>                                                                                                        ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    PAIS DE NACIMIENTO                                                                                                ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:100px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    dejesusperezjosedaniel@gmail.com<br>                                                                              ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    PAIS DE NACIMIENTO                                                                                                ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    4921048265<br>                                                                                                    ";
-            strDocumento += @"                    _______________<br>                                                                                               ";
-            strDocumento += @"                    TELÉFONO                                                                                                          ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    4921048265<br>                                                                                                    ";
-            strDocumento += @"                    _____________<br>                                                                                                 ";
-            strDocumento += @"                    TELÉFONO                                                                                                          ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"        </tr>                                                                                                                         ";
-            strDocumento += @"    </table>                                                                                                                          ";
-            strDocumento += @"    <table>                                                                                                                           ";
-            strDocumento += @"        <tr>                                                                                                                          ";
-            strDocumento += @"            <td style=""width:200px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    RALJ681004HZSMPS06<br>                                                                                            ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    DOMICILIO PARTICULAR (CALLE Y NÚMERO)                                                                             ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:150px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    1637046406874<br>                                                                                                 ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    COLONIA                                                                                                           ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:150px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                    ______<br>                                                                                                        ";
-            strDocumento += @"                    C.P.                                                                                                              ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:300px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    VILLA DE COS, ZACATECAS, MÉXICO<br>                                                                               ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    (MUNICIPIO, POBLACIÓN, ESTADO, PAÍS)                                                                              ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        </tr>                                                                                                                         ";
-            strDocumento += @"    </table>                                                                                                                          ";
-            strDocumento += @"    <table>                                                                                                                           ";
-            strDocumento += @"        <tr>                                                                                                                          ";
-            strDocumento += @"            <td style=""width:150px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    TIEMPO DE RESIDIR:                                                                                                ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    <u> 18 AÑOS</u>                                                                                                   ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"            <td style=""width:25px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p></td>           ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    Propia                                                                                                            ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:25px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p></td>           ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    Rentada                                                                                                           ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:25px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p></td>           ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    prestada                                                                                                          ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:25px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p></td>           ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    VIVE C/PAPAS                                                                                                      ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    LA CASA ESTA:                                                                                                     ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:25px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p></td>           ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    LIBRE                                                                                                             ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:25px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p></td>           ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    GRAVADA                                                                                                           ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"        </tr>                                                                                                                         ";
-            strDocumento += @"    </table>                                                                                                                          ";
-            strDocumento += @"    <p class=""b""> SI ES RENTADA PROPORCIONE: </p>                                                                                   ";
-            strDocumento += @"    <table>                                                                                                                           ";
-            strDocumento += @"        <tr>                                                                                                                          ";
-            strDocumento += @"            <td style=""width:250px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                    ______________________________<br>                                                                                ";
-            strDocumento += @"                    NOMBRE DEL ARRENDADOR                                                                                             ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:250px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                    _______________________________<br>                                                                               ";
-            strDocumento += @"                    DOMICILIO DEL ARRENDADOR                                                                                          ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:250px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                    _______________________________<br>                                                                               ";
-            strDocumento += @"                    TELEFONO DEL ARRENDADOR                                                                                           ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"        </tr>                                                                                                                         ";
-            strDocumento += @"    </table>                                                                                                                          ";
-            strDocumento += @"    <table>                                                                                                                           ";
-            strDocumento += @"        <tr>                                                                                                                          ";
-            strDocumento += @"            <td style=""width:200px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    ESTADO CIVIL                                                                                                      ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:15px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p></td>           ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    SOLTERO                                                                                                           ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:15px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p></td>           ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    CASADO                                                                                                            ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:15px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p></td>           ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    DIVORCIADO                                                                                                        ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:15px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p></td>           ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    UNION LIBRE                                                                                                       ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:15px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p></td>           ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    VIUDO                                                                                                             ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"            <td style=""width:250px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    NÚMERO DE DEPENDIENTES ECONOMICOS___________                                                                      ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"        </tr>                                                                                                                         ";
-            strDocumento += @"    </table>                                                                                                                          ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"    <p class=""b"" align=""center"" style=""width:950px;background-color:#E6E6E6;"">                                                  ";
-            strDocumento += @"        DATOS DE CÓNYUGE                                                                                                              ";
-            strDocumento += @"    </p>                                                                                                                              ";
-            strDocumento += @"    <table>                                                                                                                           ";
-            strDocumento += @"        <tr>                                                                                                                          ";
-            strDocumento += @"            <td style=""width:150px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    NOMBRE CONYUGE                                                                                                    ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:150px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    FAPELLIDO PATERNO                                                                                                 ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:200px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    APELLIDO MATERNO                                                                                                  ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:10px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">M</p>                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:5px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">X</p></td>                 ";
-            strDocumento += @"            <td style=""width:10px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">F</p>                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:50px;""><p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p></td>           ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:200px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    EDAD CONYUGE                                                                                                      ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        </tr>                                                                                                                         ";
-            strDocumento += @"    </table>                                                                                                                          ";
-            strDocumento += @"    <table>                                                                                                                           ";
-            strDocumento += @"        <tr>                                                                                                                          ";
-            strDocumento += @"            <td style=""width:150px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    RALJ681004UN3<br>                                                                                                 ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    R.F.C.                                                                                                            ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:150px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    04/10/1968<br>                                                                                                    ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    FECHA DE NACIMIENTO                                                                                               ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:200px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    ZACATECAS<br>                                                                                                     ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    ENTIDAD FEDERATIVA DE NACIMIENTO                                                                                  ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:200px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    MÉXICO<br>                                                                                                        ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    PAIS DE NACIMIENTO                                                                                                ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:200px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    MEXICANA<br>                                                                                                      ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    NACIONALIDAD                                                                                                      ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"        </tr>                                                                                                                         ";
-            strDocumento += @"    </table>                                                                                                                          ";
-            strDocumento += @"    <table>                                                                                                                           ";
-            strDocumento += @"        <tr>                                                                                                                          ";
-            strDocumento += @"            <td style=""width:80px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    RALJ681004HZSMPS06<br>                                                                                            ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    CURP                                                                                                              ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:80px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    1637046406874<br>                                                                                                 ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    FOLIO I.N.E                                                                                                       ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""height:30px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                    _________________________<br>                                                                                     ";
-            strDocumento += @"                    CLAVE ELECTOR I.N.E.                                                                                              ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"            <td style=""width:100px;"">                                                                                               ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    dejesusperezjosedaniel@gmail.com<br>                                                                              ";
-            strDocumento += @"                    _____________________<br>                                                                                         ";
-            strDocumento += @"                    CORREO ELECTRONICO                                                                                                ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    4921048265<br>                                                                                                    ";
-            strDocumento += @"                    _______________<br>                                                                                               ";
-            strDocumento += @"                    LÉFONO (NO CELULAR)                                                                                               ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"            <td style=""width:50px;"">                                                                                                ";
-            strDocumento += @"                <p class=""b"">                                                                                                       ";
-            strDocumento += @"                    4921048265<br>                                                                                                    ";
-            strDocumento += @"                    _____________<br>                                                                                                 ";
-            strDocumento += @"                    OTRO TELÉFONO                                                                                                     ";
-            strDocumento += @"                </p>                                                                                                                  ";
-            strDocumento += @"            </td>                                                                                                                     ";
-            strDocumento += @"        </tr>                                                                                                                         ";
-            strDocumento += @"    </table>                                                                                                                          ";
-            strDocumento += @"    <table>                                                                                                                           ";
-            strDocumento += @"        <p class=""b"" align=""center"" style=""width:950px;background-color:#E6E6E6;"">                                              ";
-            strDocumento += @"            REFERENCIAS PERSONALES MAS CERCANOS (QUE NO VIVAN EN EL MISMO DOMICILIO)                                                  ";
-            strDocumento += @"        </p>                                                                                                                          ";
-            strDocumento += @"        <table>                                                                                                                       ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        FAMILIAR DEL SOLICITANTE                                                                                      ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        ___________________________<br>                                                                               ";
-            strDocumento += @"                        NOMBRE COMPLETO                                                                                               ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        DOMICILIO                                                                                                     ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        TELEFONO                                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <table>                                                                                                                       ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        PRIMERA                                                                                                       ";
-            strDocumento += @"                        REFERENCIA                                                                                                    ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        ___________________________<br>                                                                               ";
-            strDocumento += @"                        NOMBRE COMPLETO                                                                                               ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        DOMICILIO                                                                                                     ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        TELEFONO                                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <p class=""b"" align=""center"" style=""width:950px;background-color:#E6E6E6;"">                                              ";
-            strDocumento += @"            RABAJO ACTUAL DEL SOLICITANTE                                                                                             ";
-            strDocumento += @"        </p>                                                                                                                          ";
-            strDocumento += @"        <table>                                                                                                                       ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:200px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        NOMBRE DE LA EMPRESA O NEGOCIO                                                                                ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:200px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        ACTIVIDAD O GIRO                                                                                              ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:200px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        TIPO DE EMPLEADO                                                                                              ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:200px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        ESCOLARIDAD                                                                                                   ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <table>                                                                                                                       ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:200px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        DOMICILIO (CALLE , NÚMERO)                                                                                    ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:200px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        JEFE INMEDIATO                                                                                                ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:200px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        TELÉFONO                                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:200px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        ANTIGUEDAD                                                                                                    ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <table>                                                                                                                       ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        INGRESOS MENSUALES COMPROBABLES                                                                               ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        OTROS INGRESOS                                                                                                ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        CONCEPTO OTROS INGRESOS                                                                                       ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <p class=""b"" align=""center"" style=""width:950px;background-color:#E6E6E6;"">                                              ";
-            strDocumento += @"            BIENES MUEBLES E INMUEBLES QUE POSEE Y EROGACIONES                                                                        ";
-            strDocumento += @"        </p>                                                                                                                          ";
-            strDocumento += @"        <table>                                                                                                                       ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        VALOR DE CASA                                                                                                 ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        SALDO DE HIPOTECA                                                                                             ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        TELÉFONO                                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        VALOR/RENTA HIPOTECA                                                                                          ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <table>                                                                                                                       ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:50px;"">                                                                                            ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        AUTOMÓVIL                                                                                                     ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:30px;heith:5px;"">                                                                                  ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    <p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p>                                  ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:50px;"">                                                                                            ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        SI                                                                                                            ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:30px;heith:5px;"">                                                                                  ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    <p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p>                                  ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width150px;"">                                                                                            ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        NO                                                                                                            ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:30px;heith:5px;"">                                                                                  ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    <p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p>                                  ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:50px;"">                                                                                            ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        PROPIO                                                                                                        ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:30px;heith:5px;"">                                                                                  ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    <p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p>                                  ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:50px;"">                                                                                            ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        PAGANDOLO                                                                                                     ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:150px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        MARCA                                                                                                         ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:150px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        MODELO                                                                                                        ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:150px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        SEGURO                                                                                                        ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                <td style=""width:30px;heith:5px;"">                                                                                  ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    <p class=""b"">SI</p>                                                                                             ";
-            strDocumento += @"                <td style=""width:30px;heith:5px;"">                                                                                  ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    <p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p>                                  ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:30px;heith:5px;"">                                                                                  ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    <p align=""center"" class=""b"">NO</p>                                                                            ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:30px;heith:5px;"">                                                                                  ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    <p class=""solid"" align=""center"" style=""width:15px;"" class=""b"">&nbsp;</p>                                  ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <table>                                                                                                                       ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:150px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        SALDO                                                                                                         ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:150px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        MENSUALIDAD                                                                                                   ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:150px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        EMPRESA FINANCIADORA                                                                                          ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:150px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        TELÉFONO                                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        <p class=""b"" align=""center"" style=""width:950px;background-color:#E6E6E6;"">                                              ";
-            strDocumento += @"            TRABAJO ACTUAL DEL CÓNYUGE                                                                                                ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        </p>                                                                                                                          ";
-            strDocumento += @"        <table>                                                                                                                       ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:450px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        NOMBRE DE LA EMPRESA O NEGOCIO                                                                                ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:450px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        PUESTO O ACTIVIDAD                                                                                            ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:450px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        ESCOLARIDAD                                                                                                   ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <table>                                                                                                                       ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:350px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________________<br>                                                                             ";
-            strDocumento += @"                        DOMICILIO (CALLE,NÚMERO)                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:350px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        JEFE INMEDIAT                                                                                                 ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:350px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        TELÉFONO                                                                                                      ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:350px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _____________________<br>                                                                                     ";
-            strDocumento += @"                        ANTIGUEDAD                                                                                                    ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <table>                                                                                                                       ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:450px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        __________________________<br>                                                                                ";
-            strDocumento += @"                        INGRESOS MENSUALES COMPROBABLES                                                                               ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:450px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        _______________________<br>                                                                                   ";
-            strDocumento += @"                        OTROS INGRESOS                                                                                                ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:450px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        <br>                                                                                                          ";
-            strDocumento += @"                        ______________________________<br>                                                                            ";
-            strDocumento += @"                        CONCEPTO OTROS INGRESOS                                                                                       ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <p class=""b"" align=""center"" style=""width:950px;background-color:#E6E6E6;"">                                              ";
-            strDocumento += @"            FORMA DE ENTREGA DE RECURSOS                                                                                              ";
-            strDocumento += @"        </p>                                                                                                                          ";
-            strDocumento += @"        <table>                                                                                                                       ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        [  ]  EN TARJETA BANCARIA                                                                                     ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        [  ]  POR TRANSFERENCIA                                                                                       ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        BANCO                                                                                                         ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        ____________________                                                                                          ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        [  ]  CHEQUE                                                                                                  ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        [  ]  PAGO EN VENTANILLA                                                                                      ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        No. CUENTA O CTA. CLABE                                                                                       ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        ____________________                                                                                          ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        [  ]  OTRO                                                                                                    ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td style=""width:250px;"">                                                                                           ";
-            strDocumento += @"                    <p class=""b"">                                                                                                   ";
-            strDocumento += @"                        _______________________________                                                                               ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <table class=""data"">                                                                                                        ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <th width=""400"" style=""background-color:#E6E6E6;"">                                                                ";
-            strDocumento += @"                    <p align=""center"" class=""b"">                                                                                  ";
-            strDocumento += @"                        DECLARATORIA DE REALIZACIÓN DE OPERACIONES POR CUENTA PROPIA                                                  ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </th>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <table class=""data"">                                                                                                        ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td width=""400"">                                                                                                    ";
-            strDocumento += @"                    <p align=""left"" class=""b"">                                                                                    ";
-            strDocumento += @"                        ¿DECLARA USTED QUE LAS OPERACIONES REALIZADAS CON LA INSTITUCION SON REALIZADAS POR CUENTA PROPIA Y QUE NO OPERA";
-            strDocumento += @"                        A NOMBRE DE NINGÚN TERCERO YA SEA PERSONA FÍSICA O MORAL?                                                     ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                    <p align=""left"" class=""b"">                                                                                    ";
-            strDocumento += @"                        EN CASO DE NEGATIVA, INDICAR AL PROPIETARIO REAL DE LOS RECURSOS: ____________                                ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td width=""100"">                                                                                                    ";
-            strDocumento += @"                    <p align=""center"" class=""b"">                                                                                  ";
-            strDocumento += @"                        [ ] SI                                                                                                        ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td width=""100"">                                                                                                    ";
-            strDocumento += @"                    <p align=""center"" class=""b"">                                                                                  ";
-            strDocumento += @"                        [ ] NO                                                                                                        ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <table class=""data"">                                                                                                        ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <th width=""700"" style=""background-color:#E6E6E6;"">                                                                ";
-            strDocumento += @"                    <p align=""center"" class=""b"">                                                                                  ";
-            strDocumento += @"                        DECLARATORIA DE PERSONAS POLITÍCAMENTE EXPUESTAS                                                              ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </th>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"        <table class=""data"">                                                                                                        ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td width=""700"">                                                                                                    ";
-            strDocumento += @"                    <p align=""left"" class=""b"">                                                                                    ";
-            strDocumento += @"                        ¿ES USTED O TIENE RELACIÓN DE PARENTESCO CON ALGÚN FUNCIONARIO PÚBLICO NACIONAL O EXTRANJERO                  ";
-            strDocumento += @"						EN FUNCIONES O QUE EJERCIÓ FUNCIONES EN LOS ULTIMOS 12 MESES?                                                  ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"                <td width=""100"">                                                                                                    ";
-            strDocumento += @"                    <p align=""center"" class=""b"">                                                                                  ";
-            strDocumento += @"                        __________________                                                                                            ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                                                                                                                                      ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"            <tr>                                                                                                                      ";
-            strDocumento += @"                <td>                                                                                                                  ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                    <p align=""left"" class=""b"">                                                                                    ";
-            strDocumento += @"                        EN CASO AFIRMATIVO: 1. NOMBRE COMPLETOFUNCIONARIO                                                             ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"                <td>                                                                                                                  ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                    <p align=""left"" class=""b"">                                                                                    ";
-            strDocumento += @"                        ____________________________                                                                                  ";
-            strDocumento += @"                    </p>                                                                                                              ";
-            strDocumento += @"                    <br>                                                                                                              ";
-            strDocumento += @"                </td>                                                                                                                 ";
-            strDocumento += @"            </tr>                                                                                                                     ";
-            strDocumento += @"        </table>                                                                                                                      ";
-            strDocumento += @"</body>                                                                                                                               ";
-            strDocumento += @"</html>                                                                                                                               ";
+            strDocumento = @"
 
+                                        <html>
+                                        <head>
+                                            <style>
+                                                p{
+                                                    font-family: calibri;
+                                                    font-size: 9pt;
+                                                }
+
+                                                p.negrita {
+                                                    font-family: Arial;
+                                                    font-weight: bold;
+                                                }
+
+                                                font.l {
+                                                    font-weight: bold;
+                                                }
+
+                                                font.z {
+                                                    text-align: right;
+                                                }
+
+                                                p.solid {
+                                                    border-style: groove;
+                                                }
+
+                                                table.data, td.data, th {
+                                                    border: 1px solid black;
+                                                }
+
+                                                table.data {
+                                                    width: 100%;
+                                                    border-collapse: collapse;
+                                                }
+
+                                                table.x, td.x, th.x {
+                                                    border: 0px solid black;
+                                                }
+                                            </style>
+                                            <meta name=""+tipo_contenido+"" content=""text/html;"" http-equiv=""content-type"" charset=""utf-8"">
+                                        </head>
+
+                                        <body style=""text-align: justify;"">
+                                        <div align=""center"" >
+                                        <img src='"" + imgLogo + ""' width='133' height='65' />
+                                        </div>
+                                         <p style=""text-align:CENTER;"">
+                                        <b>CARÁTULA DE CRÉDITO</b>
+                                         </p>
+                                            <table class=""data"" border=""1""  WIDTH=""100%"">
+  
+                                          <tbody>
+                                            <tr>
+                                              <td colspan=""4"">
+                                              <p><b>Nombre comercial del Producto:</b> Aprecia tu Nómina</p>
+                                               <p><b>Tipo de Crédito:</b> Crédito de Nómina</p>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td>
+                                              <p><b>CAT (Costo Anual Total)</b></p>
+                                              </td>
+                                               <td>
+                                              <p><b>TASA DE INTERÉS ANUAL ORDINARIA Y MORATORIA</b></p>
+                                              </td>
+                                                <td>
+                                              <p><b>MONTO O LÍNEA DE CRÉDITO</b></p>
+                                              </td>
+                                                <td>
+                                              <p><b>MONTO TOTAL A PAGAR O MÍNIMO A PAGAR</b></p>
+                                              </td>
+                                            </tr>
+                                              <tr>
+                                              <td>
+                                              <p>% Sin IVA 
+                                        Para fines informativos y de Comparación
+                                        </p>
+                                              </td>
+                                               <td>
+                                              <p>
+                                        Tasa Ordinaria Fija Sin IVA
+                                        </p>
+                                         <p>Tasa Moratoria Fija Sin IVA
+                                        </p>
+                                              </td>
+                                                <td>
+                                               <p>$ Pesos</p>
+                                              </td>
+                                                <td>
+                                              <p>$ Pesos</p>
+                                              </td>
+                                            </tr>
+                                           <tr >
+    
+                                                <td colspan=""2"">
+                                               <p><b>PLAZO DEL CRÉDITO:</b> </p>
+                                              </td>
+                                                <td colspan=""2"">
+                                              <p><b>Fecha límite de pago:</b> los días «DIASPAGO» de cada mes.</p>
+                                               <p><b>Fecha de Corte:</b> los días «DIACORTE» de cada mes.</p>
+                                              </td>
+                                           </tr> 
+                                            <tr >
+    
+                                                <td colspan=""4"">
+                                               <p style=""text-align:center;"">COMISIONES RELEVANTES </p>
+                                              </td>
+     
+                                           </tr> 
+                                             <tr >
+    
+                                                <td colspan=""2"">
+                                               <p style=""text-align:left;""><b>•	Apertura:</b> (0%) No aplica </p>
+                                               <p style=""text-align:left;""><b>•	Anualidad:</b> (0%) No aplica </p>
+                                               <p style=""text-align:left;""><b>•	Prepago:</b> (0%) Sin pena alguna por pago anticipado </p>
+                                               <p style=""text-align:left;""><b>•	Pago tardío (mora): </b>(0%) No aplica</p>
+                                                   <p style=""text-align:left;""><b>•	Comisión por administración:</b> «PorcentajeComision»% sobre los pagos durante la vida del crédito, respecto al monto total del crédito</p>
+                                              </td>
+                                              <td colspan=""2"">
+                                               <p style=""text-align:left;""><b>•	Reposición de tarjeta:</b> No aplica. </p>
+                                                 <p style=""text-align:left;""><b>•	Reclamación improcedente:</b> No aplica </p>
+                                                   <p style=""text-align:left;""><b>•	Cobranza:</b> No aplica </p>
+                                              </td>
+                                           </tr> 
+                                            <tr >
+    
+                                                <td colspan=""4"">
+                                               <p style=""text-align:left;""><b>ADVERTENCIAS</b> </p>
+                                                <p style=""text-align:left;"">a)	“Incumplir tus obligaciones te puede generar comisiones e intereses moratorios.” </p>
+                                                 <p style=""text-align:left;"">b)	“Contratar créditos por arriba de tu capacidad de pago puede afectar tu historial crediticio.” </p>
+                                              </td>
+     
+                                           </tr> 
+                                             <tr >
+    
+                                                <td colspan=""4"">
+                                               <p style=""text-align:center;""><b>SEGUROS</b> </p>
+                                              </td>
+     
+                                           </tr> 
+                                               <tr >
+    
+                                                <td colspan=""1"">
+                                               <p style=""text-align:center;""><b>Seguro:</b> Vida 
+                                        Obligatorio
+                                         </p>
+                                              </td>
+                                                <td colspan=""1"">
+                                               <p style=""text-align:center;""><b>Aseguradora:</b> «NombreAseguradora» </p>
+                                              </td>
+                                                <td colspan=""2"">
+                                               <p style=""text-align:center;""><b>Cláusula: DECIMA SEXTA</b> </p>
+                                                 <p style=""text-align:center;"">FOMEPADE S.A.P.I. de C.V. SOFOM E.N.R., podrá contratar a su nombre el seguro, previa autorización de “EL CLIENTE” </p>
+                                              </td>
+     
+                                           </tr>
+                                             <tr >
+    
+                                                <td colspan=""4"">
+                                               <p style=""text-align:left;""><b>ESTADO DE CUENTA</b> </p>
+                                                 <p style=""text-align:left;""><b>Enviar a: </b> Domicilio [  ]        <b>Consulta:</b>  Vía Internet [   ]          <b>Envío por:</b> Envío por correo electrónico  [  ]  </p>
+                                              </td>
+     
+                                           </tr> 
+                                               <tr >
+    
+                                                <td colspan=""4"">
+      
+                                                 <p style=""text-align:left;""><b>Aclaraciones y reclamaciones:</b>
+                                        Unidad Especializada de Atención a Usuarios:
+                                        Domicilio: Boulevard Atlixco número 3115 Interior 1, Colonia Nueva Antequera, C.P. 72180, Puebla, Puebla.
+                                        Teléfono: <b>(222) 1698090  y (800) 9909192</b>  Correo Electrónico: <b>une@aprecia.com.mx</b>
+                                        Página de internet: <b style=""color:blue"">www.aprecia.com.mx</b>
+                                         </p>
+                                              </td>
+     
+                                           </tr>
+                                                  <tr >
+    
+                                                <td colspan=""4"">
+      
+                                                 <p style=""text-align:left;"">
+                                                 <b>Registro de Contratos de Adhesión Número: 2028-440-004742/17-00217-0121</b>
+                                        Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros (CONDUSEF):
+                                        Teléfono: <b>(800) 999 8080 y (55) 5340 0999.</b>  Página de Internet. <b style=""color:blue"">www.condusef.gob.mx</b>
+
+                                         </p>
+                                              </td>
+     
+                                           </tr>
+                                          </tbody>
+                                        </table>
+                                         <p style=""text-align:left;"">
+                                        De conformidad con la presente carátula y toda vez que el presente documento forma parte integrante del contrato de adhesión, firma el cliente a su entera satisfacción.
+                                         </p>
+                                          <p style=""text-align:CENTER;"">
+
+                                         </p>
+                                         <p style=""text-align:CENTER;"">
+                                        <b>""EL CLIENTE""</b>
+                                         </p>
+                                         <p style=""text-align:CENTER;"">
+                                         ____________________<br>
+                                        <b>Nombre y firma</b>
+                                         </p>
+                                        </body>
+                                        </html>																																";
+           
             return strDocumento;
         }
     }

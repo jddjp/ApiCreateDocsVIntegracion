@@ -1,5 +1,6 @@
 ﻿using ApiCreacionDocs.Models;
 using ApiCreacionDocs.Models.ModelsOuput;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using OriginaWebApp.Models.Formatos;
@@ -20,6 +21,9 @@ namespace ApiCreateDocsVIntegracion.Controllers
     [Route("[controller]")]
     public class CreateDocsForm : Controller
     {
+        //Url de la imagen
+        private readonly IWebHostEnvironment _env;
+
         [HttpPost]
         public async Task<IActionResult> CreateDocs(InputData data)
         {
@@ -838,7 +842,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
         {
             fmtfmtCaratula formato = new fmtfmtCaratula();
 
-            string htmlString = formato.FormatoHTML(data);
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
             string baseUrl = "";
 
             string pdf_page_size = "Letter";

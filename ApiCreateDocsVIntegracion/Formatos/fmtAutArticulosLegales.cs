@@ -13,6 +13,7 @@ namespace OriginaWebApp.Models.Formatos
 
         public string FormatoHTML(InputData data)
         {
+            
 
             strDocumento = @"<!doctype html>																													";
             strDocumento += @"<html>                                                                                                                            ";
@@ -388,8 +389,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                    legalmente reconocida, y surtirán los mismos efectos jurídicos que la                                         ";
             strDocumento += @"                    documentación impresa, siempre y cuando los mensajes de datos se                                              ";
             strDocumento += @"                    ajusten a las disposiciones de este Código y a los lineamientos normativos                                    ";
-            strDocumento += @"                    correspondientes.                                                                                             ";
-            strDocumento += @"                                                                                                                                  ";
+            strDocumento += @"                    correspondientes.                                                                                                 ";
             strDocumento += @"                </p>                                                                                                              ";
             strDocumento += @"            </td>                                                                                                                 ";
             strDocumento += @"        </tr>                                                                                                                     ";
