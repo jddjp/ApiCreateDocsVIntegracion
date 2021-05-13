@@ -212,15 +212,20 @@ namespace ApiCreacionDocs.Models
         }
         public class InputReferenciaPago
         {
-            public string TipoExpediente { get; set; }
-            public string TipoSubExpediente { get; set; }
-            public string formato { get; set; }
+            [NotMapped]
+            public string? TipoExpediente { get; set; }
+            [NotMapped]
+            public string? TipoSubExpediente { get; set; }
+            [NotMapped]
+            public string? formato { get; set; }
+            [NotMapped]
+            public string? Version { get; set; }
 
-            public string Version { get; set; }
-            public String FechaOperacion { get; set; }
+            [Key]
+            public DateTime FechaOperacion { get; set; }
             public String PagoPeriodicidadMonto { get; set; }
             public String ClienteNombre { get; set; }
-            public String Periodicidad { get; set; }
+            public String creditoPeriodicidad { get; set; }
             public String NoCredito { get; set; }
             public String FormaPagoCTABancariaBBVA { get; set; }
             public String FormaPagoReferenciaConceptoPagoBBVA { get; set; }
