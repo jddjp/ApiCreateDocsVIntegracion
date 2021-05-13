@@ -50,13 +50,18 @@ namespace ApiCreacionDocs.Models
         }
         public class InputEstipulacion
         {
-            public string TipoExpediente { get; set; }
-            public string TipoSubExpediente { get; set; }
-            public string formato { get; set; }
+            [NotMapped]
+            public string? TipoExpediente { get; set; }
+            [NotMapped]
+            public string? TipoSubExpediente { get; set; }
+            [NotMapped]
+            public string? formato { get; set; }
+            [NotMapped]
+            public string? Version { get; set; }
 
-            public string Version { get; set; }
-            public DateTime DiaMesAnioDispersion { get; set; }
-            public string RetenedorPagos { get; set; }
+            [Key]
+            public string DiaMesAnioDispersion { get; set; }
+            public string retenedorP { get; set; }
             public string TrabajoArea { get; set; }
             public string ClaveEmpleado { get; set; }
             public string ContratoNumero { get; set; }
@@ -90,8 +95,8 @@ namespace ApiCreacionDocs.Models
             public string EMPRESACLAVE_DEDUCCION { get; set; }
             public string LEPAGANNOMINACADA { get; set; }
             public string CLIENTERFC { get; set; }
-            public string Sexo { get; set; }
-
+            public string sexoMasculino { get; set; }
+            public string sexoFemenino { get; set; }
 
         }
 
