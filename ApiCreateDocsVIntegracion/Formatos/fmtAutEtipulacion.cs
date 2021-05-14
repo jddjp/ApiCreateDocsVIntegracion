@@ -11,7 +11,7 @@ namespace OriginaWebApp.Models.Formatos
     {
         public string strDocumento;
 
-        public string FormatoHTML(InputData data)
+        public string FormatoHTML(InputData data,String Logo)
         {
 
 
@@ -46,7 +46,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                                                                                                                                                          ";
             strDocumento += @"<body style=""text-align: justify;"">                                                                                                                     ";
             strDocumento += @"    <p align=""center""><b>ESTIPULACIÓN A FAVOR DE FOMEPADE</b></p>                                                                                       ";
-            strDocumento += @"    <img align=""left"" src=""C:\Users\DanielPerez\source\repos\ApiCreacionDocs\Img\APR_Firma_Hor_Fblanco_RGB.png"" width=""140"" height=""90"" />        ";
+            strDocumento += @"    <img align=""left"" src='" + Logo + "' width='140' height ='90' />        ";
             strDocumento += @"    <br>                                                                                                                                                  ";
             strDocumento += @"    <br>                                                                                                                                                  ";
             strDocumento += @"    <p style=""margin:0;display:inline;float:left"">CRÉDITO EN CUENTA CORRIENTE</p>                                                                       ";

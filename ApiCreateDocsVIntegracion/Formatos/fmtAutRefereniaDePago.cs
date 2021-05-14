@@ -11,7 +11,7 @@ namespace OriginaWebApp.Models.Formatos
     {
         public string strDocumento;
 
-        public string FormatoHTML(InputData data)
+        public string FormatoHTML(InputData data,String logo)
         {
 
 
@@ -60,7 +60,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                        </td>                                                                                                                                                                ";
             strDocumento += @"                        <td rowspan=""2"" style=""width:113.25pt; vertical-align:top;"">                                                                                                     ";
             strDocumento += @"                            <p style=""margin-top:0pt; margin-bottom:0pt; font-size:1pt;"">                                                                                                  ";
-            strDocumento += @"							<img src=""https://myfiles.space/user_files/74326_110ad65ee8cab72e/1610401219_referenciaunicadepago/1610401219_referenciaunicadepago.001.png""                      ";
+            strDocumento += @"							<img src='"+logo+"'                      ";
             strDocumento += @"							width=""151"" height=""76"" alt=""ooxWord://media/image.png""></p>                                                                                                  ";
             strDocumento += @"                        </td>                                                                                                                                                                ";
             strDocumento += @"                        <td style=""width:45pt; vertical-align:top;"">                                                                                                                       ";

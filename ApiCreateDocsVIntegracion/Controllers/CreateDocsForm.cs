@@ -17,12 +17,20 @@ using System.Threading.Tasks;
 
 namespace ApiCreateDocsVIntegracion.Controllers
 {
+    
+
     [ApiController]
     [Route("[controller]")]
     public class CreateDocsForm : Controller
     {
         //Url de la imagen
-        //private readonly IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
+        public CreateDocsForm( IWebHostEnvironment env)
+        {
+        
+            _env = env;
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> CreateDocs(InputData data)
@@ -213,7 +221,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
                 content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
                 content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
                 content.Add(new StringContent(data.dataSolicitud.TipoExpediente.ToString()), "TipoExpediente");
-                content.Add(bytes, "Documento", "PesupuestoDeObra.pdf");
+                content.Add(bytes, "Documento", "PresupuestoDeObra.pdf");
                 content.Add(new StringContent(data.dataSolicitud.TipoSubExpediente.ToString()), "TipocSubExpediente");
                 content.Add(new StringContent("220102"), "TipocSubSubExpediente");
                 content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
@@ -674,7 +682,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
         {
             fmtfmtReferenciaDePag formato = new fmtfmtReferenciaDePag();
 
-            string htmlString = formato.FormatoHTML(data);
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
             string baseUrl = "";
 
             string pdf_page_size = "Letter";
@@ -730,7 +738,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
         {
             fmtfmtTablaAmortizacion formato = new fmtfmtTablaAmortizacion();
 
-            string htmlString = formato.FormatoHTML(data);
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
             string baseUrl = "";
 
             string pdf_page_size = "Letter";
@@ -786,7 +794,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
         {
             fmtfmtContratoConsumo formato = new fmtfmtContratoConsumo();
 
-            string htmlString = formato.FormatoHTML(data);
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
             string baseUrl = "";
 
             string pdf_page_size = "Letter";
@@ -842,7 +850,8 @@ namespace ApiCreateDocsVIntegracion.Controllers
         {
             fmtfmtCaratula formato = new fmtfmtCaratula();
 
-            string htmlString = formato.FormatoHTML(data,"\\img\\aprecia-blanco.jpeg");
+      
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
             string baseUrl = "";
 
             string pdf_page_size = "Letter";
@@ -900,7 +909,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
 
             fmtfmtArticulosLegales formato = new fmtfmtArticulosLegales();
 
-            string htmlString = formato.FormatoHTML(data);
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
             string baseUrl = "";
 
             string pdf_page_size = "Letter";
@@ -957,7 +966,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
 
             fmtfmtEstipulacion formato = new fmtfmtEstipulacion();
 
-            string htmlString = formato.FormatoHTML(data);
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
             string baseUrl = "";
 
             string pdf_page_size = "Letter";

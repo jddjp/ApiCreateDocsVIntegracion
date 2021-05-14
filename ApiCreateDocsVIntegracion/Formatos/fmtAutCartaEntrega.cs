@@ -68,13 +68,13 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"    <br>                                                                                                                                     ";
             strDocumento += @"    <br>                                                                                                                                     ";
             strDocumento += @"    <p align=""left"" class=""b"">                                                                                                           ";
-            strDocumento += @"        Reunidos  en el  domicilio particular  en Calle_____<u>"+data.dataCartaEntrega.domicilioCalleNumero+"</u> ___________________________                                           ";
+            strDocumento += @"        Reunidos  en el  domicilio particular  en Calle <u>"+data.dataCartaEntrega.domicilioCalleNumero+"</u>                                           ";
             strDocumento += @"    </p>                                                                                                                                     ";
             strDocumento += @"    <p align=""left"" class=""b"">                                                                                                           ";
-            strDocumento += @"        Col._"+data.dataCartaEntrega.domicilioColonia+"_Municipio____"+data.dataCartaEntrega.domicilioMunicipio+ "______- Estado____" + data.dataCartaEntrega.domicilioEstado + "_ C.P. __" + data.dataCartaEntrega.domicilioCodigoPostal + "_-                                                ";
+            strDocumento += @"        Col.<u>"+data.dataCartaEntrega.domicilioColonia+"</u> Municipio<u>"+data.dataCartaEntrega.domicilioMunicipio+ "</u>- Estado</u>" + data.dataCartaEntrega.domicilioEstado + "</u> C.P. <u>" + data.dataCartaEntrega.domicilioCodigoPostal + "</u>-                                                ";
             strDocumento += @"    </p>                                                                                                                                     ";
             strDocumento += @"    <p align=""left"" class=""b"">                                                                                                           ";
-            strDocumento += @"        El Sr. (a) _____" + data.dataCartaEntrega.nombreCliente + "_______quien entrega la obra realizada al Sr                                             ";
+            strDocumento += @"        El Sr. (a)<u>" + data.dataCartaEntrega.nombreCliente + "</u>quien entrega la obra realizada al Sr                                             ";
             strDocumento += @"    </p>                                                                                                                                     ";
             strDocumento += @"    <p align=""left"" class=""b"">                                                                                                           ";
             strDocumento += @"        (a)_____________________________________________, mismo que verifica su estructura y/o                                               ";
@@ -99,7 +99,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"        <tr>                                                                                                                                 ";
             strDocumento += @"            <td width=""500"">                                                                                                               ";
             strDocumento += @"                <p style=""text-align:center;"" class=""b"">Entrega</p>                                                                      ";
-            strDocumento += @"                <p style=""margin-top:0pt; margin-bottom:0pt; font-size:14pt;"">                                                             ";
+            strDocumento += @"               <span style=""font-family:Calibri; color:#552988;"">&nbsp;</span>                                                           ";
             strDocumento += @"				<span style=""font-family:'Arial Black'; color:#552988;"">&nbsp;</span></p>                                                    ";
             strDocumento += @"            <td>                                                                                                                             ";
             strDocumento += @"                <p style=""text-align:center;"" class=""b"">Recibe de conformidad</p>                                                        ";

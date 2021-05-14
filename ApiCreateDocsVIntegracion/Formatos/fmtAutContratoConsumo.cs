@@ -11,7 +11,7 @@ namespace OriginaWebApp.Models.Formatos
     {
         public string strDocumento;
 
-        public string FormatoHTML(InputData data)
+        public string FormatoHTML(InputData data,String logo)
         {
 
             strDocumento = @"<!doctype html>																																												";
@@ -53,7 +53,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"        <tr>                                                                                                                                                                                  ";
             strDocumento += @"            <td style=""width:300px;""></td>                                                                                                                                                  ";
             strDocumento += @"            <td style=""width:300px;"">                                                                                                                                                       ";
-            strDocumento += @"                <img src=""C:\Users\DanielPerez\source\repos\ApiCreacionDocs\Img\APR_Firma_Hor_Fblanco_RGB.png"" width=""140"" height=""90"" />                                               ";
+            strDocumento += @"                <img src='"+logo+"' width='140' height='90' />                                               ";
             strDocumento += @"            </td>                                                                                                                                                                             ";
             strDocumento += @"            <td style=""width:row;""><p class=""b"">NÚMERO DE CONTRATO:"+data.dataContratoConsumo+"</p></td>                                                                                                       ";
             strDocumento += @"        </tr>                                                                                                                                                                                 ";
