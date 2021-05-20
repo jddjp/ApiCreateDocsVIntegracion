@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace OriginaWebApp.Models.Formatos
 {
-    public class fmtfmtArticulosLegales
+    public class DomiciliadofmtfmtArticulosLegales
     {
         public string strDocumento;
 
         public string FormatoHTML(InputData data, string Logo)
         {
-
+            
 
             strDocumento = @"<!doctype html>																													";
             strDocumento += @"<html>                                                                                                                            ";
@@ -50,14 +50,9 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"    </style>                                                                                                                      ";
             strDocumento += @"</head>                                                                                                                           ";
             strDocumento += @"<body style=""text-align: justify;"">                                                                                             ";
-            strDocumento += @"    <table>  ";
-            strDocumento += @" < tr>  ";
-            strDocumento += @"              <td style='width:4%;'>  <img src='" + Logo + "' width='133' height='65' />    </td>  ";
-            strDocumento += @"               < td >< p class='b'><b>CONTENIDO DE ARTÍCULOS LEGALES MENCIONADOS EN EL CONTRATO DE ADHESIÓN</b></p></td>  ";
-            strDocumento += @"  ";
-            strDocumento += @" </tr>  ";
-            strDocumento += @" </table>  ";
-            strDocumento += @" '<br>'                                                                                                              ";
+            strDocumento += @"     <img align = 'left' src = '" + Logo + "' width = '140' height = '90' /> ";
+            strDocumento += @"    <p><b> CONTENIDO DE ARTÍCULOS LEGALES MENCIONADOS EN EL CONTRATO DE ADHESIÓN</ b ></ p > ";
+            strDocumento += @"    <br>                                                                                                                          ";
             strDocumento += @"    <table>                                                                                                                       ";
             strDocumento += @"        <tr>                                                                                                                      ";
             strDocumento += @"            <td class=""first"">                                                                                                  ";
@@ -400,7 +395,6 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"            </td>                                                                                                                 ";
             strDocumento += @"        </tr>                                                                                                                     ";
             strDocumento += @"    </table>                                                                                                                      ";
-            strDocumento += @"     < p  align='center' class='b'><b>REGISTRO DE CONTRATOS DE ADHESIÓN NÚMERO: 2028-440-004742/17-00217-0121</b></p>                                                                                                                    ";
             strDocumento += @"</body>                                                                                                                           ";
             strDocumento += @"</html>                                                                                                                           "; 
 

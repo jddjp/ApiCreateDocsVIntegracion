@@ -2,6 +2,7 @@
 using ApiCreacionDocs.Models.ModelsOuput;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Nancy.Json;
 using Newtonsoft.Json;
 using OriginaWebApp.Models.Formatos;
 using SelectPdf;
@@ -35,8 +36,9 @@ namespace ApiCreateDocsVIntegracion.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateDocs(InputData data)
         {
-
-            return Ok(SavePdfFileAsync(data));
+            var json = new JavaScriptSerializer().Serialize(data);
+            var x = json;
+             return Ok(SavePdfFileAsync(data));
         }
 
         //Almacenar Documento en el expediente del no. solicitud a la APiExpedientes
@@ -44,6 +46,34 @@ namespace ApiCreateDocsVIntegracion.Controllers
         public async Task<OutputData> SavePdfFileAsync(InputData data)
         {
             OutputData DocsInfoSaveExpedientes = new OutputData();
+
+            //La tabla Amortizacion no Cambia es igual para cualquier producto
+            if (data.dataTAmortizacion != null)
+            {
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateTablaAmortizacion(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.dataTAmortizacion.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "TablaAmortizacion.pdf");
+                content.Add(new StringContent(data.dataTAmortizacion.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+                if (data.dataTAmortizacion.formato == "pdf")
+                {
+                    DocsInfoSaveExpedientes.DocumentoTablaAmortizacion = EnviarExpedientes(content).URL;
+                }
+                else
+                {
+                    DocsInfoSaveExpedientes.DocumentoTablaAmortizacion = EnviarExpedientes(content).Documento_data;
+                }
+
+
+            }
+
+            //Consumo
 
             if (data.dataPagare != null)
             {
@@ -68,14 +98,15 @@ namespace ApiCreateDocsVIntegracion.Controllers
                 }
 
             }
-
             if (data.dataEstipulacion != null)
             {
                 var content = new MultipartFormDataContent();
+
                 ByteArrayContent bytes = new ByteArrayContent(GenerateEstipulacion(data));
                 content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
                 content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
                 content.Add(new StringContent(data.dataSolicitud.TipoExpediente.ToString()), "TipoExpediente");
+                //Recibir Nombre del documento y Extension
                 content.Add(bytes, "Documento", "Estipulacion.pdf");
                 content.Add(new StringContent(data.dataSolicitud.TipoSubExpediente.ToString()), "TipocSubExpediente");
                 content.Add(new StringContent("220102"), "TipocSubSubExpediente");
@@ -132,6 +163,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
                 content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
                 content.Add(new StringContent("Fomepade"), "CredencialesCliente");
                 content.Add(new StringContent("2345"), "Tipo_Documento");
+               
                 if (data.dataCaratula.formato == "pdf")
                 {
                     DocsInfoSaveExpedientes.DocumentoCaratula = EnviarExpedientes(content).URL;
@@ -166,30 +198,6 @@ namespace ApiCreateDocsVIntegracion.Controllers
                 }
 
             }
-            if (data.dataTAmortizacion != null)
-            {
-                var content = new MultipartFormDataContent();
-                ByteArrayContent bytes = new ByteArrayContent(GenerateTablaAmortizacion(data));
-                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
-                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
-                content.Add(new StringContent(data.dataSolicitud.TipoExpediente.ToString()), "TipoExpediente");
-                content.Add(bytes, "Documento", "TablaAmortizacion.pdf");
-                content.Add(new StringContent(data.dataSolicitud.TipoSubExpediente.ToString()), "TipocSubExpediente");
-                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
-                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
-                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
-                content.Add(new StringContent("2345"), "Tipo_Documento");
-                if (data.dataTAmortizacion.formato == "pdf")
-                {
-                    DocsInfoSaveExpedientes.DocumentoTablaAmortizacion = EnviarExpedientes(content).URL;
-                }
-                else
-                {
-                    DocsInfoSaveExpedientes.DocumentoTablaAmortizacion = EnviarExpedientes(content).Documento_data;
-                }
-
-
-            }
             if (data.dataReferenciaPago != null)
             {
                 var content = new MultipartFormDataContent();
@@ -214,112 +222,9 @@ namespace ApiCreateDocsVIntegracion.Controllers
                 }
 
             }
-            if (data.dataPresupuestoObra != null)
-            {
-                var content = new MultipartFormDataContent();
-                ByteArrayContent bytes = new ByteArrayContent(GeneratePresupuestoObra(data));
-                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
-                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
-                content.Add(new StringContent(data.dataSolicitud.TipoExpediente.ToString()), "TipoExpediente");
-                content.Add(bytes, "Documento", "PresupuestoDeObra.pdf");
-                content.Add(new StringContent(data.dataSolicitud.TipoSubExpediente.ToString()), "TipocSubExpediente");
-                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
-                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
-                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
-                content.Add(new StringContent("2345"), "Tipo_Documento");
-
-                if (data.dataPresupuestoObra.formato == "pdf")
-                {
-                    DocsInfoSaveExpedientes.DocumentoPresupuestoObra = EnviarExpedientes(content).URL;
-                }
-                else
-                {
-                    DocsInfoSaveExpedientes.DocumentoPresupuestoObra = EnviarExpedientes(content).Documento_data;
-                }
-
-
-            }
-            if (data.dataEstudioSocioeconomico != null)
-            {
-                var content = new MultipartFormDataContent();
-                ByteArrayContent bytes = new ByteArrayContent(GenerateEstudidioSocioeconomico(data));
-                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
-                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
-                content.Add(new StringContent(data.dataSolicitud.TipoExpediente.ToString()), "TipoExpediente");
-                content.Add(bytes, "Documento", "EstudioSocioEconomico.pdf");
-                content.Add(new StringContent(data.dataSolicitud.TipoSubExpediente.ToString()), "TipocSubExpediente");
-                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
-                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
-                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
-                content.Add(new StringContent("2345"), "Tipo_Documento");
-
-                if (data.dataEstudioSocioeconomico.formato == "pdf")
-                {
-                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).URL;
-                }
-                else
-                {
-                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).Documento_data;
-                }
-
-
-
-            }
-            if (data.dataProyeccionObra != null)
-            {
-                var content = new MultipartFormDataContent();
-                ByteArrayContent bytes = new ByteArrayContent(GenerateProyeccionObra(data));
-                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
-                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
-                content.Add(new StringContent(data.dataSolicitud.TipoExpediente.ToString()), "TipoExpediente");
-                content.Add(bytes, "Documento", "ProyeccionDeObra.pdf");
-                content.Add(new StringContent(data.dataSolicitud.TipoSubExpediente.ToString()), "TipocSubExpediente");
-                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
-                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
-                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
-                content.Add(new StringContent("2345"), "Tipo_Documento");
-
-                if (data.dataProyeccionObra.formato == "pdf")
-                {
-                    DocsInfoSaveExpedientes.DocumentoProyeccionObra = EnviarExpedientes(content).URL;
-                }
-            else
-                {
-                    DocsInfoSaveExpedientes.DocumentoProyeccionObra = EnviarExpedientes(content).Documento_data;
-                }
-
-
-            }
-            if (data.dataCartaEntrega != null)
-            {
-                var content = new MultipartFormDataContent();
-                ByteArrayContent bytes = new ByteArrayContent(GenerateCartaEntrega(data));
-
-                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
-                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
-                content.Add(new StringContent(data.dataSolicitud.TipoExpediente.ToString()), "TipoExpediente");
-                content.Add(bytes, "Documento", "CartaEntrega.pdf");
-                content.Add(new StringContent(data.dataSolicitud.TipoSubExpediente.ToString()), "TipocSubExpediente");
-                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
-                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
-                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
-                content.Add(new StringContent("2345"), "Tipo_Documento");
-
-                if (data.dataCartaEntrega.formato == "pdf")
-                {
-                    DocsInfoSaveExpedientes.DocumentoCartaEntrega = EnviarExpedientes(content).URL;
-                }
-                else
-                {
-                    DocsInfoSaveExpedientes.DocumentoCartaEntrega = EnviarExpedientes(content).Documento_data;
-                }
-
-
-
-            }
             if (data.dataSolicitud != null)
             {
-                //vamos obtener la solicitud
+              
                 var content = new MultipartFormDataContent();
                 ByteArrayContent bytes = new ByteArrayContent(GenerateSolicitud(data));
                 content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
@@ -345,6 +250,393 @@ namespace ApiCreateDocsVIntegracion.Controllers
                 }
 
             }
+
+
+            //Mejoramiento
+
+            if (data.dataSolicitudMejoramiento != null)
+            {
+                
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateSolicitudMejoramiento(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.dataSolicitudMejoramiento.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "SolicitudMejoramiento.pdf");
+                content.Add(new StringContent(data.dataSolicitudMejoramiento.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+
+                if (data.dataSolicitudMejoramiento.formato == "pdf")
+                {
+                    var doc = EnviarExpedientes(content).URL;
+                    DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
+                }
+                else
+                {
+                    var doc = EnviarExpedientes(content).Documento_data;
+                    DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
+                }
+
+            }
+            if (data.dataCaratulaMejoramiento != null)
+            {
+
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateCaratulaMejoramiento(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.dataCaratulaMejoramiento.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "CaratulaMejoramiento.pdf");
+                content.Add(new StringContent(data.dataCaratulaMejoramiento.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+
+                if (data.dataSolicitudMejoramiento.formato == "pdf")
+                {
+                    var doc = EnviarExpedientes(content).URL;
+                    DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
+                }
+                else
+                {
+                    var doc = EnviarExpedientes(content).Documento_data;
+                    DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
+                }
+
+            }
+            if (data.dataContratoMejoramiento != null)
+            {
+
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateContratoMejoramiento(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.dataContratoMejoramiento.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "ContratoMejoramiento.pdf");
+                content.Add(new StringContent(data.dataContratoMejoramiento.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+
+                if (data.dataSolicitudMejoramiento.formato == "pdf")
+                {
+                    var doc = EnviarExpedientes(content).URL;
+                    DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
+                }
+                else
+                {
+                    var doc = EnviarExpedientes(content).Documento_data;
+                    DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
+                }
+
+            }
+            if (data.dataArticulosLegalesMejoramiento != null)
+            {
+
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateArticulosMejoramiento(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.dataArticulosLegalesMejoramiento.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "ArticulosLegalesMejoramiento.pdf");
+                content.Add(new StringContent(data.dataArticulosLegalesMejoramiento.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+
+                if (data.dataArticulosLegalesMejoramiento.formato == "pdf")
+                {
+                    var doc = EnviarExpedientes(content).URL;
+                    DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
+                }
+                else
+                {
+                    var doc = EnviarExpedientes(content).Documento_data;
+                    DocsInfoSaveExpedientes.DocumentoSolicitud = doc;
+                }
+
+            }
+            if (data.dataProyeccionObra != null)
+            {
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateProyeccionObra(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.dataProyeccionObra.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "ProyeccionDeObraMejoramiento.pdf");
+                content.Add(new StringContent(data.dataProyeccionObra.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+                if (data.dataProyeccionObra.formato == "pdf")
+                {
+                    DocsInfoSaveExpedientes.DocumentoProyeccionObra = EnviarExpedientes(content).URL;
+                }
+                else
+                {
+                    DocsInfoSaveExpedientes.DocumentoProyeccionObra = EnviarExpedientes(content).Documento_data;
+                }
+
+
+            }
+            if (data.dataCartaEntrega != null)
+            {
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateCartaEntrega(data));
+
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.dataCartaEntrega.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "CartaEntregaMejoramiento.pdf");
+                content.Add(new StringContent(data.dataCartaEntrega.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+                if (data.dataCartaEntrega.formato == "pdf")
+                {
+                    DocsInfoSaveExpedientes.DocumentoCartaEntrega = EnviarExpedientes(content).URL;
+                }
+                else
+                {
+                    DocsInfoSaveExpedientes.DocumentoCartaEntrega = EnviarExpedientes(content).Documento_data;
+                }
+
+            }
+            if (data.dataPresupuestoObra != null)
+            {
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GeneratePresupuestoObra(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.dataPresupuestoObra.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "PresupuestoDeObraMejoramiento.pdf");
+                content.Add(new StringContent(data.dataPresupuestoObra.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+                if (data.dataPresupuestoObra.formato == "pdf")
+                {
+                    DocsInfoSaveExpedientes.DocumentoPresupuestoObra = EnviarExpedientes(content).URL;
+                }
+                else
+                {
+                    DocsInfoSaveExpedientes.DocumentoPresupuestoObra = EnviarExpedientes(content).Documento_data;
+                }
+
+
+            }
+            if (data.dataEstudioSocioeconomico != null)
+            {
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateEstudidioSocioeconomico(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.dataEstudioSocioeconomico.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "EstudioSocioEconomicoMejoramiento.pdf");
+                content.Add(new StringContent(data.dataEstudioSocioeconomico.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+                if (data.dataEstudioSocioeconomico.formato == "pdf")
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).URL;
+                }
+                else
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).Documento_data;
+                }
+
+
+
+            }
+
+            //DomiciliadoPublio
+            if (data.SolicitudDomiciliado != null)
+            {
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateSolicitudDomiciliado(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.SolicitudDomiciliado.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "SolicitudDomiciliado.pdf");
+                content.Add(new StringContent(data.SolicitudDomiciliado.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+                if (data.SolicitudDomiciliado.formato == "pdf")
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).URL;
+                }
+                else
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).Documento_data;
+                }
+
+
+
+            }
+            if (data.ContratoDomiciliado != null)
+            {
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GeneraContratoDomiciliado(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.ContratoDomiciliado.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "ContratoDomiciliado.pdf");
+                content.Add(new StringContent(data.ContratoDomiciliado.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+                if (data.ContratoDomiciliado.formato == "pdf")
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).URL;
+                }
+                else
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).Documento_data;
+                }
+
+            }
+            if (data.CaratulaDomiciliado != null)
+            {
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateCaratulaDomiciliado(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.CaratulaDomiciliado.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "CaratulaDomiciliado.pdf");
+                content.Add(new StringContent(data.CaratulaDomiciliado.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+                if (data.CaratulaDomiciliado.formato == "pdf")
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).URL;
+                }
+                else
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).Documento_data;
+                }
+            }
+            if (data.ArticulosLegalesDomiciliado != null)
+            {
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateArticulosDomiciliado(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.ArticulosLegalesDomiciliado.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "ArticulosLegalesDomiciliado.pdf");
+                content.Add(new StringContent(data.ArticulosLegalesDomiciliado.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+                if (data.ArticulosLegalesDomiciliado.formato == "pdf")
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).URL;
+                }
+                else
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).Documento_data;
+                }
+            }
+            if (data.ConceptosDomiciliaion != null)
+            {
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateConceptosDomiciliacionDomiciliado(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.ConceptosDomiciliaion.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "ConceptosDomiciliacion.pdf");
+                content.Add(new StringContent(data.ConceptosDomiciliaion.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+                if (data.ConceptosDomiciliaion.formato == "pdf")
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).URL;
+                }
+                else
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).Documento_data;
+                }
+            }
+            if (data.IntegracionPreeliminar != null)
+            {
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateIntegracionPreeliminar(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.IntegracionPreeliminar.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "IntegracionPreeliminar.pdf");
+                content.Add(new StringContent(data.IntegracionPreeliminar.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+                if (data.IntegracionPreeliminar.formato == "pdf")
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).URL;
+                }
+                else
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).Documento_data;
+                }
+            }
+            if (data.CheckList != null)
+            {
+                var content = new MultipartFormDataContent();
+                ByteArrayContent bytes = new ByteArrayContent(GenerateCheckList(data));
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
+                content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
+                content.Add(new StringContent(data.CheckList.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(bytes, "Documento", "CheckList.pdf");
+                content.Add(new StringContent(data.CheckList.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent("220102"), "TipocSubSubExpediente");
+                content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
+                content.Add(new StringContent("Fomepade"), "CredencialesCliente");
+                content.Add(new StringContent("2345"), "Tipo_Documento");
+
+
+                if (data.CheckList.formato == "pdf")
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).URL;
+                }
+                else
+                {
+                    DocsInfoSaveExpedientes.DocumentoEstudioSocioeconomico = EnviarExpedientes(content).Documento_data;
+                }
+            }
+
+            //Retornamos el Objeto 
             return DocsInfoSaveExpedientes;
 
         }
@@ -393,14 +685,171 @@ namespace ApiCreateDocsVIntegracion.Controllers
         public byte[] GenerateSolicitud(InputData data)
         {
             fmtfmtAutSolicitud formato = new fmtfmtAutSolicitud();
+            string htmlString = formato.FormatoHTML(data);
+            string baseUrl = "";
 
-            //IronPdf.HtmlToPdf Renderer = new IronPdf.HtmlToPdf();
-            //MemoryStream rend = Renderer.RenderHtmlAsPdf(formato.FormatoHTML()).Stream;
+            string pdf_page_size = "Letter";
+            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize),
+                pdf_page_size, true);
 
-            //return File(rend, "application/pdf", "Tabla.pdf");
+            string pdf_orientation = "Portrait";
+            PdfPageOrientation pdfOrientation =
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),
+                pdf_orientation, true);
 
-            // read parameters from the webpage
-            //string htmlString = formato.FormatoHTML(cotizaView, listAmortizacion, _env.WebRootPath + "C://Javier//Cotizador//Proyectos//OriginaWebApp//wwwroot//img//aprecia-blanco.jpg");
+            int webPageWidth = 1024;
+            try
+            {
+                webPageWidth = 1024;
+            }
+            catch { }
+
+            int webPageHeight = 0;
+            try
+            {
+                webPageHeight = Convert.ToInt32(0);
+            }
+            catch { }
+
+            // instantiate a html to pdf converter object
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+
+            // set converter options
+            converter.Options.PdfPageSize = pageSize;
+            converter.Options.PdfPageOrientation = pdfOrientation;
+            converter.Options.WebPageWidth = webPageWidth;
+            converter.Options.WebPageHeight = webPageHeight;
+
+            converter.Options.MarginLeft = 50;
+            converter.Options.MarginRight = 50;
+            converter.Options.MarginTop = 50;
+            converter.Options.MarginBottom = 50;
+
+            // create a new pdf document converting an url
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+            var streamPdf = new MemoryStream(doc.Save());
+
+            byte[] data1;
+            using (var br = new BinaryReader(streamPdf))
+                data1 = br.ReadBytes((int)streamPdf.Length);
+
+            return data1;
+        }
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public byte[] GenerateSolicitudDomiciliado(InputData data)
+        {
+            DomiciliadofmtfmtAutSolicitud formato = new DomiciliadofmtfmtAutSolicitud();
+            string htmlString = formato.FormatoHTML(data);
+            string baseUrl = "";
+
+            string pdf_page_size = "Letter";
+            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize),
+                pdf_page_size, true);
+
+            string pdf_orientation = "Portrait";
+            PdfPageOrientation pdfOrientation =
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),
+                pdf_orientation, true);
+
+            int webPageWidth = 1024;
+            try
+            {
+                webPageWidth = 1024;
+            }
+            catch { }
+
+            int webPageHeight = 0;
+            try
+            {
+                webPageHeight = Convert.ToInt32(0);
+            }
+            catch { }
+
+            // instantiate a html to pdf converter object
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+
+            // set converter options
+            converter.Options.PdfPageSize = pageSize;
+            converter.Options.PdfPageOrientation = pdfOrientation;
+            converter.Options.WebPageWidth = webPageWidth;
+            converter.Options.WebPageHeight = webPageHeight;
+
+            converter.Options.MarginLeft = 50;
+            converter.Options.MarginRight = 50;
+            converter.Options.MarginTop = 50;
+            converter.Options.MarginBottom = 50;
+
+            // create a new pdf document converting an url
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+            var streamPdf = new MemoryStream(doc.Save());
+
+            byte[] data1;
+            using (var br = new BinaryReader(streamPdf))
+                data1 = br.ReadBytes((int)streamPdf.Length);
+
+            return data1;
+        }
+
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public byte[] GeneraContratoDomiciliado(InputData data)
+        {
+            DomiciliadofmtfmtContratoConsumo formato = new DomiciliadofmtfmtContratoConsumo();
+            string htmlString = formato.FormatoHTML(data, "logo");
+            string baseUrl = "";
+
+            string pdf_page_size = "Letter";
+            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize),
+                pdf_page_size, true);
+
+            string pdf_orientation = "Portrait";
+            PdfPageOrientation pdfOrientation =
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),
+                pdf_orientation, true);
+
+            int webPageWidth = 1024;
+            try
+            {
+                webPageWidth = 1024;
+            }
+            catch { }
+
+            int webPageHeight = 0;
+            try
+            {
+                webPageHeight = Convert.ToInt32(0);
+            }
+            catch { }
+
+            // instantiate a html to pdf converter object
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+
+            // set converter options
+            converter.Options.PdfPageSize = pageSize;
+            converter.Options.PdfPageOrientation = pdfOrientation;
+            converter.Options.WebPageWidth = webPageWidth;
+            converter.Options.WebPageHeight = webPageHeight;
+
+            converter.Options.MarginLeft = 50;
+            converter.Options.MarginRight = 50;
+            converter.Options.MarginTop = 50;
+            converter.Options.MarginBottom = 50;
+
+            // create a new pdf document converting an url
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+            var streamPdf = new MemoryStream(doc.Save());
+
+            byte[] data1;
+            using (var br = new BinaryReader(streamPdf))
+                data1 = br.ReadBytes((int)streamPdf.Length);
+
+            return data1;
+        }
+
+
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public byte[] GenerateSolicitudMejoramiento(InputData data)
+        {
+            MejoramientofmtfmtAutSolicitud formato = new MejoramientofmtfmtAutSolicitud();
             string htmlString = formato.FormatoHTML(data);
             string baseUrl = "";
 
@@ -803,8 +1252,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
 
             string pdf_orientation = "Portrait";
             PdfPageOrientation pdfOrientation =
-                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),
-                pdf_orientation, true);
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),pdf_orientation, true);
 
             int webPageWidth = 1024;
             try
@@ -844,6 +1292,62 @@ namespace ApiCreateDocsVIntegracion.Controllers
 
             return data1;
         }
+
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public byte[] GenerateContratoMejoramiento(InputData data)
+        {
+            MejoramientofmtfmtContratoConsumo formato = new MejoramientofmtfmtContratoConsumo();
+
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            string baseUrl = "";
+
+            string pdf_page_size = "Letter";
+            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize),
+                pdf_page_size, true);
+
+            string pdf_orientation = "Portrait";
+            PdfPageOrientation pdfOrientation =
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation), pdf_orientation, true);
+
+            int webPageWidth = 1024;
+            try
+            {
+                webPageWidth = 1024;
+            }
+            catch { }
+
+            int webPageHeight = 0;
+            try
+            {
+                webPageHeight = Convert.ToInt32(0);
+            }
+            catch { }
+
+            // instantiate a html to pdf converter object
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+
+            // set converter options
+            converter.Options.PdfPageSize = pageSize;
+            converter.Options.PdfPageOrientation = pdfOrientation;
+            converter.Options.WebPageWidth = webPageWidth;
+            converter.Options.WebPageHeight = webPageHeight;
+
+            converter.Options.MarginLeft = 50;
+            converter.Options.MarginRight = 50;
+            converter.Options.MarginTop = 50;
+            converter.Options.MarginBottom = 50;
+
+            // create a new pdf document converting an url
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+            var streamPdf = new MemoryStream(doc.Save());
+
+            byte[] data1;
+            using (var br = new BinaryReader(streamPdf))
+                data1 = br.ReadBytes((int)streamPdf.Length);
+
+            return data1;
+        }
+
 
         [ApiExplorerSettings(IgnoreApi = true)]
         public byte[] GenerateCaratula(InputData data)
@@ -901,13 +1405,291 @@ namespace ApiCreateDocsVIntegracion.Controllers
 
             return data1;
         }
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public byte[] GenerateCaratulaMejoramiento(InputData data)
+        {
+            MejoramientofmtfmtCaratula formato = new MejoramientofmtfmtCaratula();
+
+
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            string baseUrl = "";
+
+            string pdf_page_size = "Letter";
+            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize),
+                pdf_page_size, true);
+
+            string pdf_orientation = "Portrait";
+            PdfPageOrientation pdfOrientation =
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),
+                pdf_orientation, true);
+
+            int webPageWidth = 1024;
+            try
+            {
+                webPageWidth = 1024;
+            }
+            catch { }
+
+            int webPageHeight = 0;
+            try
+            {
+                webPageHeight = Convert.ToInt32(0);
+            }
+            catch { }
+
+            // instantiate a html to pdf converter object
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+
+            // set converter options
+            converter.Options.PdfPageSize = pageSize;
+            converter.Options.PdfPageOrientation = pdfOrientation;
+            converter.Options.WebPageWidth = webPageWidth;
+            converter.Options.WebPageHeight = webPageHeight;
+
+            converter.Options.MarginLeft = 50;
+            converter.Options.MarginRight = 50;
+            converter.Options.MarginTop = 50;
+            converter.Options.MarginBottom = 50;
+
+            // create a new pdf document converting an url
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+            var streamPdf = new MemoryStream(doc.Save());
+
+            byte[] data1;
+            using (var br = new BinaryReader(streamPdf))
+                data1 = br.ReadBytes((int)streamPdf.Length);
+
+            return data1;
+        }
+
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public byte[] GenerateCaratulaDomiciliado(InputData data)
+        {
+            DomiciliadofmtfmtCaratula formato = new DomiciliadofmtfmtCaratula();
+
+
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            string baseUrl = "";
+
+            string pdf_page_size = "Letter";
+            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize),
+                pdf_page_size, true);
+
+            string pdf_orientation = "Portrait";
+            PdfPageOrientation pdfOrientation =
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),
+                pdf_orientation, true);
+
+            int webPageWidth = 1024;
+            try
+            {
+                webPageWidth = 1024;
+            }
+            catch { }
+
+            int webPageHeight = 0;
+            try
+            {
+                webPageHeight = Convert.ToInt32(0);
+            }
+            catch { }
+
+            // instantiate a html to pdf converter object
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+
+            // set converter options
+            converter.Options.PdfPageSize = pageSize;
+            converter.Options.PdfPageOrientation = pdfOrientation;
+            converter.Options.WebPageWidth = webPageWidth;
+            converter.Options.WebPageHeight = webPageHeight;
+
+            converter.Options.MarginLeft = 50;
+            converter.Options.MarginRight = 50;
+            converter.Options.MarginTop = 50;
+            converter.Options.MarginBottom = 50;
+
+            // create a new pdf document converting an url
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+            var streamPdf = new MemoryStream(doc.Save());
+
+            byte[] data1;
+            using (var br = new BinaryReader(streamPdf))
+                data1 = br.ReadBytes((int)streamPdf.Length);
+
+            return data1;
+        }
 
         [ApiExplorerSettings(IgnoreApi = true)]
         public byte[] GenerateArticulos(InputData data)
         {
-
-
             fmtfmtArticulosLegales formato = new fmtfmtArticulosLegales();
+
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            string baseUrl = "";
+
+            string pdf_page_size = "Letter";
+            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize),
+                pdf_page_size, true);
+
+            string pdf_orientation = "Portrait";
+            PdfPageOrientation pdfOrientation =
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),
+                pdf_orientation, true);
+
+            int webPageWidth = 1024;
+            try
+            {
+                webPageWidth = 1024;
+            }
+            catch { }
+
+            int webPageHeight = 0;
+            try
+            {
+                webPageHeight = Convert.ToInt32(0);
+            }
+            catch { }
+
+            // instantiate a html to pdf converter object
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+
+            // set converter options
+            converter.Options.PdfPageSize = pageSize;
+            converter.Options.PdfPageOrientation = pdfOrientation;
+            converter.Options.WebPageWidth = webPageWidth;
+            converter.Options.WebPageHeight = webPageHeight;
+
+            converter.Options.MarginLeft = 50;
+            converter.Options.MarginRight = 50;
+            converter.Options.MarginTop = 50;
+            converter.Options.MarginBottom = 50;
+
+            // create a new pdf document converting an url
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+            var streamPdf = new MemoryStream(doc.Save());
+
+            byte[] data1;
+            using (var br = new BinaryReader(streamPdf))
+                data1 = br.ReadBytes((int)streamPdf.Length);
+
+            return data1;
+        }
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public byte[] GenerateArticulosMejoramiento(InputData data)
+        {
+            MejoramientofmtfmtArticulosLegales formato = new MejoramientofmtfmtArticulosLegales();
+
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            string baseUrl = "";
+
+            string pdf_page_size = "Letter";
+            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize),
+                pdf_page_size, true);
+
+            string pdf_orientation = "Portrait";
+            PdfPageOrientation pdfOrientation =
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),
+                pdf_orientation, true);
+
+            int webPageWidth = 1024;
+            try
+            {
+                webPageWidth = 1024;
+            }
+            catch { }
+
+            int webPageHeight = 0;
+            try
+            {
+                webPageHeight = Convert.ToInt32(0);
+            }
+            catch { }
+
+            // instantiate a html to pdf converter object
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+
+            // set converter options
+            converter.Options.PdfPageSize = pageSize;
+            converter.Options.PdfPageOrientation = pdfOrientation;
+            converter.Options.WebPageWidth = webPageWidth;
+            converter.Options.WebPageHeight = webPageHeight;
+
+            converter.Options.MarginLeft = 50;
+            converter.Options.MarginRight = 50;
+            converter.Options.MarginTop = 50;
+            converter.Options.MarginBottom = 50;
+
+            // create a new pdf document converting an url
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+            var streamPdf = new MemoryStream(doc.Save());
+
+            byte[] data1;
+            using (var br = new BinaryReader(streamPdf))
+                data1 = br.ReadBytes((int)streamPdf.Length);
+
+            return data1;
+        }
+
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public byte[] GenerateArticulosDomiciliado(InputData data)
+        {
+            DomiciliadofmtfmtArticulosLegales formato = new DomiciliadofmtfmtArticulosLegales();
+
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            string baseUrl = "";
+
+            string pdf_page_size = "Letter";
+            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize),
+                pdf_page_size, true);
+
+            string pdf_orientation = "Portrait";
+            PdfPageOrientation pdfOrientation =
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),
+                pdf_orientation, true);
+
+            int webPageWidth = 1024;
+            try
+            {
+                webPageWidth = 1024;
+            }
+            catch { }
+
+            int webPageHeight = 0;
+            try
+            {
+                webPageHeight = Convert.ToInt32(0);
+            }
+            catch { }
+
+            // instantiate a html to pdf converter object
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+
+            // set converter options
+            converter.Options.PdfPageSize = pageSize;
+            converter.Options.PdfPageOrientation = pdfOrientation;
+            converter.Options.WebPageWidth = webPageWidth;
+            converter.Options.WebPageHeight = webPageHeight;
+
+            converter.Options.MarginLeft = 50;
+            converter.Options.MarginRight = 50;
+            converter.Options.MarginTop = 50;
+            converter.Options.MarginBottom = 50;
+
+            // create a new pdf document converting an url
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+            var streamPdf = new MemoryStream(doc.Save());
+
+            byte[] data1;
+            using (var br = new BinaryReader(streamPdf))
+                data1 = br.ReadBytes((int)streamPdf.Length);
+
+            return data1;
+        }
+
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public byte[] GenerateConceptosDomiciliacionDomiciliado(InputData data)
+        {
+            DomiciliadofmtfmtArticulosLegales formato = new DomiciliadofmtfmtArticulosLegales();
 
             string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
             string baseUrl = "";
@@ -1016,6 +1798,176 @@ namespace ApiCreateDocsVIntegracion.Controllers
 
             return data1;
         }
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public byte[] GenerateConceptosDomiciliacion(InputData data)
+        {
+            DomiciliadofmtfmtArticulosLegales formato = new DomiciliadofmtfmtArticulosLegales();
+
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            string baseUrl = "";
+
+            string pdf_page_size = "Letter";
+            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize),
+                pdf_page_size, true);
+
+            string pdf_orientation = "Portrait";
+            PdfPageOrientation pdfOrientation =
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),
+                pdf_orientation, true);
+
+            int webPageWidth = 1024;
+            try
+            {
+                webPageWidth = 1024;
+            }
+            catch { }
+
+            int webPageHeight = 0;
+            try
+            {
+                webPageHeight = Convert.ToInt32(0);
+            }
+            catch { }
+
+            // instantiate a html to pdf converter object
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+
+            // set converter options
+            converter.Options.PdfPageSize = pageSize;
+            converter.Options.PdfPageOrientation = pdfOrientation;
+            converter.Options.WebPageWidth = webPageWidth;
+            converter.Options.WebPageHeight = webPageHeight;
+
+            converter.Options.MarginLeft = 50;
+            converter.Options.MarginRight = 50;
+            converter.Options.MarginTop = 50;
+            converter.Options.MarginBottom = 50;
+
+            // create a new pdf document converting an url
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+            var streamPdf = new MemoryStream(doc.Save());
+
+            byte[] data1;
+            using (var br = new BinaryReader(streamPdf))
+                data1 = br.ReadBytes((int)streamPdf.Length);
+
+            return data1;
+        }
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public byte[] GenerateIntegracionPreeliminar(InputData data)
+        {
+
+
+            DomiciliadofmtfmtArticulosLegales formato = new DomiciliadofmtfmtArticulosLegales();
+
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            string baseUrl = "";
+
+            string pdf_page_size = "Letter";
+            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize),
+                pdf_page_size, true);
+
+            string pdf_orientation = "Portrait";
+            PdfPageOrientation pdfOrientation =
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),
+                pdf_orientation, true);
+
+            int webPageWidth = 1024;
+            try
+            {
+                webPageWidth = 1024;
+            }
+            catch { }
+
+            int webPageHeight = 0;
+            try
+            {
+                webPageHeight = Convert.ToInt32(0);
+            }
+            catch { }
+
+            // instantiate a html to pdf converter object
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+
+            // set converter options
+            converter.Options.PdfPageSize = pageSize;
+            converter.Options.PdfPageOrientation = pdfOrientation;
+            converter.Options.WebPageWidth = webPageWidth;
+            converter.Options.WebPageHeight = webPageHeight;
+
+            converter.Options.MarginLeft = 50;
+            converter.Options.MarginRight = 50;
+            converter.Options.MarginTop = 50;
+            converter.Options.MarginBottom = 50;
+
+            // create a new pdf document converting an url
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+            var streamPdf = new MemoryStream(doc.Save());
+
+            byte[] data1;
+            using (var br = new BinaryReader(streamPdf))
+                data1 = br.ReadBytes((int)streamPdf.Length);
+
+            return data1;
+        }
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public byte[] GenerateCheckList(InputData data)
+        {
+
+
+            DomiciliadofmtfmtArticulosLegales formato = new DomiciliadofmtfmtArticulosLegales();
+
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            string baseUrl = "";
+
+            string pdf_page_size = "Letter";
+            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize),
+                pdf_page_size, true);
+
+            string pdf_orientation = "Portrait";
+            PdfPageOrientation pdfOrientation =
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),
+                pdf_orientation, true);
+
+            int webPageWidth = 1024;
+            try
+            {
+                webPageWidth = 1024;
+            }
+            catch { }
+
+            int webPageHeight = 0;
+            try
+            {
+                webPageHeight = Convert.ToInt32(0);
+            }
+            catch { }
+
+            // instantiate a html to pdf converter object
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+
+            // set converter options
+            converter.Options.PdfPageSize = pageSize;
+            converter.Options.PdfPageOrientation = pdfOrientation;
+            converter.Options.WebPageWidth = webPageWidth;
+            converter.Options.WebPageHeight = webPageHeight;
+
+            converter.Options.MarginLeft = 50;
+            converter.Options.MarginRight = 50;
+            converter.Options.MarginTop = 50;
+            converter.Options.MarginBottom = 50;
+
+            // create a new pdf document converting an url
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+            var streamPdf = new MemoryStream(doc.Save());
+
+            byte[] data1;
+            using (var br = new BinaryReader(streamPdf))
+                data1 = br.ReadBytes((int)streamPdf.Length);
+
+            return data1;
+        }
+
 
         [ApiExplorerSettings(IgnoreApi = true)]
         public byte[] GeneratePagare(InputData data)
@@ -1023,7 +1975,6 @@ namespace ApiCreateDocsVIntegracion.Controllers
 
 
             fmtfmtPagare formato = new fmtfmtPagare();
-
             string htmlString = formato.FormatoHTML(data);
             string baseUrl = "";
 
