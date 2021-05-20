@@ -16,9 +16,9 @@ namespace OriginaWebApp.Models.Formatos
 
         public string FormatoHTML(InputData data,String logo)
         {
-            BarcodeLib.Barcode CodigoBarras = new BarcodeLib.Barcode();
-            CodigoBarras.IncludeLabel = true;
-            var bImage =  CodigoBarras.Encode(BarcodeLib.TYPE.CODE128, data.dataReferenciaPago.FormaPagoReferenciaOxxo, 400, 100);
+            //BarcodeLib.Barcode CodigoBarras = new BarcodeLib.Barcode();
+            //CodigoBarras.IncludeLabel = true;
+            //var bImage =  CodigoBarras.Encode(BarcodeLib.TYPE.CODE128, data.dataReferenciaPago.FormaPagoReferenciaOxxo, 400, 100);
 
          
 
