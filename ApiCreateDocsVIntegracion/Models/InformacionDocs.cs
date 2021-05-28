@@ -101,27 +101,48 @@ namespace ApiCreacionDocs.Models
 
         }
 
+
+        public class InputConformaTablaAmortizacion
+        {
+            [NotMapped]
+            public string? TipoExpediente { get; set; }
+            [NotMapped]
+            public string? TipoSubExpediente { get; set; }
+            [NotMapped]
+            public string? formato { get; set; }
+            [NotMapped]
+            public string? Version { get; set; }
+            public InputTablaAmortizacion TablaInfoAmortiza { get; set; }
+            public List<TAmortizacion> ListaTAmortiza { get; set; }
+        }
+
         public class InputTablaAmortizacion
         {
-            public string TipoExpediente { get; set; }
-            public string TipoSubExpediente { get; set; }
-            public string formato { get; set; }
 
-            public string Version { get; set; }
-            public String FechadeOtorgamiento { get; set; }
-            public String FechadeVencimiento { get; set; }
-            public String NodePagare { get; set; }
-            public String MontodeRenovación { get; set; }
-            public String TipodeCredito { get; set; }
-            public String NombreCliente { get; set; }
-            public String Domicilio { get; set; }
-            public String Colonia { get; set; }
-            public String Ciudad { get; set; }
-            public String Telefono { get; set; }
-            public List<TAmortizacion> listTamortizacion { get; set; }
+            [Key]
+            public String fechaOperacion { get; set; }
+            public String fechaVence { get; set; }
+            public String idPersona { get; set; }
+            public String idCredito { get; set; }
+            public String producto { get; set; }
+            public String clienteNombre { get; set; }
+            public String domicilioCliente { get; set; }
+            public String coloniaCliente { get; set; }
+            public String ciudadCliente { get; set; }
+            public String telefonoCliente { get; set; }
+            public String credTotal { get; set; }
+            public String credTotalLetra { get; set; }
+            public String credNumPagos { get; set; }
+            public String clienteNombreAliasFirma { get; set; }
+
+
         }
+
+
         public class TAmortizacion
         {
+            [Key]
+            public Int32 No { get; set; }
             public String inicio { get; set; }
             public String vencimiento { get; set; }
             public String saldoInicial { get; set; }
@@ -135,6 +156,7 @@ namespace ApiCreacionDocs.Models
             public String saldoFinal { get; set; }
 
         }
+
 
         public class InputCaratula
         {

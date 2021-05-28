@@ -20,7 +20,7 @@ namespace ApiCreacionDocs.Models
         public InformacionDocs.InputContratoConsumo dataContratoConsumo { get; set; }
         public InformacionDocs.InputContratoMejoramiento dataContratoMejoramiento { get; set; }
         public InformacionDocs.InputEstipulacion dataEstipulacion { get; set; }
-        public InformacionDocs.InputTablaAmortizacion dataTAmortizacion { get; set; }
+        public InformacionDocs.InputConformaTablaAmortizacion dataTAmortizacion { get; set; }
         public InformacionDocs.InputArticulosLegales dataArticulosLegalesMejoramiento { get; set; }
         public InformacionDocs.InputArticulosLegales dataArticulosLegales { get; set; }
         public InformacionDocs.InputPresupuestoObra dataPresupuestoObra { get; set; }

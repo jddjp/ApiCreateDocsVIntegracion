@@ -8,6 +8,7 @@ using OriginaWebApp.Models.Formatos;
 using SelectPdf;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -81,9 +82,9 @@ namespace ApiCreateDocsVIntegracion.Controllers
                 ByteArrayContent bytes = new ByteArrayContent(GeneratePagare(data));
                 content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
                 content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
-                content.Add(new StringContent(data.dataSolicitud.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(new StringContent(data.dataPagare.TipoExpediente.ToString()), "TipoExpediente");
                 content.Add(bytes, "Documento", "Pagare.pdf");
-                content.Add(new StringContent(data.dataSolicitud.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent(data.dataPagare.TipoSubExpediente.ToString()), "TipocSubExpediente");
                 content.Add(new StringContent("220102"), "TipocSubSubExpediente");
                 content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
                 content.Add(new StringContent("Fomepade"), "CredencialesCliente");
@@ -105,10 +106,10 @@ namespace ApiCreateDocsVIntegracion.Controllers
                 ByteArrayContent bytes = new ByteArrayContent(GenerateEstipulacion(data));
                 content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Emision");
                 content.Add(new StringContent(DateTime.Now.ToShortDateString()), "Fecha_Vigencia");
-                content.Add(new StringContent(data.dataSolicitud.TipoExpediente.ToString()), "TipoExpediente");
+                content.Add(new StringContent(data.dataEstipulacion.TipoExpediente.ToString()), "TipoExpediente");
                 //Recibir Nombre del documento y Extension
                 content.Add(bytes, "Documento", "Estipulacion.pdf");
-                content.Add(new StringContent(data.dataSolicitud.TipoSubExpediente.ToString()), "TipocSubExpediente");
+                content.Add(new StringContent(data.dataEstipulacion.TipoSubExpediente.ToString()), "TipocSubExpediente");
                 content.Add(new StringContent("220102"), "TipocSubSubExpediente");
                 content.Add(new StringContent(data.IdentificadorTramite.ToString()), "IdExpediente");
                 content.Add(new StringContent("Fomepade"), "CredencialesCliente");
@@ -725,8 +726,45 @@ namespace ApiCreateDocsVIntegracion.Controllers
             converter.Options.MarginTop = 50;
             converter.Options.MarginBottom = 50;
 
+            // header settings
+
+            converter.Options.DisplayHeader = true;
+            converter.Header.DisplayOnFirstPage = true;
+            converter.Header.DisplayOnOddPages = true;
+            converter.Header.DisplayOnEvenPages = true;
+            converter.Header.Height = 40;/*Tamaño del encabezado en int*/
+
+            fmtAutHeaderSolicitudConsumo headerContrato = new fmtAutHeaderSolicitudConsumo();
+            string htmlStringheader = headerContrato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+
+            PdfHtmlSection customHtml = new PdfHtmlSection(htmlStringheader, string.Empty);
+
+            converter.Header.Add(customHtml);
+
+
+            //// header settings
+            //Footer
+            converter.Options.DisplayFooter = true;
+            converter.Footer.DisplayOnFirstPage = true;
+            converter.Footer.DisplayOnOddPages = true;
+            converter.Footer.DisplayOnEvenPages = true;
+            converter.Footer.Height = 20;
+
+
+            //fmtAutFooterContrato footer = new fmtAutFooterContrato();
+            //string htmlStringfooter = footer.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            //PdfHtmlSection customHtmlfooter = new PdfHtmlSection(htmlStringfooter, string.Empty);
+            //converter.Footer.Add(customHtmlfooter);
+
+            PdfTextSection text = new PdfTextSection(0, 10, "Página : {page_number} de {total_pages}  ", new System.Drawing.Font("Arial", 8));
+            text.HorizontalAlign = PdfTextHorizontalAlign.Right;
+            converter.Footer.Add(text);
+            //Footer
+
+
             // create a new pdf document converting an url
             SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+         
             var streamPdf = new MemoryStream(doc.Save());
 
             byte[] data1;
@@ -1241,6 +1279,8 @@ namespace ApiCreateDocsVIntegracion.Controllers
         [ApiExplorerSettings(IgnoreApi = true)]
         public byte[] GenerateContratoConsumo(InputData data)
         {
+
+
             fmtfmtContratoConsumo formato = new fmtfmtContratoConsumo();
 
             string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
@@ -1252,7 +1292,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
 
             string pdf_orientation = "Portrait";
             PdfPageOrientation pdfOrientation =
-                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation),pdf_orientation, true);
+                (PdfPageOrientation)Enum.Parse(typeof(PdfPageOrientation), pdf_orientation, true);
 
             int webPageWidth = 1024;
             try
@@ -1282,6 +1322,36 @@ namespace ApiCreateDocsVIntegracion.Controllers
             converter.Options.MarginTop = 50;
             converter.Options.MarginBottom = 50;
 
+            // header settings
+          
+            converter.Options.DisplayHeader =true;
+            converter.Header.DisplayOnFirstPage = true;
+            converter.Header.DisplayOnOddPages = true;
+            converter.Header.DisplayOnEvenPages = true;
+            converter.Header.Height = 40;/*Tamaño del encabezado en int*/
+
+            fmtAutHeaderContrato headerContrato = new fmtAutHeaderContrato();
+            string htmlStringheader = headerContrato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+
+            PdfHtmlSection customHtml = new PdfHtmlSection(htmlStringheader,   string.Empty);
+          
+            converter.Header.Add(customHtml);
+
+
+            // header settings
+            //Footer
+            converter.Options.DisplayFooter = true;
+            converter.Footer.DisplayOnFirstPage = true;
+            converter.Footer.DisplayOnOddPages = true;
+            converter.Footer.DisplayOnEvenPages = true;
+            converter.Footer.Height = 20;
+
+
+            fmtAutFooterContrato footer = new fmtAutFooterContrato();
+            string htmlStringfooter = footer.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            PdfHtmlSection customHtmlfooter = new PdfHtmlSection(htmlStringfooter, string.Empty);
+            converter.Footer.Add(customHtmlfooter);
+            //Footer
             // create a new pdf document converting an url
             SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
             var streamPdf = new MemoryStream(doc.Save());
