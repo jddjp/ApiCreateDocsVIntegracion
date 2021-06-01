@@ -20,12 +20,12 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"<head>                                                                                                                            ";
             strDocumento += @"    <style>                                                                                                                       ";
             strDocumento += @"        p.b {                                                                                                                     ";
-            strDocumento += @"            font-family: Arial;                                                                                                   ";
-            strDocumento += @"            font-size: 12px;                                                                                                      ";
+            strDocumento += @"            font-family: Calibri;                                                                                                   ";
+            strDocumento += @"            font-size: 10pt;                                                                                                      ";
             strDocumento += @"        }                                                                                                                         ";
             strDocumento += @"        u.b {                                                                                                                     ";
-            strDocumento += @"            font-family: Arial;                                                                                                   ";
-            strDocumento += @"            font-size: 12px;                                                                                                      ";
+            strDocumento += @"            font-family: Calibri;                                                                                                   ";
+            strDocumento += @"            font-size: 10pt;                                                                                                      ";
             strDocumento += @"        }                                                                                                                         ";
             strDocumento += @"        p.negrita {                                                                                                               ";
             strDocumento += @"            font-family: Arial;                                                                                                   ";
@@ -50,15 +50,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"    </style>                                                                                                                      ";
             strDocumento += @"</head>                                                                                                                           ";
             strDocumento += @"<body style=""text-align: justify;"">                                                                                             ";
-            strDocumento += @"    <table>  ";
-            strDocumento += @" < tr>  ";
-            strDocumento += @"              <td style='width:4%;'>  <img src='" + Logo + "' width='133' height='65' />    </td>  ";
-            strDocumento += @"               < td >< p class='b'><b>CONTENIDO DE ARTÍCULOS LEGALES MENCIONADOS EN EL CONTRATO DE ADHESIÓN</b></p></td>  ";
-            strDocumento += @"  ";
-            strDocumento += @" </tr>  ";
-            strDocumento += @" </table>  ";
-            strDocumento += @" '<br>'                                                                                                              ";
-            strDocumento += @"    <table>                                                                                                                       ";
+             strDocumento += @"    <table>                                                                                                                       ";
             strDocumento += @"        <tr>                                                                                                                      ";
             strDocumento += @"            <td class=""first"">                                                                                                  ";
             strDocumento += @"                <p class=""b"">                                                                                                   ";
@@ -400,7 +392,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"            </td>                                                                                                                 ";
             strDocumento += @"        </tr>                                                                                                                     ";
             strDocumento += @"    </table>                                                                                                                      ";
-            strDocumento += @"     < p  align='center' class='b'><b>REGISTRO DE CONTRATOS DE ADHESIÓN NÚMERO: 2028-440-004742/17-00217-0121</b></p>                                                                                                                    ";
+            strDocumento += @"                                                                                                                       ";
             strDocumento += @"</body>                                                                                                                           ";
             strDocumento += @"</html>                                                                                                                           "; 
 

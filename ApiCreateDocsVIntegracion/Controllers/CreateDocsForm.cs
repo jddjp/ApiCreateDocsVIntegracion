@@ -1634,6 +1634,43 @@ namespace ApiCreateDocsVIntegracion.Controllers
             converter.Options.MarginTop = 50;
             converter.Options.MarginBottom = 50;
 
+
+            // header settings
+
+            converter.Options.DisplayHeader = true;
+            converter.Header.DisplayOnFirstPage = true;
+            converter.Header.DisplayOnOddPages = true;
+            converter.Header.DisplayOnEvenPages = true;
+            converter.Header.Height = 40;/*Tamaño del encabezado en int*/
+
+            fmtAutHeaderArticulosLegalesConsumo headerArticulos = new fmtAutHeaderArticulosLegalesConsumo();
+            string htmlStringheader = headerArticulos.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+
+            PdfHtmlSection customHtml = new PdfHtmlSection(htmlStringheader, string.Empty);
+
+            converter.Header.Add(customHtml);
+
+
+            //// header settings
+            //Footer
+            converter.Options.DisplayFooter = true;
+            converter.Footer.DisplayOnFirstPage = true;
+            converter.Footer.DisplayOnOddPages = true;
+            converter.Footer.DisplayOnEvenPages = true;
+            converter.Footer.Height = 20;
+
+
+            fmtAutFooterArticulosLegalesConsumo footer = new fmtAutFooterArticulosLegalesConsumo();
+            string htmlStringfooter = footer.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            PdfHtmlSection customHtmlfooter = new PdfHtmlSection(htmlStringfooter, string.Empty);
+            converter.Footer.Add(customHtmlfooter);
+
+            PdfTextSection text = new PdfTextSection(0, 10, "Página : {page_number} | {total_pages}  ", new System.Drawing.Font("Arial", 8));
+            text.HorizontalAlign = PdfTextHorizontalAlign.Right;
+            converter.Footer.Add(text);
+            //Footer
+
+
             // create a new pdf document converting an url
             SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
             var streamPdf = new MemoryStream(doc.Save());
@@ -1853,10 +1890,10 @@ namespace ApiCreateDocsVIntegracion.Controllers
             converter.Options.WebPageWidth = webPageWidth;
             converter.Options.WebPageHeight = webPageHeight;
 
-            converter.Options.MarginLeft = 50;
-            converter.Options.MarginRight = 50;
-            converter.Options.MarginTop = 50;
-            converter.Options.MarginBottom = 50;
+            converter.Options.MarginLeft = 10;
+            converter.Options.MarginRight = 10;
+            converter.Options.MarginTop = 10;
+            converter.Options.MarginBottom = 10;
 
             // create a new pdf document converting an url
             SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);

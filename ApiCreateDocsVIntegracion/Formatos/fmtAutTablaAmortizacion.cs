@@ -2,8 +2,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using static ApiCreacionDocs.Models.InformacionDocs;
 
 namespace OriginaWebApp.Models.Formatos
 {
@@ -22,7 +24,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"    <style>                                                                                                               ";
             strDocumento += @"        p.b {                                                                                                             ";
             strDocumento += @"            font-family: Arial;                                                                                           ";
-            strDocumento += @"            font-size: 12px;                                                                                              ";
+            strDocumento += @"            font-size: 12pt;                                                                                              ";
             strDocumento += @"        }                                                                                                                 ";
             strDocumento += @"                                                                                                                          ";
             strDocumento += @"        u.b {                                                                                                             ";
@@ -42,6 +44,22 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"        font.z {                                                                                                          ";
             strDocumento += @"            text-align: right;                                                                                            ";
             strDocumento += @"        }                                                                                                                 ";
+            strDocumento += @"         #tablaamor td {                                                                                                                     ";
+            strDocumento += @"               font-family: Arial;                                                                                            ";
+            strDocumento += @"              padding: 8px;                                                                                          ";
+            strDocumento += @"           font-size: 10pt;                                                                                                            ";
+            strDocumento += @"                      text-align: center;       }                                                                                              ";
+            strDocumento += @"                                                                                                                   ";
+            strDocumento += @"         #tablaamor th {              font-family: Arial;           font-size: 10pt;                                                                                                    ";
+            strDocumento += @"             padding-top: 12px;                                                                                                  ";
+            strDocumento += @"             padding-bottom: 12px;                                                                                             ";
+            strDocumento += @"             text-align: center;                                                                                       ";
+            strDocumento += @"             background-color: #4682b4;                                                                                                 ";
+            strDocumento += @"             color: black;          }                                                                                    ";
+            strDocumento += @"                                                                                                                   ";
+            strDocumento += @"                                                                                                                   ";
+            strDocumento += @"                                                                                                                   ";
+
             strDocumento += @"    </style>                                                                                                              ";
             strDocumento += @"</head>                                                                                                                   ";
             strDocumento += @"<body style=""text-align: justify;"">                                                                                     ";
@@ -54,23 +72,23 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"            <td>                                                                                                          ";
             strDocumento += @"                <p class=""b""><b>Fecha de Otorgamiento:<br>Fecha de Vencimiento:</b></p>                                 ";
             strDocumento += @"            </td>                                                                                                         ";
-            strDocumento += @"            <td><p>" + data.dataTAmortizacion.FechadeOtorgamiento + "<br>" + data.dataTAmortizacion.FechadeVencimiento + "</p></td>                                       ";
+            strDocumento += @"            <td><p><u>"+ data.dataTAmortizacion.TablaInfoAmortiza.fechaOperacion + "<br>" + data.dataTAmortizacion.TablaInfoAmortiza.fechaVence + "</u></p></td>                                       ";
             strDocumento += @"        </tr>                                                                                                             ";
-            strDocumento += @"    </table>                                                                                                              ";
+            strDocumento += @"    </table>        <br> <br>               <br>                                                                                                         ";
             strDocumento += @"    <table>                                                                                                               ";
             strDocumento += @"        <tr>                                                                                                              ";
-            strDocumento += @"            <td width=""200px""><b>No de Pagare</b></td>                                                                  ";
-            strDocumento += @"            <td>" + data.dataTAmortizacion.NodePagare + "</td>                                                                                    ";
+            strDocumento += @"            <td width=""200px""><b>No de Cliente:	</b></td>                                                                  ";
+            strDocumento += @"            <td> <u>" + data.dataTAmortizacion.TablaInfoAmortiza.idPersona + "</u></td>                                                                                    ";
             strDocumento += @"        </tr>                                                                                                             ";
             strDocumento += @"        <tr>                                                                                                              ";
-            strDocumento += @"            <td><b>Monto de Renovación:</b></td>                                                                          ";
-            strDocumento += @"            <td>$ " + data.dataTAmortizacion.MontodeRenovación + "</td>                                                                           ";
+            strDocumento += @"            <td width=""200px""><b>No de Crédito:</b></td>                                                                          ";
+            strDocumento += @"              <td> <u>" + data.dataTAmortizacion.TablaInfoAmortiza.idCredito + "</u></td>                                                                          ";
             strDocumento += @"        </tr>                                                                                                             ";
             strDocumento += @"        <tr>                                                                                                              ";
             strDocumento += @"            <td><b>Tipo de Crédito:</b></td>                                                                              ";
             strDocumento += @"            <td>                                                                                                          ";
-            strDocumento += @"                <p class=""b"">                                                                                           ";
-            strDocumento += @"                    " + data.dataTAmortizacion.TipodeCredito + "                                                                                  ";
+            strDocumento += @"                <p class=""b""> <u>                                                                                          ";
+            strDocumento += @"                    " + data.dataTAmortizacion.TablaInfoAmortiza.producto + "      </u>                                                                            ";
             strDocumento += @"<p>                                                                                                                       ";
             strDocumento += @"            </td>                                                                                                         ";
             strDocumento += @"        </tr>                                                                                                             ";
@@ -79,29 +97,30 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"    <table>                                                                                                               ";
             strDocumento += @"        <tr>                                                                                                              ";
             strDocumento += @"            <td width=""200px""><b>Nombre Cliente:</b></td>                                                               ";
-            strDocumento += @"            <td>" + data.dataTAmortizacion.NombreCliente + "</td>                                                                                 ";
+            strDocumento += @"            <td><u>" + data.dataTAmortizacion.TablaInfoAmortiza.clienteNombre + "</u></td>                                                                                 ";
             strDocumento += @"        </tr>                                                                                                             ";
             strDocumento += @"        <tr>                                                                                                              ";
             strDocumento += @"            <td width=""100px""><b>Domicilio:</b></td>                                                                    ";
-            strDocumento += @"            <td>" + data.dataTAmortizacion.Domicilio + "</td>                                                                                     ";
+            strDocumento += @"            <td><u>" + data.dataTAmortizacion.TablaInfoAmortiza.domicilioCliente + "</u></td>                                                                                     ";
             strDocumento += @"        </tr>                                                                                                             ";
             strDocumento += @"        <tr>                                                                                                              ";
             strDocumento += @"            <td><b>Colonia:</b></td>                                                                                      ";
-            strDocumento += @"            <td>" + data.dataTAmortizacion.Colonia + "</td>                                                                                       ";
+            strDocumento += @"            <td><u>" + data.dataTAmortizacion.TablaInfoAmortiza.coloniaCliente + "</u></td>                                                                                       ";
             strDocumento += @"        </tr>                                                                                                             ";
             strDocumento += @"        <tr>                                                                                                              ";
             strDocumento += @"            <td><b>Ciudad:</b></td>                                                                                       ";
-            strDocumento += @"            <td>" + data.dataTAmortizacion.Ciudad + "</td>                                                                                        ";
+            strDocumento += @"            <td><u>" + data.dataTAmortizacion.TablaInfoAmortiza.ciudadCliente + "</u></td>                                                                                        ";
             strDocumento += @"        </tr>                                                                                                             ";
             strDocumento += @"        <tr>                                                                                                              ";
             strDocumento += @"            <td><b>Telefono:</b></td>                                                                                     ";
-            strDocumento += @"            <td>" + data.dataTAmortizacion.Telefono + "</td>                                                                                      ";
+            strDocumento += @"            <td><u>" + data.dataTAmortizacion.TablaInfoAmortiza.telefonoCliente + "</u></td>                                                                                      ";
             strDocumento += @"        </tr>                                                                                                             ";
             strDocumento += @"    </table>                                                                                                              ";
             strDocumento += @"    <p align=""center"" class=""b""><b>TABLA DE AMORTIZACIÓNES</b></p>                                                    ";
             strDocumento += @"    <DIV align=""center"">                                                                                                ";
-            strDocumento += @"        <table>                                                                                                           ";
-            strDocumento += @"            <tr style=""background-color: #4682b4"">                                                                      ";
+           
+            strDocumento += @"        <table id='tablaamor'  width=""100%"">                                                                                                           ";
+            strDocumento += @"            <tr   width=""100%"">                                                                      ";
             strDocumento += @"                <th>No</th>                                                                                               ";
             strDocumento += @"                <th>Inicio</th>                                                                                           ";
             strDocumento += @"                <th>Vencimiento</th>                                                                                      ";
@@ -118,50 +137,49 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                    Final                                                                                                 ";
             strDocumento += @"                </th>                                                                                                     ";
             strDocumento += @"            </tr>                                                                                                         ";
-            strDocumento += @"                                                                                                                          ";
-            strDocumento += @"                @foreach (var item in " + data.dataTAmortizacion.listTamortizacion + ")                                                           ";
-            strDocumento += @"                {                                                                                                         ";
-            strDocumento += @"        <tr>                                                                                                              ";
-            strDocumento += @"            <td>                                                                                                          ";
-            strDocumento += @"                @item.inicio                                                                                              ";
-            strDocumento += @"            </td>                                                                                                         ";
-            strDocumento += @"            <td>                                                                                                          ";
-            strDocumento += @"                @item.vencimiento                                                                                         ";
-            strDocumento += @"            </td>                                                                                                         ";
-            strDocumento += @"            <td>                                                                                                          ";
-            strDocumento += @"                @item.saldoInicial                                                                                        ";
-            strDocumento += @"            </td>                                                                                                         ";
-            strDocumento += @"            <td>                                                                                                          ";
-            strDocumento += @"                @item.capital                                                                                             ";
-            strDocumento += @"            </td>                                                                                                         ";
-            strDocumento += @"            <td>                                                                                                          ";
-            strDocumento += @"                @item.interes                                                                                             ";
-            strDocumento += @"            </td>                                                                                                         ";
-            strDocumento += @"            <td>                                                                                                          ";
-            strDocumento += @"                @item.iva                                                                                                 ";
-            strDocumento += @"            </td>                                                                                                         ";
-            strDocumento += @"            <td>                                                                                                          ";
-            strDocumento += @"                @item.subtotal                                                                                            ";
-            strDocumento += @"            </td>                                                                                                         ";
-            strDocumento += @"            <td>                                                                                                          ";
-            strDocumento += @"                @item.comision                                                                                            ";
-            strDocumento += @"            </td>                                                                                                         ";
-            strDocumento += @"            <td>                                                                                                          ";
-            strDocumento += @"                @item.seguro                                                                                              ";
-            strDocumento += @"            </td>                                                                                                         ";
-            strDocumento += @"            <td>                                                                                                          ";
-            strDocumento += @"                @item.pago                                                                                                ";
-            strDocumento += @"            </td>                                                                                                         ";
-            strDocumento += @"            <td>                                                                                                          ";
-            strDocumento += @"                @item.saldoInicial                                                                                        ";
-            strDocumento += @"            </td>                                                                                                         ";
-            strDocumento += @"        </tr>                                                                                                             ";
-            strDocumento += @"            }                                                                                                             ";
+
+            foreach (TAmortizacion item in data.dataTAmortizacion.ListaTAmortiza)
+            {
+                
+
+                strDocumento += "<tr  width='100%' >                                                                                  " +
+                     "	<td >" + item.No + "</td>                                                                        " +
+                     "	<td >" + item.inicio+ "</td>                                                                   " +
+                     "	<td >" + item.vencimiento + "</td>                                                                " +
+                     "	<td >" + item.saldoInicial + "</td>                                                                  " +
+                     "	<td >" + item.capital + "</td>                                                                  " +
+                     "	<td >" + item.interes+ "</td>                                                                  " +
+                     "	<td >" + item.iva + "</td>                                                               " +
+                     "	<td >" + item.subtotal + "</td>                                                                " +
+                     "	<td >" + item.comision + "</td>                                                                 " +
+                     "	<td >" + item.seguro + "</td>                                                                 " +
+                     "	<td >" + item.pago + "</td>                                                                 " +
+                      "	<td >" + item.saldoFinal + "</td>                                                                 " +
+                     "</tr>                                                                                  ";
+            }
             strDocumento += @"         </table>                                                                                                         ";
-            strDocumento += @"        <hr>                                                                                                              ";
-            strDocumento += @"        <p class=""b"">                                                                                                   ";
+            strDocumento += @"                                                                                                              ";
+            strDocumento += @"             <br>                                                                                                 ";
+            strDocumento += @"                  <br>                                                                                                 ";
+            strDocumento += @"                                                                                                              ";
+            strDocumento += @"        <p class=""b"" align=""left"">                                                                                                   ";
             strDocumento += @"            <b>                                                                                                           ";
-            strDocumento += @"                " + data.dataTAmortizacion.NombreCliente + "                                                                ";
+            strDocumento += @"               Monto total a pagar:<u>$" + data.dataTAmortizacion.TablaInfoAmortiza.credTotal+" (" + data.dataTAmortizacion.TablaInfoAmortiza.credTotalLetra + "   )     </u>                            ";
+            strDocumento += @"            </b>                                                                                                          ";
+            strDocumento += @"        </p>                                                                                                              ";
+            strDocumento += @"        <p class=""b"" align=""left"">                                                                                                   ";
+            strDocumento += @"                                                                                                                ";
+            strDocumento += @"              *Cantidad resultante de la suma de los <b>  <u>" + data.dataTAmortizacion.TablaInfoAmortiza.credNumPagos + "</u></b>    pagos periódicos                 ";
+            strDocumento += @"                                                                                                                    ";
+            strDocumento += @"        </p>                                                                                                              ";
+            strDocumento += @"            <br>                                                                                                          ";
+            strDocumento += @"              <br>        <br>                                                                                                    ";
+
+
+
+            strDocumento += @"        <p class=""b"" >                                                                                                   ";
+            strDocumento += @"            <b>                                                                                                           ";
+            strDocumento += @"                <u>" + data.dataTAmortizacion.TablaInfoAmortiza.clienteNombreAliasFirma + "        </u>                            ";
             strDocumento += @"            </b>                                                                                                          ";
             strDocumento += @"        </p>                                                                                                              ";
             strDocumento += @"        <p class=""b"">                                                                                                   ";
