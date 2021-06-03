@@ -1,27 +1,35 @@
 ﻿using ApiCreacionDocs.Models;
-
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace OriginaWebApp.Models.Formatos
 {
-    public class ConsumofmtfmtReferenciaDePag
+    public class fmtfmtReferenciaDePag
     {
         public string strDocumento;
 
         public string FormatoHTML(InputData data,String logo)
         {
+            //BarcodeLib.Barcode CodigoBarras = new BarcodeLib.Barcode();
+            //CodigoBarras.IncludeLabel = true;
+            //var bImage =  CodigoBarras.Encode(BarcodeLib.TYPE.CODE128, data.dataReferenciaPago.FormaPagoReferenciaOxxo, 400, 100);
+
+         
 
 
             strDocumento = @"<!doctype html>																																												";
             strDocumento += @"<html>                                                                                                                                                                                       ";
             strDocumento += @"<head>                                                                                                                                                                                       ";
             strDocumento += @"    <style>                                                                                                                                                                                  ";
-            strDocumento += @"        p.b {                                                                                                                                                                                ";
-            strDocumento += @"            font-family: Arial;                                                                                                                                                              ";
-            strDocumento += @"            font-size: 12px;                                                                                                                                                                 ";
+            strDocumento += @"        p {                                                                                                                                                                                ";
+            strDocumento += @"            font-family: Calibri;                                                                                                                                                              ";
+            strDocumento += @"            font-size: 13pt;                                                                                                                                                                 ";
             strDocumento += @"        }                                                                                                                                                                                    ";
             strDocumento += @"                                                                                                                                                                                             ";
             strDocumento += @"        u.b {                                                                                                                                                                                ";
@@ -119,19 +127,19 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                    </td>                                                                                                                                                                    ";
             strDocumento += @"            </table>                                                                                                                                                                         ";
             strDocumento += @"            <p><b>DATOS DEL CRÉDITO</b></p>                                                                                                                                                  ";
-            strDocumento += @"            <p>FECHA DE OPERACIÓN:<b> "+data.dataReferenciaPago.FechaOperacion+"</b></p>                                                                                                      ";
-            strDocumento += @"            <p>PAGO: <b> "+data.dataReferenciaPago.creditoPeriodicidad+"  $"+data.dataReferenciaPago.PagoPeriodicidadMonto+"</b></p>                                                       ";
+            strDocumento += @"            <p>FECHA DE OPERACIÓN:<b> <u>"+data.dataReferenciaPago.FechaOperacion.ToString("dd/MM/yyy")+"</u></b></p>                                                                                                      ";
+            strDocumento += @"            <p>PAGO: <b><u> "+data.dataReferenciaPago.PagoPeriodicidadMonto+"</u></b></p>                                                       ";
             strDocumento += @"            <p>                                                                                                                                                                              ";
-            strDocumento += @"                NOMBRE:  "+data.dataReferenciaPago.ClienteNombre+",  se obliga a pagar a <b>“APRECIA”</b> de acuerdo a la tabla de amortizaciones la cual formara                                    ";
+            strDocumento += @"                NOMBRE: <b><u> "+data.dataReferenciaPago.ClienteNombre+"</u></b>,  se obliga a pagar a <b>“APRECIA”</b> de acuerdo a la tabla de amortizaciones la cual formara                                    ";
             strDocumento += @"                parte integral del contrato.                                                                                                                                                 ";
             strDocumento += @"            </p>                                                                                                                                                                             ";
             strDocumento += @"            <p>                                                                                                                                                                              ";
-            strDocumento += @"            En caso de incumplimiento de contrato se procederá a   cobrar adicional a lo esƟpulado por la tabla de amortizaciones,                                                        ";
+            strDocumento += @"            En caso de incumplimiento de contrato se procederá a   cobrar adicional a lo estipulado por la tabla de amortizaciones,                                                        ";
             strDocumento += @"            intereses moratorios y gastos de cobranza.                                                                                                                                   ";
             strDocumento += @"            </p>                                                                                                                                                                             ";
             strDocumento += @"            <p>                                                                                                                                                                              ";
-            strDocumento += @"                A continuación le proporcionamos las referencias con las que usted podrá realizar sus pagos "+data.dataReferenciaPago.creditoPeriodicidad+" de su crédito                                                         ";
-            strDocumento += @"                número: "+data.dataReferenciaPago.NoCredito+" <br>                                                                                                                                                  ";
+            strDocumento += @"                A continuación le proporcionamos las referencias con las que usted podrá realizar sus pagos <b><u>"+data.dataReferenciaPago.creditoPeriodicidad+"</u></b> de su crédito                                                         ";
+            strDocumento += @"                número:  <b><u>" + data.dataReferenciaPago.NoCredito+ "  </u></b><br>                                                                                                                                                  ";
             strDocumento += @"                Es muy importante realizar el pago en la  fecha que le corresponda, y en el número de REFERENCIA correcta.                                                                   ";
             strDocumento += @"            </p>                                                                                                                                                                             ";
             strDocumento += @"            <p><b>FORMAS DE PAGO</b></p>                                                                                                                                                     ";
@@ -145,14 +153,14 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                <table>                                                                                                                                                                      ";
             strDocumento += @"                    <tr>                                                                                                                                                                     ";
             strDocumento += @"                        <td>                                                                                                                                                                 ";
-            strDocumento += @"                            <p class=""b"">CUENTA BANCARIA<br>___________________</p>                                                                                                        ";
+            strDocumento += @"                            <p class=""b""><b><u>&nbsp;&nbsp;&nbsp;CUENTA BANCARIA&nbsp;&nbsp;&nbsp;</u></b></p>                                                                                                        ";
             strDocumento += @"                        </td>                                                                                                                                                                ";
-            strDocumento += @"                        <td><p class=""b"">REFERENCIA Y CONCEPTO DE PAGO<br>_____________________</p>                                                                                        ";
+            strDocumento += @"                        <td><p class=""b""><b><u>&nbsp;&nbsp;&nbsp;REFERENCIA Y CONCEPTO DE PAGO&nbsp;&nbsp;&nbsp;</u></b></p>                                                                                        ";
             strDocumento += @"                                                                                                                                                                                             ";
             strDocumento += @"                    </tr>                                                                                                                                                                    ";
             strDocumento += @"                    <tr>                                                                                                                                                                     ";
-            strDocumento += @"                        <td><p>"+data.dataReferenciaPago.FormaPagoCTABancariaBBVA+"<br>___________________</p></td>                                                                                                                    ";
-            strDocumento += @"                        <td><p>"+data.dataReferenciaPago.FormaPagoReferenciaConceptoPagoBBVA+"<br>___________________</p></td>                                                                                                                   ";
+            strDocumento += @"                        <td><p align='center'><u>" + data.dataReferenciaPago.FormaPagoCTABancariaBBVA+"</u></p></td>                                                                                                                    ";
+            strDocumento += @"                        <td><p  align='center'><u>" + data.dataReferenciaPago.FormaPagoReferenciaConceptoPagoBBVA+"</u></p></td>                                                                                                                   ";
             strDocumento += @"                                                                                                                                                                                             ";
             strDocumento += @"                    </tr>                                                                                                                                                                    ";
             strDocumento += @"                </table>                                                                                                                                                                     ";
@@ -162,10 +170,12 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                <table>                                                                                                                                                                      ";
             strDocumento += @"                    <tr>                                                                                                                                                                     ";
             strDocumento += @"                        <td>                                                                                                                                                                 ";
-            strDocumento += @"                            <p class=""b""><u>REFERENCIA</u></p>                                                                                                                             ";
-            strDocumento += @"                            <p class=""b"">"+data.dataReferenciaPago.FormaPagoReferenciaOxxo+"</p>                                                                                                                        ";
+            strDocumento += @"                            <p class=""b""  align='center'><b><u>&nbsp;&nbsp;&nbsp;&nbsp;REFERENCIA&nbsp;&nbsp;&nbsp;&nbsp;</b></u></p>                                                                                                                             ";
+            strDocumento += @"                            <p class=""b""  align='center'><b><u>&nbsp;&nbsp;&nbsp;&nbsp;" + data.dataReferenciaPago.FormaPagoReferenciaOxxo+"&nbsp;&nbsp;&nbsp;&nbsp;</b></u></p>                                                                                                                             ";
+
+            strDocumento += @"                        <img   align='center' src='data:image/bmp," + "" +"'  width='250' height='70' />                                                                                                                          ";
             strDocumento += @"                        </td>                                                                                                                                                                ";
-            strDocumento += @"                                                                                                                                                                                             ";
+            strDocumento += @"                                                                                                                                                                                ";
             strDocumento += @"                    </tr>                                                                                                                                                                    ";
             strDocumento += @"                </table>                                                                                                                                                                     ";
             strDocumento += @"            </DIV>                                                                                                                                                                           ";
@@ -174,22 +184,22 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                <table>                                                                                                                                                                      ";
             strDocumento += @"                    <tr>                                                                                                                                                                     ";
             strDocumento += @"                        <td>                                                                                                                                                                 ";
-            strDocumento += @"                            <p class=""b"">BANCO O INSTITUCIÓN<br>___________________</p>                                                                                                    ";
+            strDocumento += @"                            <p class=""b""><b><u>&nbsp;BANCO O INSTITUCIÓN&nbsp;</u></b></p>                                                                                                    ";
             strDocumento += @"                        </td>                                                                                                                                                                ";
-            strDocumento += @"                        <td><p class=""b"">CLABE INTERBANCARIA<br>___________________</p></td>                                                                                               ";
-            strDocumento += @"                        <td><p class=""b"">CONCEPTO O MOTIVO DE PAGO<br>___________________</p></td>                                                                                         ";
+            strDocumento += @"                        <td><p class=""b""><b><u>&nbsp;CLABE INTERBANCARIA&nbsp;</u></b></p></td>                                                                                               ";
+            strDocumento += @"                        <td><p class=""b""><b><u>&nbsp;CONCEPTO O MOTIVO DE PAGO&nbsp;</u></b></p></td>                                                                                         ";
             strDocumento += @"                    </tr>                                                                                                                                                                    ";
             strDocumento += @"                    <tr>                                                                                                                                                                     ";
-            strDocumento += @"                        <td><p>"+data.dataReferenciaPago.FormaPagoBancoInstitucionOtros+"<br>___________________<p></td>                                                                                                                  ";
-            strDocumento += @"                        <td><p>" + data.dataReferenciaPago.FormaPagoClabeOtros + "<br>___________________<p></td>                                                                                                             ";
-            strDocumento += @"                        <td><p>" + data.dataReferenciaPago.ConceptoMotivoPagoOtros + "<br>___________________<p></td>                                                                                                                    ";
+            strDocumento += @"                        <td><p  align='center'> <u>" + data.dataReferenciaPago.FormaPagoBancoInstitucionOtros+ "</u><p></td>                                                                                                                  ";
+            strDocumento += @"                        <td><p  align='center'><u>" + data.dataReferenciaPago.FormaPagoClabeOtros + "</u><p></td>                                                                                                             ";
+            strDocumento += @"                        <td><p  align='center'><u>" + data.dataReferenciaPago.ConceptoMotivoPagoOtros + "</u><p></td>                                                                                                                    ";
             strDocumento += @"                    </tr>                                                                                                                                                                    ";
             strDocumento += @"                </table>                                                                                                                                                                     ";
             strDocumento += @"            </DIV>                                                                                                                                                                           ";
             strDocumento += @"            <br>                                                                                                                                                                             ";
             strDocumento += @"            <p>                                                                                                                                                                              ";
             strDocumento += @"                Quedo enterado de las referencias en donde puedo realizar los pagos de mi crédito contratado.<br>                                                                            ";
-            strDocumento += @"                Si usted tiene alguna duda o aclaración se puede comunicar al  01 800 990 91 92, Opción 1 ó 2, o en la página  www.aprecia.com.mx                                            ";
+            strDocumento += @"                Si usted tiene alguna duda o aclaración se puede comunicar al  <b><u>01 800 990 91 92, Opción 1 ó 2,</u></b> o en la página  <b style='color:blue' ;>www.aprecia.com.mx</b>                                          ";
             strDocumento += @"            </p>                                                                                                                                                                             ";
             strDocumento += @"                                                                                                                                                                                             ";
             strDocumento += @"        </div>                                                                                                                                                                               ";

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OriginaWebApp.Models.Formatos
 {
-    public class ConsumofmtfmtPagare
+    public class fmtfmtPagare
     {
         public string strDocumento;
 
@@ -21,8 +21,8 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"<head>                                                                                                                                       ";
             strDocumento += @"    <style>                                                                                                                                  ";
             strDocumento += @"        p.b {                                                                                                                                ";
-            strDocumento += @"            font-family: Arial;                                                                                                              ";
-            strDocumento += @"            font-size: 14px;                                                                                                                 ";
+            strDocumento += @"            font-family: calibri;                                                                                                              ";
+            strDocumento += @"            font-size: 13pt;                                                                                                                 ";
             strDocumento += @"        }                                                                                                                                    ";
             strDocumento += @"                                                                                                                                             ";
             strDocumento += @"        p.negrita {                                                                                                                          ";
@@ -49,8 +49,8 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"    <br />                                                                                                                                   ";
             strDocumento += @"    <p class=""b"">                                                                                                                          ";
             strDocumento += @"        <font>                                                                                                                               ";
-            strDocumento += @"            POR ESTE PAGARE, DEBO, PROMETO Y ME OBLIGO A PAGAR EN FORMA INCONDICIONAL A LA ORDEN                                             ";
-            strDocumento += @"            DE LA PERSONA MORAL DENOMINADA FOMEPADE S.A.P.I. DE C.V. SOFOM E.N.R. O A QUIEN SUS DERECHOS REPRESENTE                          ";
+            strDocumento += @"            POR ESTE PAGARÉ, DEBO, PROMETO Y ME OBLIGO A PAGAR EN FORMA INCONDICIONAL A LA ORDEN                                             ";
+            strDocumento += @"            DE LA PERSONA MORAL DENOMINADA <b>FOMEPADE S.A.P.I. DE C.V. SOFOM E.N.R.</b> O A QUIEN SUS DERECHOS REPRESENTE                          ";
             strDocumento += @"			EN SU DOMICILIO UBICADO                                                                                                            ";
             strDocumento += @"            EN <font class=""l""><ins>BOULEVARD ATLIXCO NO. 3115 INTERIOR 1</ins></font> DE LA COLONIA <u>                                   ";
             strDocumento += @"			<b>NUEVA ANTEQUERA C.P. 72180</b></u> DE LA CIUDAD DE                                                                              ";
@@ -60,14 +60,14 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                <b>                                                                                                                          ";
             strDocumento += @"                    " + data.dataPagare.CantidadpagareNumLetras + "                                                                                           ";
             strDocumento += @"                </b>                                                                                                                         ";
-            strDocumento += @"            </u>LO CUAL HARE MEDIANTE <u><b>" + data.dataPagare.NumAmortizaciones + "</b></u> PAGOS                                                           ";
+            strDocumento += @"            </u>LO CUAL HARÉ MEDIANTE <u><b>" + data.dataPagare.NumAmortizaciones + "</b></u> PAGOS                                                           ";
             strDocumento += @"            <u><b>" + data.dataPagare.PagosPeridicidad + "</b></u> Y CONSECUTIVOS, CADA UNO DE ELLOS POR LA CANTIDAD DE                                       ";
             strDocumento += @"            <u>                                                                                                                              ";
             strDocumento += @"                <b>                                                                                                                          ";
             strDocumento += @"                    " + data.dataPagare.CantidadPagosnumeroyletras + "                                                                                        ";
             strDocumento += @"                </b>                                                                                                                         ";
             strDocumento += @"            </u>                                                                                                                             ";
-            strDocumento += @"            INICIANDO EL PRIMER PAGO, A PARTIR DEL DIA <u><b>" + data.dataPagare.DiaPrimerPago + "</b></u> DEL MES DE <u>                                     ";
+            strDocumento += @"            INICIANDO EL PRIMER PAGO, A PARTIR DEL DÍA <u><b>" + data.dataPagare.DiaPrimerPago + "</b></u> DEL MES DE <u>                                     ";
             strDocumento += @"			<b>" + data.dataPagare.MesPrimerPago + "</b></u> DEL AÑO <u><b>" + data.dataPagare.AnioPrimerpago + "</b></u> Y VENCIENDO EL                                         ";
             strDocumento += @"            ULTIMO PAGO EL DÍA <u><b>" + data.dataPagare.DiaUltimoPago + "</b></u> DEL MES DE <u><b>" + data.dataPagare.MesUltimoPago + "</b></u>                              ";
             strDocumento += @"			DEL AÑO <u><b>" + data.dataPagare.AnioUltimoPago + "</b></u>.                                                                                       ";
@@ -85,15 +85,15 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"        PARTIR DE LA FECHA DEL INCUMPLIMIENTO Y HASTA QUE EL ADEUDO SEA TOTALMENTE PAGADO A                                                  ";
             strDocumento += @"        FOMEPADE S.A.P.I. DE C.V. SOFOM E.N.R. LOS CUALES SE CAUSARAN SOBRE EL CAPITAL VENCIDO Y                                             ";
             strDocumento += @"        SERÁN CALCULADOS A UNA TASA DE INTERÉS MORATORIO DEL <u><b>" + data.dataPagare.TasaMoratoria + "</b></u> POR CIENTO MENSUAL, POR                      ";
-            strDocumento += @"        CADA MES O FRACCIÓN, LOS CUALES DEBO( PAGAR CONJUNTAMENTE CON LAS AMORTIZACIONES DE                                                  ";
+            strDocumento += @"        CADA MES O FRACCIÓN, LOS CUALES DEBO(EMOS) PAGAR CONJUNTAMENTE CON LAS AMORTIZACIONES DE                                                  ";
             strDocumento += @"        CAPITAL VENCIDO.                                                                                                                     ";
             strDocumento += @"    </p>                                                                                                                                     ";
             strDocumento += @"    <div>                                                                                                                                    ";
             strDocumento += @"        <p class=""b"">                                                                                                                      ";
             strDocumento += @"            QUEDA EXPRESAMENTE CONVENIDO QUE LA FALTA DE PAGO OPORTUNO DE UNO O MAS DE LOS                                                   ";
-            strDocumento += @"            PAGOS CONVENIDOS DARA DERECHO A FOMEPADE SAPI DE CV SOFOM ENR A DAR POR VENCIDO                                                  ";
-            strDocumento += @"            EN FORMA ANTICIPADA EL PLAZO CONVENIDO Y A EXIGIR YA SEA POR LA VÍA EXTRAJUDICIAL O                                              ";
-            strDocumento += @"            JUDICIAL EL PAGO DEL TOTAL DE LA DEUDA EXISTENTE Y SUS ACCESORIOS GENERADOS LO                                                   ";
+            strDocumento += @"            PAGOS CONVENIDOS, DARA DERECHO A FOMEPADE SAPI DE CV SOFOM ENR A DAR POR VENCIDO                                                  ";
+            strDocumento += @"            EN FORMA ANTICIPADA. EL PLAZO CONVENIDO Y A EXIGIR YA SEA POR LA VÍA EXTRAJUDICIAL O                                              ";
+            strDocumento += @"            JUDICIAL EL PAGO DEL TOTAL DE LA DEUDA EXISTENTE Y SUS ACCESORIOS GENERADOS. LO                                                   ";
             strDocumento += @"            ANTERIOR DE CONFORMIDAD CON LO DISPUESTO POR LOS ARTÍCULOS 79 EN RELACIÓN CON EL 174 DE                                          ";
             strDocumento += @"            LA LEY GENERAL DE TITULOS Y OPERACIONES DE CRÉDITO.                                                                              ";
             strDocumento += @"        </p>                                                                                                                                 ";
@@ -115,8 +115,8 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"    </p>                                                                                                                                     ";
             strDocumento += @"    <br />                                                                                                                                   ";
             strDocumento += @"    <p class=""b""> EL PRESENTE PAGARE SE SUSCRIBE EN LA CIUDAD DE <u><b>" + data.dataPagare.PersonaCiudad + "</b></u>,                                       ";
-            strDocumento += @"	EL DÍA <u><b>@DateTime.Now.ToString(""dd"")</b></u> DEL MES DE <u><b>@DateTime.Now.ToString(""MMMM"").ToUpper()</b></u> DEL</p>            ";
-            strDocumento += @"    <p class=""b"">AÑO <U><b>@DateTime.Now.ToString(""yyyy"")</b></U>.</p>                                                                   ";
+            strDocumento += @"	EL DÍA <u><b>"+DateTime.Now.ToString("dd") + "</b></u> DEL MES DE <u><b>"+DateTime.Now.ToString("MMMM").ToUpper() + "</b></u> DEL</p>            ";
+            strDocumento += @"    <p class=""b"">AÑO <U><b>"+DateTime.Now.ToString("yyyy")+"</b></U>.</p>                                                                   ";
             strDocumento += @"    <br />                                                                                                                                   ";
             strDocumento += @"    <p class=""b"">NOMBRE Y FIRMA DEL SUSCRIPTOR Y/O DEUDOR:</p>                                                                             ";
             strDocumento += @"    <br />                                                                                                                                   ";

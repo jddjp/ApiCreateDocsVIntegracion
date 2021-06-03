@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace OriginaWebApp.Models.Formatos
 {
-    public class fmtfmtContratoConsumo
+    public class MejoramientofmtfmtContrato
     {
         public string strDocumento;
 
-        public string FormatoHTML(InputData data, string s)
+        public string FormatoHTML(InputData data,String logo)
         {
 
 
@@ -652,14 +652,8 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"            </tr>                                                                                                                                                                              ";
             strDocumento += @"            </table>                                                                                                                                                                              ";
 
-
-
-
             strDocumento += "</body>                                                                                                                                                                                             ";
-            strDocumento += "</html>                                                                                                                                                                                             ";
-
-
-
+            strDocumento += "</html>                                                                                                                                                                                             "; 
 
 
 

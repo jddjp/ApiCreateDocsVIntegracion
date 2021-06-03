@@ -222,7 +222,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"        </tr>                                                                                                                                                                                 ";
             strDocumento += @"    </table>                                                                                                                                                                                  ";
             strDocumento += @"</body>                                                                                                                                                                                       ";
-            strDocumento += @"</html>                                                                                                                                                                                       "; 
+            strDocumento += @"</html>                                                                                                                                                                                       ";
 
 
             return strDocumento;

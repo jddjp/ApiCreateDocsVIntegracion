@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OriginaWebApp.Models.Formatos
 {
-    public class ConsumofmtfmtAutSolicitud
+    public class fmtfmtAutSolicitud
     {
         public string strDocumento;
 
@@ -66,12 +66,9 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += "																																																					";
             strDocumento += "</head>                                                                                                                                                                                             ";
             strDocumento += "<body style='text-align: justify;'>                                                                                                                                                                 ";
-            strDocumento += "             <h5>SOLICITUD DE CRÉDITO</h5>                                                                                                                                                           ";
-            strDocumento += "          <h7>NUMERO DE REGISTRO DE CONTRATO DE ADHESIÓN : 2028-440-004742/17-00217-0121 </h7>                                                                                                                                                ";
-            strDocumento += "    <p align='right' class='b'>                                                                                                                                                                     ";
-             strDocumento += "        No.Cliente:" + "Faltaidpersona" + "<br />                                                                                                                                                            ";
-            strDocumento += "        No.Contrato:" + data.dataSolicitud.NoPagare + "                                                                                                                                                                 ";
-            strDocumento += "    </p>                                                                                                                                                                                            ";
+            strDocumento += "                                                                                                                                                             ";
+            strDocumento += "                                                                                                                                                      ";
+     
             strDocumento += "    <p class='b' align='center' style='width:100%;background-color:#E6E6E6;'>DATOS DEL CRÉDITO</p>                                                                                                 ";
             strDocumento += "    <table>                                                                                                                                                                                         ";
             strDocumento += "        <tr>                                                                                                                                                                                        ";
@@ -1009,13 +1006,13 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += "            </tr>                                                                                                                                                                                   ";
             strDocumento += "        </table>                                                                                                                                                                                    ";
             strDocumento += "        <br />                                                                                                                                                                                      ";
-           strDocumento += "             <h5>SOLICITUD DE CRÉDITO</h5>                                                                                                                                                           ";
-            strDocumento += "          <h7>NUMERO DE REGISTRO DE CONTRATO DE ADHESIÓN : 2028-440-004742/17-00217-0121 </h7>                                                                                                                                                ";
+           strDocumento += "                                                                                                                                                                     ";
+            strDocumento += "                                                                                                                                                    ";
 
-            strDocumento += "        <p align='right' class='b'>                                                                                                                                                                 ";
-            strDocumento += "            No.Cliente:" + "Fatla id persona" + "<br />                                                                                                                                                        ";
-            strDocumento += "            No.Contrato:" + data.dataSolicitud.NoPagare + "                                                                                                                                                             ";
-            strDocumento += "        </p>                                                                                                                                                                                        ";
+            strDocumento += "                                                                                                                                                                        ";
+            strDocumento += "                                                                                                                                                                 ";
+            strDocumento += "                                                                                                                                                             ";
+            strDocumento += "                                                                                                                                                                                     ";
             strDocumento += "        <table class='data'>                                                                                                                                                                        ";
             strDocumento += "            <tr>                                                                                                                                                                                    ";
             strDocumento += "                <th width='400px' style='background-color:#E6E6E6;'>                                                                                                                                ";
@@ -1281,14 +1278,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += "        </table>                                                                                                                                                                                    ";
             strDocumento += "                                                                                                                                                                                                    ";
           
-            strDocumento += "             <h5>SOLICITUD DE CRÉDITO</h5>                                                                                                                                                           ";
-            strDocumento += "          <h7>NUMERO DE REGISTRO DE CONTRATO DE ADHESIÓN : 2028-440-004742/17-00217-0121 </h7>                                                                                                                                                ";
-            strDocumento += "        <br />                                                                                                                                                                                      ";
-            strDocumento += "        <p align='right' class='b'>                                                                                                                                                                 ";
-            strDocumento += "            No.Cliente:" + "faltaidpersona" + "<br />                                                                                                                                                        ";
-            strDocumento += "            No.Contrato:" + data.dataSolicitud.NoPagare + "                                                                                                                                                             ";
-            strDocumento += "        </p>                                                                                                                                                                                        ";
-            strDocumento += "        <table class='data'>                                                                                                                                                                        ";
+          strDocumento += "        <table class='data'>                                                                                                                                                                        ";
             strDocumento += "            <tr>                                                                                                                                                                                    ";
             strDocumento += "                <th width='900px' style='background-color:#E6E6E6;'>                                                                                                                                ";
             strDocumento += "                    <p align='center' class='b'>                                                                                                                                                    ";

@@ -37,8 +37,8 @@ namespace ApiCreateDocsVIntegracion.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateDocs(InputData data)
         {
-            var json = new JavaScriptSerializer().Serialize(data);
-            var x = json;
+            //var json = new JavaScriptSerializer().Serialize(data);
+            //var x = json;
              return Ok(SavePdfFileAsync(data));
         }
 
@@ -1366,7 +1366,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
         [ApiExplorerSettings(IgnoreApi = true)]
         public byte[] GenerateContratoMejoramiento(InputData data)
         {
-            MejoramientofmtfmtContratoConsumo formato = new MejoramientofmtfmtContratoConsumo();
+            MejoramientofmtfmtContrato formato = new MejoramientofmtfmtContrato();
 
             string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
             string baseUrl = "";

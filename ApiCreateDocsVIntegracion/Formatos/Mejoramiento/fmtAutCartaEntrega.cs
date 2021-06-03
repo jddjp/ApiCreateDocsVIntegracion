@@ -68,10 +68,10 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"    <br>                                                                                                                                     ";
             strDocumento += @"    <br>                                                                                                                                     ";
             strDocumento += @"    <p align=""left"" class=""b"">                                                                                                           ";
-            strDocumento += @"        Reunidos  en el  domicilio particular  en Calle <u>"+data.dataCartaEntrega.domicilioCalleNumero+"</u>                                           ";
+            strDocumento += @"        Reunidos  en el  domicilio particular  en Calle <u>" + data.dataCartaEntrega.domicilioCalleNumero + "</u>                                           ";
             strDocumento += @"    </p>                                                                                                                                     ";
             strDocumento += @"    <p align=""left"" class=""b"">                                                                                                           ";
-            strDocumento += @"        Col.<u>"+data.dataCartaEntrega.domicilioColonia+"</u> Municipio<u>"+data.dataCartaEntrega.domicilioMunicipio+ "</u>- Estado</u>" + data.dataCartaEntrega.domicilioEstado + "</u> C.P. <u>" + data.dataCartaEntrega.domicilioCodigoPostal + "</u>-                                                ";
+            strDocumento += @"        Col.<u>" + data.dataCartaEntrega.domicilioColonia + "</u> Municipio<u>" + data.dataCartaEntrega.domicilioMunicipio + "</u>- Estado</u>" + data.dataCartaEntrega.domicilioEstado + "</u> C.P. <u>" + data.dataCartaEntrega.domicilioCodigoPostal + "</u>-                                                ";
             strDocumento += @"    </p>                                                                                                                                     ";
             strDocumento += @"    <p align=""left"" class=""b"">                                                                                                           ";
             strDocumento += @"        El Sr. (a)<u>" + data.dataCartaEntrega.nombreCliente + "</u>quien entrega la obra realizada al Sr                                             ";
@@ -126,8 +126,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"        </tr>                                                                                                                                ";
             strDocumento += @"    </table>                                                                                                                                 ";
             strDocumento += @"</body>                                                                                                                                      ";
-            strDocumento += @"</html>                                                                                                                                      "; 
-
+            strDocumento += @"</html>         ";
 
             return strDocumento;
         }

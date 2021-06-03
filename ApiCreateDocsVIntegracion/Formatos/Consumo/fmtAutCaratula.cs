@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OriginaWebApp.Models.Formatos
 {
-    public class ConsumofmtfmtCaratula
+    public class fmtfmtCaratula
     {
         public string strDocumento;
 
@@ -220,10 +220,10 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += "                            <b>" + data.dataCaratula.ClienteNombreCompleto + "</b> <br>                                                                                                                                                        ";
 
             strDocumento += "                            ____________________<br>                                                                                                                                                                                       ";
-             strDocumento += "                            <b>Nombre y firma</b>                                                                                                                                                                                          ";
+            strDocumento += "                            <b>Nombre y firma</b>                                                                                                                                                                                          ";
             strDocumento += "                             </p>                                                                                                                                                                                                          ";
             strDocumento += "                           </body>                                                                                                                                                                                                         ";
-            strDocumento += "                           </html>		 												                                                                                                                                                    ";
+            strDocumento += "                           </html>		 		 												                                                                                                                                                    ";
 
             return strDocumento;
         }
