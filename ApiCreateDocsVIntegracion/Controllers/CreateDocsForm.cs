@@ -37,8 +37,8 @@ namespace ApiCreateDocsVIntegracion.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateDocs(InputData data)
         {
-            //var json = new JavaScriptSerializer().Serialize(data);
-            //var x = json;
+          var json = new JavaScriptSerializer().Serialize(data);
+            var x = json;
              return Ok(SavePdfFileAsync(data));
         }
 
@@ -367,6 +367,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
                 }
 
             }
+            //Revisar
             if (data.dataProyeccionObra != null)
             {
                 var content = new MultipartFormDataContent();
@@ -468,6 +469,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
 
 
             }
+            //Revisar
 
             //DomiciliadoPublio
             if (data.SolicitudDomiciliado != null)
@@ -1057,7 +1059,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
         {
             fmtfmtEstudioSocioEconomio formato = new fmtfmtEstudioSocioEconomio();
 
-            string htmlString = formato.FormatoHTML(data);
+            string htmlString = formato.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
             string baseUrl = "";
 
             string pdf_page_size = "Letter";
@@ -1098,7 +1100,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
             converter.Options.MarginBottom = 50;
 
             // create a new pdf document converting an url
-            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString,  baseUrl);
             var streamPdf = new MemoryStream(doc.Save());
 
             byte[] data1;
@@ -1690,8 +1692,7 @@ namespace ApiCreateDocsVIntegracion.Controllers
             string baseUrl = "";
 
             string pdf_page_size = "Letter";
-            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize),
-                pdf_page_size, true);
+            PdfPageSize pageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize), pdf_page_size, true);
 
             string pdf_orientation = "Portrait";
             PdfPageOrientation pdfOrientation =
@@ -1721,10 +1722,46 @@ namespace ApiCreateDocsVIntegracion.Controllers
             converter.Options.WebPageWidth = webPageWidth;
             converter.Options.WebPageHeight = webPageHeight;
 
-            converter.Options.MarginLeft = 50;
-            converter.Options.MarginRight = 50;
-            converter.Options.MarginTop = 50;
-            converter.Options.MarginBottom = 50;
+            converter.Options.MarginLeft = 20;
+            converter.Options.MarginRight = 20;
+            converter.Options.MarginTop = 20;
+            converter.Options.MarginBottom = 20;
+
+            // header settings
+
+            converter.Options.DisplayHeader = true;
+            converter.Header.DisplayOnFirstPage = true;
+            converter.Header.DisplayOnOddPages = true;
+            converter.Header.DisplayOnEvenPages = true;
+            converter.Header.Height = 40;/*Tamaño del encabezado en int*/
+
+            fmtAutHeaderArticulosLegalesMejoramiento headerArticulos = new fmtAutHeaderArticulosLegalesMejoramiento();
+            string htmlStringheader = headerArticulos.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+
+            PdfHtmlSection customHtml = new PdfHtmlSection(htmlStringheader, string.Empty);
+
+            converter.Header.Add(customHtml);
+
+
+            //// header settings
+            //Footer
+            converter.Options.DisplayFooter = true;
+            converter.Footer.DisplayOnFirstPage = true;
+            converter.Footer.DisplayOnOddPages = true;
+            converter.Footer.DisplayOnEvenPages = true;
+            converter.Footer.Height = 20;
+
+
+            PdfTextSection text = new PdfTextSection(0, 10, "Página : {page_number} | {total_pages}  ", new System.Drawing.Font("Calibri", 8));
+            text.HorizontalAlign = PdfTextHorizontalAlign.Right;
+            converter.Footer.Add(text);
+
+            fmtAutFooterArticulosLegalesMejormaiento footer = new fmtAutFooterArticulosLegalesMejormaiento();
+            string htmlStringfooter = footer.FormatoHTML(data, _env.WebRootPath + "\\img\\aprecia-blanco.jpeg");
+            PdfHtmlSection customHtmlfooter = new PdfHtmlSection(htmlStringfooter, string.Empty);
+            converter.Footer.Add(customHtmlfooter);
+
+            //Footer
 
             // create a new pdf document converting an url
             SelectPdf.PdfDocument doc = converter.ConvertHtmlString(htmlString, baseUrl);

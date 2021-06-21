@@ -63,7 +63,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"        <b>                                                                                                                                                                                   ";
             strDocumento += @"            CONTRATO  DE  APERTURA  DE  CRÉDITO  EN  CUENTA  CORRIENTE  QUE  CELEBRAN  POR  UNA  PARTE  FOMEPADE,  S.A.P.I.  DE  C.V.,                                                        ";
             strDocumento += @"			SOFOM,  E.N.R.  (EN  LO  SUCESIVO,                                                                                                                                                  ";
-            strDocumento += @"            “APRECIA”), REPRESENTADA EN ESTE ACTO POR EL C.  <u>" + data.dataContratoConsumo.RepresentanteLegal + ",</u> Y POR OTRA PARTE <u>" + data.dataContratoConsumo.ClienteNomCompleto + "</u>  ,  A QUIEN  EN LO SUCESIVO SE LE                  ";
+            strDocumento += @"            “APRECIA”), REPRESENTADA EN ESTE ACTO POR EL C.  <u>" + data.dataContratoMejoramiento.RepresentanteLegal + ",</u> Y POR OTRA PARTE <u>" + data.dataContratoMejoramiento.ClienteNomCompleto + "</u>  ,  A QUIEN  EN LO SUCESIVO SE LE                  ";
             strDocumento += @"            DENOMINARÁ “EL CLIENTE”, POR SU PROPIO DERECHO, AL TENOR DE LAS DECLARACIONES Y CLÁUSULAS SIGUIENTES:                                                                          ";
             strDocumento += @"        </b>                                                                                                                                                                                  ";
             strDocumento += @"    </p>                                                                                                                                                                                      ";
@@ -88,8 +88,8 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                 <p class='b'><b>I.2.-</b> Su representante cuenta con las facultades legales vigentes para obligar a su                                                                                ";
             strDocumento += @"                    representada en los términos que en este contrato se pactan.<br>                                                                                                          ";
             strDocumento += @"                    <b> I.3.-</b> Que para los efectos del presente contrato señala como domicilio el ubicado                                                                                 ";
-            strDocumento += @"                    en: <b><u>" + data.dataContratoConsumo.SucursalDomicilio + ", colonia " + data.dataContratoConsumo.SucursalColonia + ",</u></b>                                                                 ";
-            strDocumento += @"					C.P.<b><u> " + data.dataContratoConsumo.SucursalCP + "</u></b>, en </b><u>" + data.dataContratoConsumo.SucursalEstado + "," + data.dataContratoConsumo.SucursalMunicipio + "</u></b> y su dirección en                                                                                          ";
+            strDocumento += @"                    en: <b><u>" + data.dataContratoMejoramiento.SucursalDomicilio + ", colonia " + data.dataContratoMejoramiento.SucursalColonia + ",</u></b>                                                                 ";
+            strDocumento += @"					C.P.<b><u> " + data.dataContratoMejoramiento.SucursalCP + "</u></b>, en </b><u>" + data.dataContratoMejoramiento.SucursalEstado + "," + data.dataContratoMejoramiento.SucursalMunicipio + "</u></b> y su dirección en                                                                                          ";
             strDocumento += @"                    internet es:  <a href='#primero'>www.aprecia.com.mx</a>.<br></p>                                                                                                            ";
             strDocumento += @"                 <p class='b'><b>I.4.-</b>  El modelo del presente contrato se encuentra registrado ante la Comisión                                                                                    ";
             strDocumento += @"                    Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros bajo                                                                                       ";
@@ -133,7 +133,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                 <p class='b'> <b>PRIMERA.-APERTURA</b> “APRECIA” en términos del artículo 291 de la                                                                                         ";
             strDocumento += @"                    Ley General de Títulos y Operaciones de Crédito, otorga en este acto                                                                                          ";
             strDocumento += @"                    un crédito en cuenta corriente a “EL CLIENTE”, por la cantidad de                                                                                           ";
-            strDocumento += @"                    <b><u>" + data.dataContratoConsumo.CreditoTotal + " " + data.dataContratoConsumo.CreditoTotalLetra + "</b></u>, sin que dentro del                                                                                                                                               ";
+            strDocumento += @"                    <b><u>" + data.dataContratoMejoramiento.CreditoTotal + " " + data.dataContratoMejoramiento.CreditoTotalLetra + "</b></u>, sin que dentro del                                                                                                                                               ";
             strDocumento += @"                    importe del crédito queden comprendidos los intereses y comisiones                                                                                            ";
             strDocumento += @"                    definidas en la carátula que forma parte integrante del presente                                                                                                ";
             strDocumento += @"                    contrato y, en su caso, los que resulten en caso de incumplimiento de                                                                                           ";
@@ -174,11 +174,11 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"            <tr>                                                                                                                                                                              ";
             strDocumento += @"            <td>                                                                                                                                                                              ";
             strDocumento += @"   <p><b>CUARTA.- ENTREGA DE LOS RECURSOS.</b> “APRECIA” entregará los recursos a que se refiera la             ";
-            strDocumento += @"   cláusula anterior por cualquiera de las siguientes modalidades:<b> [" + data.dataContratoConsumo.EsCheque + "]  </b>                     ";
-            strDocumento += @"   por cheque nominativo con la leyenda de no negociable, [" + data.dataContratoConsumo.EsTarjeta + "] a su cuenta                   ";
-            strDocumento += @"   bancaria " + data.dataContratoConsumo.BancoCuenta + " en el banco " + data.dataContratoConsumo.BancoCliente + ", [" + data.dataContratoConsumo.EsTransferencia + "] por transferencia            ";
-            strDocumento += @"    electrónica a la clabe interbancaria " + data.dataContratoConsumo.BancoClabe + " en el banco " + data.dataContratoConsumo.BancoClienteClabe + " ,               ";
-            strDocumento += @"    [" + data.dataContratoConsumo.CreditoTotal + " ] por tarjeta bancaria prepagada, [" + data.dataContratoConsumo.EspagoVentanilla + "] por pago en ventanilla,           ";
+            strDocumento += @"   cláusula anterior por cualquiera de las siguientes modalidades:<b> [" + data.dataContratoMejoramiento.EsCheque + "]  </b>                     ";
+            strDocumento += @"   por cheque nominativo con la leyenda de no negociable, [" + data.dataContratoMejoramiento.EsTarjeta + "] a su cuenta                   ";
+            strDocumento += @"   bancaria " + data.dataContratoMejoramiento.BancoCuenta + " en el banco " + data.dataContratoMejoramiento.BancoCliente + ", [" + data.dataContratoMejoramiento.EsTransferencia + "] por transferencia            ";
+            strDocumento += @"    electrónica a la clabe interbancaria " + data.dataContratoMejoramiento.BancoClabe + " en el banco " + data.dataContratoMejoramiento.BancoClienteClabe + " ,               ";
+            strDocumento += @"    [" + data.dataContratoMejoramiento.CreditoTotal + " ] por tarjeta bancaria prepagada, [" + data.dataContratoMejoramiento.EspagoVentanilla + "] por pago en ventanilla,           ";
             strDocumento += @"    de conformidad con lo que al respecto acuerden las partes. <br>  </p>                                     ";
             strDocumento += @"   <p>Los cheques o transferencias electrónicas a que se refiere el párrafo anterior                     ";
             strDocumento += @"   invariablemente deberán estar a nombre de “EL CLIENTE”; en el caso de que “APRECIA”                ";
@@ -199,11 +199,11 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"   de esta cláusula son ciertos por tanto deslinda a “APRECIA” de cualquier error en los mismos.</p>      ";
             strDocumento += @"  <p> <b>QUINTA.- TASA ORDINARIA.</b> “EL CLIENTE” se obliga a pagar a “APRECIA” intereses ordinarios,          ";
             strDocumento += @"   los cuales se generarán sobre los saldos insolutos del crédito a una                               ";
-            strDocumento += @"   TASA DE INTERÉS ANUAL FIJA DE " + data.dataContratoConsumo.TasaInsoluta + "% (SIN IVA), en el entendido de que:        ";
+            strDocumento += @"   TASA DE INTERÉS ANUAL FIJA DE " + data.dataContratoMejoramiento.TasaInsoluta + "% (SIN IVA), en el entendido de que:        ";
             strDocumento += @"   (I) Los intereses ordinarios se calcularán a partir de la fecha de disposición del                 ";
             strDocumento += @"   saldo de crédito correspondiente y se devengarán diariamente, (II) Los intereses                   ";
             strDocumento += @"   ordinarios que se hayan acumulado al vencer serán pagaderos los días de pago                       ";
-            strDocumento += @"   " + data.dataContratoConsumo.CreditoTipoPeriodicidad + " de cada mes, de la fuente de empleo del “CLIENTE”; (III)                       ";
+            strDocumento += @"   " + data.dataContratoMejoramiento.CreditoTipoPeriodicidad + " de cada mes, de la fuente de empleo del “CLIENTE”; (III)                       ";
             strDocumento += @"   Para el pago de su primera amortización, “EL CLIENTE” podrá contar con un plazo                    ";
             strDocumento += @"   de gracia de hasta ciento veinte días naturales contados a partir de la fecha de                   ";
             strDocumento += @"   disposición del crédito, y (IV) Los intereses ordinarios se calcularán sobre la                    ";
@@ -218,7 +218,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"    quincenales y 30 (treinta) para pagos mensuales.<br>    </p>                                              ";
             strDocumento += @"                                                                                                      ";
             strDocumento += @"   Las fechas de corte para el cálculo de los intereses serán los días                                ";
-            strDocumento += @"   " + data.dataContratoConsumo.CreditoTipoPeriodicidad + " de cada mes. Las fechas de corte podrán ser                                    ";
+            strDocumento += @"   " + data.dataContratoMejoramiento.CreditoTipoPeriodicidad + " de cada mes. Las fechas de corte podrán ser                                    ";
             strDocumento += @"            </td>                                                                                                                                                                              ";
             strDocumento += @"            <td>                                                                                                                                                                              ";
 
@@ -245,20 +245,20 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"   el día siguiente a la fecha de pago hasta el día en que se realice el pago.<br>    </p>                           ";
             strDocumento += @"                                                                                                            ";
             strDocumento += @"  <p> <b>SÉPTIMA.- PERIODICIDAD DEL PAGO.</b> “EL CLIENTE” se obliga a pagar                                           ";
-            strDocumento += @"   a “APRECIA” la cantidad de $" + data.dataContratoConsumo.CreditoTotal + " (" + data.dataContratoConsumo.CreditoTotalLetra + "), en                                            ";
-            strDocumento += @"   un plazo de " + data.dataContratoConsumo.CreditoPlazo + " meses, mediante " + data.dataContratoConsumo.CreditoNoPagos + " pagos                                              ";
-            strDocumento += @"    parciales " + data.dataContratoConsumo.CreditoTipoPeriodicidad + " contados a partir de la de la firma                                        ";
-            strDocumento += @"    del presente contrato, mediante la siguiente forma: " + data.dataContratoConsumo.CreditoNoPagos + "                                      ";
-            strDocumento += @"    pagos " + data.dataContratoConsumo.CreditoTipoPeriodicidad + " y consecutivos, cada uno de ellos por la                                       ";
-            strDocumento += @"    cantidad de $" + data.dataContratoConsumo.CreditoMontoParcialidad + " (" + data.dataContratoConsumo.CreditoMontoParcialidadLetra + "),                                       ";
+            strDocumento += @"   a “APRECIA” la cantidad de $" + data.dataContratoMejoramiento.CreditoTotal + " (" + data.dataContratoMejoramiento.CreditoTotalLetra + "), en                                            ";
+            strDocumento += @"   un plazo de " + data.dataContratoMejoramiento.CreditoPlazo + " meses, mediante " + data.dataContratoMejoramiento.CreditoNoPagos + " pagos                                              ";
+            strDocumento += @"    parciales " + data.dataContratoMejoramiento.CreditoTipoPeriodicidad + " contados a partir de la de la firma                                        ";
+            strDocumento += @"    del presente contrato, mediante la siguiente forma: " + data.dataContratoMejoramiento.CreditoNoPagos + "                                      ";
+            strDocumento += @"    pagos " + data.dataContratoMejoramiento.CreditoTipoPeriodicidad + " y consecutivos, cada uno de ellos por la                                       ";
+            strDocumento += @"    cantidad de $" + data.dataContratoMejoramiento.CreditoMontoParcialidad + " (" + data.dataContratoMejoramiento.CreditoMontoParcialidadLetra + "),                                       ";
             strDocumento += @"    hasta la total liquidación del crédito, teniendo como fecha límite                                       ";
-            strDocumento += @"    de pago los días " + data.dataContratoConsumo.CreditoTotal + " del mes en cuestión, mismos que podrá                                       ";
+            strDocumento += @"    de pago los días " + data.dataContratoMejoramiento.CreditoTotal + " del mes en cuestión, mismos que podrá                                       ";
             strDocumento += @"    consultar en cualquiera de las sucursales de “APRECIA”, en un horario comprendido                        ";
             strDocumento += @"    de lunes a viernes de 9:00 a 18:00 horas y así no generar mora; para realizar                            ";
             strDocumento += @"    el primer pago “EL CLIENTE” podrá contar con un plazo de gracia de hasta                                 ";
             strDocumento += @"    ciento veinte días naturales contados a partir de la fecha de disposición                                ";
             strDocumento += @"    del crédito. Firmando desde este momento un pagaré por la cantidad                                       ";
-            strDocumento += @"    de $" + data.dataContratoConsumo.CreditoTotal + " (" + data.dataContratoConsumo.CreditoTotalLetra + "), mismo que autoriza a hacer efectivo                                  ";
+            strDocumento += @"    de $" + data.dataContratoMejoramiento.CreditoTotal + " (" + data.dataContratoMejoramiento.CreditoTotalLetra + "), mismo que autoriza a hacer efectivo                                  ";
             strDocumento += @"    a “APRECIA”, a través de la presentación del mismo, y “APRECIA”,                                         ";
             strDocumento += @"    podrá iniciar las acciones legales de cobro que a su derecho                                             ";
             strDocumento += @"    convengan contra el acreditante por la falta de pago oportuno y                                          ";
@@ -281,14 +281,14 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"            <tr>                                                                                                                                                                              ";
             strDocumento += @"            <td>                                                                                                                                                                              ";
 
-            strDocumento += @"  <p> simple, la cantidad de $" + data.dataContratoConsumo.ComisionPagoFijo + " (" + data.dataContratoConsumo.ComisionPagoFijoLetra + ") en los pagos                          ";
-            strDocumento += @"   " + data.dataContratoConsumo.CreditoTipoPeriodicidad + " de la vida del crédito. Dicha comisión se calculará con                                ";
+            strDocumento += @"  <p> simple, la cantidad de $" + data.dataContratoMejoramiento.ComisionPagoFijo + " (" + data.dataContratoMejoramiento.ComisionPagoFijoLetra + ") en los pagos                          ";
+            strDocumento += @"   " + data.dataContratoMejoramiento.CreditoTipoPeriodicidad + " de la vida del crédito. Dicha comisión se calculará con                                ";
             strDocumento += @"   base en el monto total del crédito otorgado, por un importe o porcentaje                                   ";
-            strDocumento += @"   correspondiente al " + data.dataContratoConsumo.PorcentajeComision + "% del mismo.<br>   </p>                                                     ";
+            strDocumento += @"   correspondiente al " + data.dataContratoMejoramiento.PorcentajeComision + "% del mismo.<br>   </p>                                                     ";
             strDocumento += @"                                                                                                              ";
             strDocumento += @"   <p><b>DÉCIMA.- MÉTODOS DE PAGO Y RETENCIONES.</b> “EL CLIENTE” se obliga a realizar los pagos                        ";
-            strDocumento += @"   " + data.dataContratoConsumo.CreditoTipoPeriodicidad + "que se señalan en la cláusula sexta, abonando a la cuenta bancaria                     ";
-            strDocumento += @"   número " + data.dataContratoConsumo.BancoClabe + " " + data.dataContratoConsumo.ReferenciaBanco + ", que “APRECIA”, mantiene con BBVA Bancomer,                        ";
+            strDocumento += @"   " + data.dataContratoMejoramiento.CreditoTipoPeriodicidad + "que se señalan en la cláusula sexta, abonando a la cuenta bancaria                     ";
+            strDocumento += @"   número " + data.dataContratoMejoramiento.BancoClabe + " " + data.dataContratoMejoramiento.ReferenciaBanco + ", que “APRECIA”, mantiene con BBVA Bancomer,                        ";
             strDocumento += @"   en las fechas de vencimiento pactadas, o en su caso a través del descuento en la                           ";
             strDocumento += @"   nómina de “EL CLIENTE”, en virtud de lo cual, “EL CLIENTE” firma en este acto la                           ";
             strDocumento += @"   estipulación de descuento respectiva para la autorización de la retención de los                           ";
@@ -360,10 +360,10 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"   y sin necesidad de declaración judicial, en las siguientes circunstancias:    <br>                             ";
             strDocumento += @"   1.- Por la falta de pago oportuno y completo de uno o más de los pagos parciales de capital o              ";
             strDocumento += @"   intereses pactados en la cláusula cuarta, quinta y/o sexta, de una o más parcialidades                     ";
-            strDocumento += @"   " + data.dataContratoConsumo.CreditoTipoPeriodicidad + " de capital o intereses.   <br>                                                             ";
+            strDocumento += @"   " + data.dataContratoMejoramiento.CreditoTipoPeriodicidad + " de capital o intereses.   <br>                                                             ";
             strDocumento += @"   2.- Por omisión y falsedad de datos declarados en la solicitud y toda documentación del crédito            ";
             strDocumento += @"    materia del presente contrato, sin menoscabo de que puedan ejercerse en su contra las penas               ";
-            strDocumento += @"    tipificadas en el código penal del estado de " + data.dataContratoConsumo.SucursalEstado + ". <br>                                          ";
+            strDocumento += @"    tipificadas en el código penal del estado de " + data.dataContratoMejoramiento.SucursalEstado + ". <br>                                          ";
             strDocumento += @"   3.- En caso de que la autoridad correspondiente determine el estado de insolvencia de “EL CLIENTE”.        ";
             strDocumento += @"   4.- Si “EL CLIENTE” incumple cualquier obligación a su cargo contraída en el presente contrato. <br>           ";
             strDocumento += @"   5.- Por el incumplimiento en el pago estipulado en la cláusula décima tercera de este contrato,            ";
@@ -426,15 +426,15 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"   caso de fallecimiento de “EL CLIENTE”.  <br>    </p>                                                                            ";
             strDocumento += @"  <p> Si “EL CLIENTE” elige contratar el seguro de vida con la asegurada autorizada por                                       ";
             strDocumento += @"   “APRECIA”, dicho seguro será cobrado durante la vigencia del crédito, bajo las                                          ";
-            strDocumento += @"   condiciones siguientes: (i) seguro de vida e invalidez con cobertura de: $" + data.dataContratoConsumo.CreditoTotal + "                        ";
-            strDocumento += @"   (" + data.dataContratoConsumo.CreditoTotal + "); (ii)  forma de pago: mediante  " + data.dataContratoConsumo.CreditoTotal + " pagos                                      ";
-            strDocumento += @"   " + data.dataContratoConsumo.CreditoTotal + " y consecutivos, todos y cada uno de ellos por la cantidad                                           ";
-            strDocumento += @"   de $" + data.dataContratoConsumo.ComisionPagoFijo + " (" + data.dataContratoConsumo.ComisionPagoFijoLetra + ")_ de los días de pago " + data.dataContratoConsumo.CreditoTipoPeriodicidad + ",                                  ";
-            strDocumento += @"   lo que equivale a un pago total de $" + data.dataContratoConsumo.CreditoMontoParcialidad + " (" + data.dataContratoConsumo.CreditoMontoParcialidadLetra + ");                                 ";
+            strDocumento += @"   condiciones siguientes: (i) seguro de vida e invalidez con cobertura de: $" + data.dataContratoMejoramiento.CreditoTotal + "                        ";
+            strDocumento += @"   (" + data.dataContratoMejoramiento.CreditoTotal + "); (ii)  forma de pago: mediante  " + data.dataContratoMejoramiento.CreditoTotal + " pagos                                      ";
+            strDocumento += @"   " + data.dataContratoMejoramiento.CreditoTotal + " y consecutivos, todos y cada uno de ellos por la cantidad                                           ";
+            strDocumento += @"   de $" + data.dataContratoMejoramiento.ComisionPagoFijo + " (" + data.dataContratoMejoramiento.ComisionPagoFijoLetra + ")_ de los días de pago " + data.dataContratoMejoramiento.CreditoTipoPeriodicidad + ",                                  ";
+            strDocumento += @"   lo que equivale a un pago total de $" + data.dataContratoMejoramiento.CreditoMontoParcialidad + " (" + data.dataContratoMejoramiento.CreditoMontoParcialidadLetra + ");                                 ";
             strDocumento += @"   (iii) Se designará como beneficiario irrevocable del seguro de vida, en primer grado a “APRECIA”,                       ";
             strDocumento += @"   por lo que la aseguradora: TOKIO MARINE COMPAÑÍA DE SEGUROS, S.A. DE CV. deberá cubrir                                  ";
             strDocumento += @"   el saldo insoluto en caso de defunción a favor de “APRECIA” y en caso de existir remanente,                             ";
-            strDocumento += @"   el restante se lo abonará como segundo beneficiario a: " + data.dataContratoConsumo.CreditoTotal + ": y                                        ";
+            strDocumento += @"   el restante se lo abonará como segundo beneficiario a: " + data.dataContratoMejoramiento.CreditoTotal + ": y                                        ";
             strDocumento += @"   (iv) Las reglas, condiciones y procedimientos para la operación del seguro contratado                                   ";
             strDocumento += @"   se darán a conocer al cliente al momento de la firma de este contrato, en el documento                                  ";
             strDocumento += @"   denominado “PÓLIZA DE SEGURO” mismo que en su caso, firmará “EL CLIENTE” a su entera                                    ";
@@ -581,7 +581,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"   y con algún otro objetivo distinto al establecido en los Avisos de Privacidad de “APRECIA”.      <br></p>                                       ";
             strDocumento += @" <p><b>  VIGÉSIMA QUINTA.- JURISDICCIÓN.</b> Los otorgantes se someten para el cumplimiento e interpretación                                         ";
             strDocumento += @"   del presente contrato a la jurisdicción y competencia de los tribunales y autoridades de                                                ";
-            strDocumento += @"   " + data.dataContratoConsumo.SucursalMunicipio + ", " + data.dataContratoConsumo.SucursalEstado + ", renunciando al fuero presente o futuro que pudiera                                                  ";
+            strDocumento += @"   " + data.dataContratoMejoramiento.SucursalMunicipio + ", " + data.dataContratoMejoramiento.SucursalEstado + ", renunciando al fuero presente o futuro que pudiera                                                  ";
             strDocumento += @"   corresponderle, quedando en todo caso a elección de la parte actora acudir a las autoridades del                                        ";
             strDocumento += @"   domicilio de la parte demandada.    <br>    </p>                                                                                                ";
             strDocumento += @"                                                                                                                                           ";
@@ -630,7 +630,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"   UNA DE “LAS PARTES” EN POSESIÓN DE UN TANTO CON SUS RESPECTIVOS ANEXOS, ENTRE LOS QUE SE                                                           ";
             strDocumento += @"   ENCUENTRA TABLA DE AMORTIZACIÓN, EL PRESENTE ANTE LOS TESTIGOS QUE AUTORIZAN Y DAN FE DE SU CELEBRACIÓN.</b>   <br><br>  </p>                                      ";
 
-            strDocumento += @" <p> <b>  " + data.dataContratoConsumo.MunicipioFirma + ", " + data.dataContratoConsumo.MunicipioEstado + ", A LOS " + data.dataContratoConsumo.DiaDispersion + " DÍAS DEL MES DE " + data.dataContratoConsumo.MesDispersion + " DE " + data.dataContratoConsumo.AnioDispersion + ".    </b>        </p>          ";
+            strDocumento += @" <p> <b>  " + data.dataContratoMejoramiento.MunicipioFirma + ", " + data.dataContratoMejoramiento.MunicipioEstado + ", A LOS " + data.dataContratoMejoramiento.DiaDispersion + " DÍAS DEL MES DE " + data.dataContratoMejoramiento.MesDispersion + " DE " + data.dataContratoMejoramiento.AnioDispersion + ".    </b>        </p>          ";
             strDocumento += @"   	                                                                                                                            ";
 
             strDocumento += @"   APRECIA	<br>	                                                                                                                    ";
@@ -638,12 +638,12 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"   “EL CLIENTE”  <br>                                                                                                                  ";
             strDocumento += @"                                                                                                                                   ";
             strDocumento += @"   __________________________________________________<br>	                                                                                                                        ";
-            strDocumento += @"   <b>" + data.dataContratoConsumo.RepresentanteLegal + " <br>                                                                                                                   ";
+            strDocumento += @"   <b>" + data.dataContratoMejoramiento.RepresentanteLegal + " <br>                                                                                                                   ";
             strDocumento += @"   REPRESENTANTE LEGAL          <br>                                                                                                   ";
             strDocumento += @"   FOMEPADE S.A.P.I. DE C.V.  <br>                                                                                                     ";
             strDocumento += @"   SOFOM E.N.R.              <br>                                                                                                      ";
             strDocumento += @"   _________________________________________________     <br>                                                                                                                           ";
-            strDocumento += @"   " + data.dataContratoConsumo.ClienteNomCompleto + "   <br>                                                                                                              ";
+            strDocumento += @"   " + data.dataContratoMejoramiento.ClienteNomCompleto + "   <br>                                                                                                              ";
             strDocumento += @"   clientealias                      <br>                                                                                            ";
             strDocumento += @"   NOMBRE Y FIRMA</b>         <br>                                                                                                         ";
 

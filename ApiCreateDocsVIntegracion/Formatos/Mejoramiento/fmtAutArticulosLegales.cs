@@ -15,7 +15,7 @@ namespace OriginaWebApp.Models.Formatos
         {
 
 
-            strDocumento = @"<!doctype html>																													";
+         																							
             strDocumento += @"<html>                                                                                                                            ";
             strDocumento += @"<head>                                                                                                                            ";
             strDocumento += @"    <style>                                                                                                                       ";
@@ -234,7 +234,6 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"                    de Datos.<br />                                                                                               ";
             strDocumento += @"                    <b>Titular del Certificado:</b> Se entenderá a la persona a cuyo favor fue                                    ";
             strDocumento += @"                    expedido el Certificado.                                                                                      ";
-            strDocumento += @"                                                                                                                                  ";
             strDocumento += @"                </p>                                                                                                              ";
             strDocumento += @"            </td>                                                                                                                 ";
             strDocumento += @"            <td class=""second"">                                                                                                 ";
@@ -392,8 +391,7 @@ namespace OriginaWebApp.Models.Formatos
             strDocumento += @"            </td>                                                                                                                 ";
             strDocumento += @"        </tr>                                                                                                                     ";
             strDocumento += @"    </table>                                                                                                                      ";
-            strDocumento += @"                                                                                                                       ";
-            strDocumento += @"</body>                                                                                                                           ";
+           strDocumento += @"</body>                                                                                                                           ";
             strDocumento += @"</html>                                                                                                                                   "; 
 
             return strDocumento;
