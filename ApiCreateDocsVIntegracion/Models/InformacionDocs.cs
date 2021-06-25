@@ -245,7 +245,9 @@ namespace ApiCreacionDocs.Models
             public string resultadoEstudio { get; set; }
             public string fechaAprobacion { get; set; }
             public string aprobadoPor { get; set; }
-
+            public string dictamenAnalisis { get; set; }
+            public string dictamenRatificacion { get; set; }
+            public string productoComercial { get; set; }
         }
         public class InputContratoConsumo
         {
