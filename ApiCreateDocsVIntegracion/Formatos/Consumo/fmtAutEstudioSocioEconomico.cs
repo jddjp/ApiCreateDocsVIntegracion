@@ -16,9 +16,12 @@ namespace OriginaWebApp.Models.Formatos
             var valorfecha="";
             if (data.dataEstudioSocioeconomico.dictamenRatificacion == "")
             {
-                valorfecha=DateTime.Now.ToString("dd/MM/yyyy");
+                valorfecha = data.dataEstudioSocioeconomico.fechaAprobacion;
             }
-            else { valorfecha = data.dataEstudioSocioeconomico.fechaAprobacion; }
+            else { 
+              
+                valorfecha = DateTime.Now.ToString("dd/MM/yyyy");
+            }
            
 
             
